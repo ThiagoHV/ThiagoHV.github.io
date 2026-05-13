@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Personagens do Minecraft</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background:
+    linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
+    url("https://images.unsplash.com/photo-1627856014754-2907e2355dca?q=80&w=1600&auto=format&fit=crop");
+    background-size:cover;
+    background-attachment:fixed;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    padding:40px 20px;
+    text-align:center;
+    background:linear-gradient(90deg,#0f0,#00a300);
+    border-bottom:5px solid #222;
+    box-shadow:0 5px 20px rgba(0,0,0,.5);
+}
+
+header h1{
+    font-size:55px;
+    text-shadow:4px 4px 0 #000;
+    margin-bottom:15px;
+}
+
+header p{
+    font-size:20px;
+    margin-bottom:20px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    background:#222;
+    color:white;
+    text-decoration:none;
+    border:3px solid #fff;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#fff;
+    color:#000;
+    transform:scale(1.05);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+    padding:50px 0;
+}
+
+/* =========================
+   TITULOS
+========================= */
+
+.section-title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:40px;
+    text-shadow:3px 3px 0 black;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(20,20,20,.9);
+    border:4px solid #4cff00;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:-100%;
+    left:0;
+    background:rgba(76,255,0,.15);
+    transition:.5s;
+}
+
+.card:hover::before{
+    top:0;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 0 25px #4cff00;
+}
+
+.card img{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+    margin-bottom:15px;
+}
+
+.card h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#ddd;
+    line-height:1.5;
+}
+
+.power{
+    margin-top:15px;
+    background:#333;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.power-bar{
+    height:18px;
+    background:lime;
+}
+
+/* =========================
+   INVENTARIO
+========================= */
+
+.inventory-section{
+    margin-top:80px;
+}
+
+.inventory{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:15px;
+}
+
+.slot{
+    background:#8b8b8b;
+    border:5px solid #3d3d3d;
+    height:120px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    font-size:20px;
+    transition:.3s;
+    cursor:pointer;
+    position:relative;
+}
+
+.slot:hover{
+    transform:scale(1.08);
+    background:#a8a8a8;
+}
+
+.slot span{
+    font-size:45px;
+}
+
+/* =========================
+   TABELA
+========================= */
+
+.table-section{
+    margin-top:80px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:rgba(0,0,0,.8);
+}
+
+th, td{
+    padding:15px;
+    border:2px solid #4cff00;
+    text-align:center;
+}
+
+th{
+    background:#1c1c1c;
+    color:#4cff00;
+}
+
+/* =========================
+   GALERIA
+========================= */
+
+.gallery{
+    margin-top:80px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    border:4px solid white;
+    border-radius:15px;
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px lime;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top:80px;
+    text-align:center;
+    padding:30px;
+    background:#111;
+    border-top:5px solid lime;
+}
+
+footer p{
+    color:#aaa;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:700px){
+
+    header h1{
+        font-size:38px;
+    }
+
+    .section-title{
+        font-size:32px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>⛏️ Personagens do Minecraft</h1>
+    <p>Explore os mobs, heróis e criaturas mais famosas do jogo!</p>
+
+    <a class="btn" href="index.html">⬅ Voltar ao Início</a>
+</header>
+
+<div class="container">
+
+    <!-- PERSONAGENS -->
+
+    <h2 class="section-title">Personagens Principais</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="personagens/steve.gif" alt="" type="">
+            <h3>Steve</h3>
+
+            <p>
+                O personagem clássico do Minecraft.
+                Especialista em mineração, construção e sobrevivência.
+            </p>
+
+            <div class="power">
+                <div class="power-bar" style="width:100%;"></div>
+            </div>
+
+            <p>Jogatina: 100%</p>
+        </div>
+
+        <div class="card">
+            <img src="personagens/creeper.gif" alt="">
+            <h3>Creeper</h3>
+
+            <p>
+                O mob mais temido do jogo.
+                Se aproxima silenciosamente e explode tudo.
+            </p>
+
+            <div class="power">
+                <div class="power-bar" style="width:100%; background:red;"></div>
+            </div>
+
+            <p>Explosão: 100%</p>
+        </div>
+
+        <div class="card">
+            <img src="personagens/enderman.gif" alt="">
+            <h3>Enderman</h3>
+
+            <p>
+                Criatura misteriosa que se teletransporta
+                e odeia contato visual.
+            </p>
+
+            <div class="power">
+                <div class="power-bar" style="width:90%; background:purple;"></div>
+            </div>
+
+            <p>Teleportação: 90%</p>
+        </div>
+
+        <div class="card">
+            <img src="personagens/zombie.gif" alt="">
+            <h3>Zombie</h3>
+
+            <p>
+                Surge durante a noite e persegue jogadores sem parar.
+            </p>
+
+            <div class="power">
+                <div class="power-bar" style="width:75%; background:green;"></div>
+            </div>
+
+            <p>Hordas: 75%</p>
+        </div>
+
+        <div class="card">
+            <img src="personagens/skeleton.gif" alt="">
+            <h3>Skeleton</h3>
+
+            <p>
+                Usa arco e flecha para atacar à distância.
+            </p>
+
+            <div class="power">
+                <div class="power-bar" style="width:85%; background:white;"></div>
+            </div>
+
+            <p>Precisão: 85%</p>
+        </div>
+
+        <div class="card">
+            <img src="personagens/warden.gif" alt="">
+            <h3>Warden</h3>
+
+            <p>
+                O mob mais poderoso e assustador das cavernas profundas.
+            </p>
+
+            <div class="power">
+                <div class="power-bar" style="width:100%; background:cyan;"></div>
+            </div>
+
+            <p>Poder: 100%</p>
+        </div>
+
+    </div>
+
+    <!-- INVENTARIO -->
+
+    <section class="inventory-section">
+
+        <h2 class="section-title">Inventário Minecraft</h2>
+
+        <div class="inventory">
+
+            <div class="slot"><span>⛏️</span>Picareta</div>
+            <div class="slot"><span>🗡️</span>Espada</div>
+            <div class="slot"><span>🍖</span>Comida</div>
+            <div class="slot"><span>💎</span>Diamante</div>
+            <div class="slot"><span>🏹</span>Arco</div>
+            <div class="slot"><span>🧱</span>Blocos</div>
+            <div class="slot"><span>🔥</span>Tocha</div>
+            <div class="slot"><span>🛡️</span>Escudo</div>
+
+        </div>
+
+    </section>
+
+    <!-- TABELA -->
+
+    <section class="table-section">
+
+        <h2 class="section-title">Comparação dos Personagens</h2>
+
+        <table>
+
+            <tr>
+                <th>Personagem</th>
+                <th>Tipo</th>
+                <th>Perigo</th>
+                <th>Habilidade</th>
+            </tr>
+
+            <tr>
+                <td>Steve</td>
+                <td>Jogador</td>
+                <td>N/A</td>
+                <td>Construção</td>
+            </tr>
+
+            <tr>
+                <td>Creeper</td>
+                <td>Hostil</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>Explosão</td>
+            </tr>
+
+            <tr>
+                <td>Enderman</td>
+                <td>Neutro</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>Teleportação</td>
+            </tr>
+
+            <tr>
+                <td>Warden</td>
+                <td>Boss</td>
+                <td>⭐⭐⭐⭐⭐⭐</td>
+                <td>Sensibilidade sonora</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <!-- GALERIA -->
+
+    <section>
+
+        <h2 class="section-title">Galeria Minecraft</h2>
+
+        <div class="gallery">
+
+            <img src="">
+            <img src="">
+            <img src="">
+
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    <p>⛏️ Site inspirado no universo Minecraft • Feito por você 🚀</p>
+</footer>
+
+<script>
+
+// Mensagem ao clicar nos slots
+
+const slots = document.querySelectorAll(".slot");
+
+slots.forEach(slot => {
+
+    slot.addEventListener("click", () => {
+
+        slot.style.background = "lime";
+        slot.style.color = "black";
+
+        setTimeout(() => {
+            slot.style.background = "#8b8b8b";
+            slot.style.color = "white";
+        }, 500);
+
+    });
+
+});
+
+// Efeito aparecendo nos cards
+
+const cards = document.querySelectorAll(".card");
+
+window.addEventListener("scroll", () => {
+
+    cards.forEach(card => {
+
+        const top = card.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 100){
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+        }
+
+    });
+
+});
+
+cards.forEach(card => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(50px)";
+    card.style.transition = ".6s";
+});
+
+</script>
+
+</body>
+</html>

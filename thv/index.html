@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Universo Minecraft</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+
+<audio id="clickSound" src="click.mp3"></audio>
+<audio id="ambientSound" src="ambientSound.mp3" loop></audio>
+<audio id="breakLoop" src="breakLoop.mp3" loop></audio>
+
+<header>
+    <h1 id="topo">Universo Minecraft</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="personagens.html">Personagens</a>
+        <a href="#formulario">Contato</a>
+    </nav>
+</header>
+
+<div class="xp-bar">
+    <div class="xp-fill"></div>
+</div>
+
+<section>
+    <h2>Sobre o jogo</h2>
+    <p><b>Minecraft</b> é um jogo sandbox onde você pode explorar, construir e sobreviver em mundos infinitos feitos de blocos.</p>
+
+    <h3>O que você pode fazer:</h3>
+    <ul>
+        <li>Construir casas</li>
+        <li>Explorar cavernas</li>
+        <li>Derrotar monstros</li>
+    </ul>
+
+    <img src="minecraft.png" width="50%">
+</section>
+
+<section>
+    <h3>Modos de jogo</h3>
+    <ul>
+        <li>Sobrevivência</li>
+        <li>Criativo</li>
+        <li>Aventura</li>
+        <li>Hardcore</li>
+    </ul>
+</section>
+
+<section>
+    <h3>Biomas</h3>
+    <table>
+        <tr>
+            <th>Bioma</th>
+            <th>Dificuldade</th>
+        </tr>
+        <tr>
+            <td>Floresta</td>
+            <td>Fácil</td>
+        </tr>
+        <tr>
+            <td>Deserto</td>
+            <td>Médio</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h3>Trailer</h3>
+    <video controls loop width="600">
+        <source src="trailer.mp4" type="video/mp4">
+    </video>
+</section>
+
+<section>
+    <h3>Localização da Mojang</h3>
+    <iframe src="https://www.google.com/maps?q=mojang&output=embed"
+        width="400" height="300"></iframe>
+</section>
+
+<section id="formulario">
+    <h3>Cadastro de Jogador</h3>
+    <form>
+        Nome: <input type="text"><br><br>
+        Email: <input type="email"><br><br>
+        Senha: <input type="password"><br><br>
+        Idade: <input type="number"><br><br>
+        Data: <input type="date"><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+</section>
+
+<footer>
+    <a href="#topo">Voltar ao topo</a>
+</footer>
+
+<script src="script.js"></script>
+
+<section class="inventory-section">
+    <div class="inventory">
+        <div class="slot">⛏️</div>
+        <div class="slot">🗡️</div>
+        <div class="slot">🍖</div>
+        <div class="slot">💎</div>
+        <div class="slot">🏹</div>
+        <div class="slot">🧱</div>
+        <div class="slot">🔥</div>
+        <div class="slot">🛡️</div>
+    </div>
+</section>
+
+</body>
+</html>

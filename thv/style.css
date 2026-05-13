@@ -1,0 +1,160 @@
+body {
+    background: linear-gradient(180deg, #0f1f0f, #000);
+    color: #caffca;
+    font-family: Arial;
+    text-align: center;
+    margin: 0;
+    cursor: crosshair;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    background: #1a3d1a;
+    padding: 15px;
+    box-shadow: 0 0 15px #00ff00;
+}
+
+h1 {
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #00ff00; }
+    to { text-shadow: 0 0 25px #00ff00; }
+}
+
+a {
+    color: #7CFC00;
+    margin: 10px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-shadow: 0 0 10px #00ff00;
+}
+
+section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+    padding: 20px;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+table {
+    margin: auto;
+    background: #112211;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #00ff00;
+}
+
+input[type="submit"]:hover {
+    background: #00ff00;
+}
+
+/* =========================
+   INVENTARIO FIXO
+========================= */
+
+.inventory-section {
+    position: fixed;
+    bottom: -150px; /* começa escondido */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-top: 5px solid lime;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.7);
+    transition: bottom 0.5s ease;
+    z-index: 1000;
+}
+
+/* Quando estiver ativo, sobe para a tela */
+.inventory-section.active {
+    bottom: 0;
+}
+
+.inventory {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 15px;
+}
+
+.slot {
+    width: 60px;
+    height: 60px;
+    background: #222;
+    border: 2px solid #00ff00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.xp-bar {
+    width: 80%;
+    height: 20px;
+    margin: 20px auto;
+    background: #222;
+}
+
+.xp-fill {
+    height: 100%;
+    background: #00ff00;
+    animation: loadXP 3s forwards;
+}
+
+@keyframes loadXP {
+    from { width: 0; }
+    to { width: 75%; }
+}
+
+/* ===== BLOCOS ===== */
+
+.block {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    z-index: 9999;
+    background-size: cover;
+}
+
+.block.broken {
+    background: black;
+}
+
+/* ===== PARTÍCULAS ===== */
+
+.particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: #888;
+    pointer-events: none;
+    z-index: 9999;
+    animation: particleMove 0.6s ease-out forwards;
+}
+
+@keyframes particleMove {
+    to {
+        transform: translate(var(--dx), var(--dy));
+        opacity: 0;
+    }
+}
