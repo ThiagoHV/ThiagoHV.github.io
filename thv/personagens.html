@@ -6,16 +6,9 @@
 
 <title>Personagens do Minecraft</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <style>
 
-/* =========================
-   RESET
-========================= */
-
-*{
+{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -31,10 +24,6 @@ body{
     color:white;
     overflow-x:hidden;
 }
-
-/* =========================
-   HEADER
-========================= */
 
 header{
     padding:40px 20px;
@@ -72,10 +61,6 @@ header p{
     transform:scale(1.05);
 }
 
-/* =========================
-   CONTAINER
-========================= */
-
 .container{
     width:90%;
     max-width:1400px;
@@ -83,20 +68,12 @@ header p{
     padding:50px 0;
 }
 
-/* =========================
-   TITULOS
-========================= */
-
 .section-title{
     text-align:center;
     font-size:42px;
     margin-bottom:40px;
     text-shadow:3px 3px 0 black;
 }
-
-/* =========================
-   CARDS
-========================= */
 
 .cards{
     display:grid;
@@ -164,10 +141,6 @@ header p{
     background:lime;
 }
 
-/* =========================
-   INVENTARIO
-========================= */
-
 .inventory-section{
     margin-top:80px;
 }
@@ -201,10 +174,6 @@ header p{
     font-size:45px;
 }
 
-/* =========================
-   TABELA
-========================= */
-
 .table-section{
     margin-top:80px;
 }
@@ -226,10 +195,6 @@ th{
     color:#4cff00;
 }
 
-/* =========================
-   GALERIA
-========================= */
-
 .gallery{
     margin-top:80px;
     display:grid;
@@ -249,10 +214,6 @@ th{
     box-shadow:0 0 20px lime;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 footer{
     margin-top:80px;
     text-align:center;
@@ -264,10 +225,6 @@ footer{
 footer p{
     color:#aaa;
 }
-
-/* =========================
-   RESPONSIVO
-========================= */
 
 @media(max-width:700px){
 
@@ -302,7 +259,7 @@ footer p{
     <div class="cards">
 
         <div class="card">
-            <img src="personagens/steve.gif" alt="" type="">
+            <img src="personagens/steve.gif" alt="Steve">
             <h3>Steve</h3>
 
             <p>
@@ -318,7 +275,7 @@ footer p{
         </div>
 
         <div class="card">
-            <img src="personagens/creeper.gif" alt="">
+            <img src="personagens/creeper.gif" alt="Creeper">
             <h3>Creeper</h3>
 
             <p>
@@ -334,7 +291,7 @@ footer p{
         </div>
 
         <div class="card">
-            <img src="personagens/enderman.gif" alt="">
+            <img src="personagens/enderman.gif" alt="Enderman">
             <h3>Enderman</h3>
 
             <p>
@@ -350,7 +307,7 @@ footer p{
         </div>
 
         <div class="card">
-            <img src="personagens/zombie.gif" alt="">
+            <img src="personagens/zombie.gif" alt="Zombie">
             <h3>Zombie</h3>
 
             <p>
@@ -365,7 +322,7 @@ footer p{
         </div>
 
         <div class="card">
-            <img src="personagens/skeleton.gif" alt="">
+            <img src="personagens/skeleton.gif" alt="Skeleton">
             <h3>Skeleton</h3>
 
             <p>
@@ -380,7 +337,7 @@ footer p{
         </div>
 
         <div class="card">
-            <img src="personagens/warden.gif" alt="">
+            <img src="personagens/warden.gif" alt="Warden">
             <h3>Warden</h3>
 
             <p>
@@ -464,8 +421,7 @@ footer p{
 
     </section>
 
-   <br>
-    <!-- GALERIA -->
+    <br><br><br>
 
     <section>
 
@@ -473,9 +429,9 @@ footer p{
 
         <div class="gallery">
 
-            <img src="">
-            <img src="">
-            <img src="">
+            <img src="galery/print.jpg">
+            <img src="galery/mine.png">
+            <img src="galery/herobrine.jpg">
 
         </div>
 
@@ -484,12 +440,10 @@ footer p{
 </div>
 
 <footer>
-    <p>⛏️ Site inspirado no universo Minecraft • Feito por você 🚀</p>
+    <p> Feito por: Thiago H. Vieira </p>
 </footer>
 
 <script>
-
-// Mensagem ao clicar nos slots
 
 const slots = document.querySelectorAll(".slot");
 
@@ -508,8 +462,6 @@ slots.forEach(slot => {
     });
 
 });
-
-// Efeito aparecendo nos cards
 
 const cards = document.querySelectorAll(".card");
 
