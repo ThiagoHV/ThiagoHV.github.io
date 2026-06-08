@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universo Minecraft</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+    <style>
+        /* ESTILOS GLOBAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #0f1f0f, #000);
+            color: #caffca;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            cursor: crosshair;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: #1a3d1a;
+            padding: 15px;
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        h1 {
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ff00; }
+            to { text-shadow: 0 0 25px #00ff00; }
+        }
+
+        a {
+            color: #7CFC00;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s;
+            padding: 20px;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        img:hover {
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        table {
+            margin: auto;
+            background: #112211;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #00ff00;
+        }
+
+        input[type="submit"]:hover {
+            background: #00ff00;
+            cursor: pointer;
+        }
+
+        .xp-bar {
+            width: 80%;
+            height: 20px;
+            margin: 20px auto;
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .xp-fill {
+            height: 100%;
+            background: #00ff00;
+            animation: loadXP 3s forwards;
+            border-radius: 10px;
+        }
+
+        @keyframes loadXP {
+            from { width: 0; }
+            to { width: 75%; }
+        }
+
+        /* Sistema de quebra de blocos */
+        .block {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            z-index: 9999;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .block.broken {
+            background: black;
+        }
+
+        .particle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #888;
+            pointer-events: none;
+            z-index: 9999;
+            animation: particleMove 0.6s ease-out forwards;
+        }
+
+        @keyframes particleMove {
+            to {
+                transform: translate(var(--dx), var(--dy));
+                opacity: 0;
+            }
+        }
+
+        /* Biomas */
+        .biomas-hover {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 16px 0 24px;
+            justify-content: center;
+        }
+
+        .bioma-card {
+            position: relative;
+            width: calc(33.333% - 14px);
+            min-width: 240px;
+            height: 160px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        .bioma-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .bioma-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .bioma-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.55);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bioma-card:hover .bioma-overlay {
+            opacity: 1;
+        }
+
+        .bioma-overlay strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        /* Modos de jogo */
+        .modos-minecraft {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin: 16px 0 8px;
+        }
+
+        .modo-card {
+            position: relative;
+            min-height: 170px;
+            border: 3px solid #4b6b3c;
+            border-radius: 14px;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(14, 20, 14, 0.12), rgba(14, 20, 14, 0.78)), url('https://www.transparenttextures.com/patterns/grass.png');
+            background-color: #6ba54a;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .modo-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+        }
+
+        .modo-card .bloco-topo {
+            height: 18px;
+            background: repeating-linear-gradient(90deg, #5d8f3a 0, #5d8f3a 18px, #4f7a31 18px, #4f7a31 36px);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.18);
+        }
+
+        .modo-card .conteudo-modo {
+            padding: 18px;
+        }
+
+        .modo-card h4 {
+            margin: 0 0 8px;
+            font-size: 1.15rem;
+        }
+
+        .modo-card p {
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        .modo-badge {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.28);
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* Atividades */
+        .atividades-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+
+        .atividade-item {
+            padding: 16px;
+            border-left: 5px solid #6ba54a;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(107, 165, 74, 0.08), rgba(107, 165, 74, 0.04));
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+
+        .atividade-item:hover {
+            border-left-color: #8ed14f;
+            background: linear-gradient(135deg, rgba(107, 165, 74, 0.15), rgba(107, 165, 74, 0.1));
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .atividade-item b {
+            color: #4b6b3c;
+            font-size: 1.05em;
+        }
+
+        /* ESTILOS DA ROLETA */
+        .modal-roleta {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+            border-radius: 24px;
+            padding: 24px;
+            text-align: center;
+            border: 4px solid #6ba54a;
+            box-shadow: 0 0 30px rgba(107, 165, 74, 0.5);
+            animation: modalFadeIn 0.3s ease;
+            max-width: 450px;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-content h2 {
+            color: #6ba54a;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .roleta-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 20px;
+        }
+
+        #roletaCanvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .ponteiro {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 40px solid #ffcc00;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            z-index: 10;
+        }
+
+        .btn-girar {
+            background: linear-gradient(135deg, #6ba54a, #4b6b3c);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-girar:hover:not(:disabled) {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #7bc555, #5a7e45);
+            box-shadow: 0 6px 20px rgba(107, 165, 74, 0.5);
+        }
+
+        .btn-girar:disabled {
+            opacity: 0.6;
+            transform: none;
+            cursor: not-allowed;
+        }
+
+        .btn-fechar {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-fechar:hover {
+            background: #ff6666;
+            transform: scale(1.05);
+        }
+
+        .resultado {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #ffcc00;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .frase-nostalgica {
+            font-size: 0.95rem;
+            color: #aaffaa;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .erro-validacao {
+            background: #ff4444;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .steve-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .resultado.girando {
+            animation: pulse 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        /* Formulário */
+        #formulario {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        #formulario input {
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            margin: 5px;
+        }
+
+        #formulario input[type="submit"] {
+            background: #6ba54a;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #formulario input[type="submit"]:hover {
+            background: #8ed14f;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: #1a3d1a;
+        }
+    </style>
+</head>
+
+<body id="topo">
+
+<audio id="clickSound" src="click.mp3"></audio>
+<audio id="ambientSound" src="ambientSound.mp3" loop></audio>
+<audio id="breakLoop" src="breakLoop.mp3" loop></audio>
+
+<header>
+    <h1>Universo Minecraft</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="personagens.html">Personagens</a>
+        <a href="#formulario">Contato</a>
+    </nav>
+</header>
+
+<div class="xp-bar">
+    <div class="xp-fill"></div>
+</div>
+
+<section>
+    <h2>Sobre o jogo</h2>
+    <p><b>Minecraft</b> é um jogo sandbox onde você pode explorar, construir e sobreviver em mundos infinitos feitos de blocos.</p>
+
+    <h3>O que você pode fazer:</h3>
+    <div class="atividades-list">
+        <div class="atividade-item">
+            <span>🏰</span> <b>Construir impérios:</b> Desde casas humildes até cidades futuristas com <a href="https://www.youtube.com/@viniccius13/videos" target="_blank" rel="noopener noreferrer">redstone automation</a>
+        </div>
+        <div class="atividade-item">
+            <span>⛏️</span> <b>Explorar o desconhecido:</b> Cavernas profundas, dimensões alternativas e estruturas secretas
+        </div>
+        <div class="atividade-item">
+            <span>🐉</span> <b>Enfrentar lendas:</b> Derrotar o Ender Dragon e conquistar o Wither em desafios épicos
+        </div>
+        <div class="atividade-item">
+            <span>🎨</span> <b>Criar arte:</b> Pixel art, mapas personalizados e World Edit para máquinas impossíveis
+        </div>
+        <div class="atividade-item">
+            <span>👥</span> <b>Cooperar ou competir:</b> Multiplayer para criar com amigos ou batalhas PvP intensas
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>Modos de jogo</h3>
+    <p>Escolha seu estilo de aventura no mundo Minecraft:</p>
+    <div class="modos-minecraft">
+        <div class="modo-card">
+            <div class="bloco-topo"></div>
+            <div class="conteudo-modo">
+                <span class="modo-badge">🔨 Construção</span>
+                <h4>Criativo</h4>
+                <p>Receba blocos infinitos, voe pelo mapa e transforme ideias em castelos, cidades e máquinas incríveis.</p>
+            </div>
+        </div>
+
+        <div class="modo-card">
+            <div class="bloco-topo"></div>
+            <div class="conteudo-modo">
+                <span class="modo-badge">⚔️ Aventura</span>
+                <h4>Sobrevivência</h4>
+                <p>Comece do zero, colete recursos, faça ferramentas e enfrente mobs para viver grandes expedições.</p>
+            </div>
+        </div>
+
+        <div class="modo-card">
+            <div class="bloco-topo"></div>
+            <div class="conteudo-modo">
+                <span class="modo-badge">☠️ Desafio máximo</span>
+                <h4>Hardcore</h4>
+                <p>Uma única vida, tensão total e cada decisão conta como se fosse uma missão épica no Nether.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>Biomas</h3>
+    <div class="biomas-hover">
+        <div class="bioma-card">
+            <img src="biomes/floresta.jpg" alt="Bioma de floresta" onerror="this.src='https://via.placeholder.com/300x160?text=Floresta'">
+            <div class="bioma-overlay">
+                <div>
+                    <strong>Floresta</strong>
+                    Área com muita madeira, árvores e boa chance de encontrar animais.
+                </div>
+            </div>
+        </div>
+
+        <div class="bioma-card">
+            <img src="biomes/deserto.png" alt="Bioma de deserto" onerror="this.src='https://via.placeholder.com/300x160?text=Deserto'">
+            <div class="bioma-overlay">
+                <div>
+                    <strong>Deserto</strong>
+                    Região seca, com pouca vegetação e muitos desafios para sobreviver.
+                </div>
+            </div>
+        </div>
+
+        <div class="bioma-card">
+            <img src="biomes/pantanal.jpg" alt="Bioma de pantanal" onerror="this.src='https://via.placeholder.com/300x160?text=Pantanal'">
+            <div class="bioma-overlay">
+                <div>
+                    <strong>Pantanal</strong>
+                    Área alagada com muita água, lama e grande variedade de vida selvagem.
+                </div>
+            </div>
+        </div>
+
+        <div class="bioma-card">
+            <img src="biomes/mesa.png" alt="Bioma de mesa" onerror="this.src='https://via.placeholder.com/300x160?text=Mesa'">
+            <div class="bioma-overlay">
+                <div>
+                    <strong>Mesa</strong>
+                    Terreno seco e colorido, com camadas de terra e paisagem bem aberta.
+                </div>
+            </div>
+        </div>
+
+        <div class="bioma-card">
+            <img src="biomes/endcity.png" alt="End City" onerror="this.src='https://via.placeholder.com/300x160?text=End+City'">
+            <div class="bioma-overlay">
+                <div>
+                    <strong>End City</strong>
+                    Cidade flutuante cheia de desafios, tesouros e exploração no fim do jogo.
+                </div>
+            </div>
+        </div>
+
+        <div class="bioma-card">
+            <img src="biomes/shulker.png" alt="Bioma do shulker" onerror="this.src='https://via.placeholder.com/300x160?text=Shulker'">
+            <div class="bioma-overlay">
+                <div>
+                    <strong>Bioma do Shulker</strong>
+                    Região misteriosa do The End onde aparecem shulkers e estruturas perigosas.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>Trailer</h3>
+    <video controls loop width="600">
+        <source src="trailer.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+    </video>
+</section>
+
+<section>
+    <h3>Localização da Mojang</h3>
+    <iframe src="https://www.google.com/maps?q=mojang&output=embed" width="600" height="300" title="Mapa da Mojang" aria-label="Mapa da sede da Mojang"></iframe>
+</section>
+
+<section id="formulario">
+    <h1>DESCUBRA SEU PERSONAGEM DO MINECRAFT!!</h1>
+    <form id="meuFormulario">
+        <label for="nome">Nome no cartão:</label>
+        <input id="nome" type="text" placeholder="Digite o nome" required><br><br>
+
+        <label for="email">Email do dono:</label>
+        <input id="email" type="email" placeholder="Digite o email" maxlength="50"><br><br>
+
+        <label for="cartao">Número do cartão:</label>
+        <input id="cartao" type="text" placeholder="Digite o cartão de crédito" maxlength="16" required><br><br>
+
+        <label for="cvv">CVV do cartão:</label>
+        <input id="cvv" type="text" placeholder="Digite o CVV" maxlength="3" required><br><br>
+
+        <label for="data">Data de vencimento:</label>
+        <input id="data" type="date" required><br><br>
+        <input type="submit" value="DESCOBRIR">
+    </form>
+</section>
+
+<nav>
+    <a href="#topo">Voltar ao topo</a>
+</nav>
+
+<footer>
+    <p>© 2024 Universo Minecraft - Todos os direitos reservados</p>
+</footer>
+
+<!-- MODAL DA ROLETA -->
+<div id="modalRoleta" class="modal-roleta">
+    <div class="modal-content">
+        <h2>🎲 Gire a Roleta! 🎲</h2>
+        <p style="color: #aaa; margin-bottom: 10px; font-size: 0.8rem;">Personagens disponíveis: Steve, Creeper, Enderman, Zombie, Skeleton, Warden</p>
+        <div class="roleta-container">
+            <div class="ponteiro"></div>
+            <canvas id="roletaCanvas" width="300" height="300"></canvas>
+        </div>
+        <button class="btn-girar" id="btnGirar">🎯 GIRAR 🎯</button>
+        <button class="btn-fechar" id="btnFecharModal">✖ FECHAR</button>
+        <div id="resultadoRoleta" class="resultado"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
