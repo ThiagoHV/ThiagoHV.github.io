@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ThiagoHV · Links</title>
-    <!-- Favicon da maçã -->
+    <!-- Favicon da maçã (aba do navegador) -->
     <link rel="icon" type="image/png" href="maça.png" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
@@ -206,7 +206,7 @@
             color: #d4af37;
         }
 
-        /* Container do ícone (favicon ou fallback) */
+        /* Container do ícone */
         .icon-wrapper {
             width: 64px;
             height: 64px;
@@ -220,6 +220,7 @@
             transition: all 0.4s ease;
             overflow: hidden;
             flex-shrink: 0;
+            position: relative;
         }
 
         .card a:hover .icon-wrapper {
@@ -237,17 +238,6 @@
             background: transparent;
         }
 
-        .icon-wrapper .fallback-icon {
-            font-size: 2rem;
-            color: #d4af37;
-            background: transparent;
-            width: auto;
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .icon-wrapper .fallback-text {
             font-size: 1.8rem;
             font-weight: 700;
@@ -255,6 +245,13 @@
             font-family: 'Inter', sans-serif;
             line-height: 1;
             text-transform: uppercase;
+            background: transparent;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .icon-wrapper .fallback-icon {
+            font-size: 2rem;
+            color: #d4af37;
         }
 
         .card .link-text {
@@ -447,11 +444,11 @@
                 width: 50px;
                 height: 50px;
             }
-            .icon-wrapper .fallback-icon {
-                font-size: 1.5rem;
-            }
             .icon-wrapper .fallback-text {
                 font-size: 1.4rem;
+            }
+            .icon-wrapper .fallback-icon {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -480,7 +477,7 @@
         <div class="footer-note">
             <i class="fas fa-pen-fancy"></i> edite com um clique no lápis ou duplo clique <i class="fas fa-pen-fancy"></i>
             <br />
-            <span style="opacity: 0.6; font-size: 0.6rem;">(ícones são favicons automáticos · alterações salvas no navegador)</span>
+            <span style="opacity: 0.6; font-size: 0.6rem;">(ícones são favicons reais · alterações salvas no navegador)</span>
         </div>
     </div>
 
@@ -491,60 +488,68 @@
 
             // ----- DADOS PADRÃO (substitua pelos seus) -----
             const defaultLinks = [
-                { id: 1, name: 'Robótica', url: 'https://thigohv.github.io/roboticai' },
+                { id: 1, name: 'Robótica', url: 'https://thiaghov.github.io/robotica/' },
                 { id: 2, name: 'GitHub', url: 'https://github.com/ThiagoHV' },
-                { id: 3, name: 'Minecraft', url: 'https://thigohv.github.io/thivj' },
-                { id: 4, name: 'Dodge', url: 'https://thigohv.github.io/dodge' }
+                { id: 3, name: 'Minecraft', url: 'https://thiaghov.github.io/thw/' },
+                { id: 4, name: 'Dodge', url: 'https://thiaghov.github.io/dodge' }
             ];
 
-            // ----- FUNÇÃO PARA GERAR URL DE FAVICON (múltiplas fontes) -----
-            function getFaviconSources(domain) {
-                // Retorna um array de URLs para tentar, em ordem de preferência
-                return [
-                    `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
-                    `https://icons.duckduckgo.com/ip3/${domain}.ico`,
-                    `https://favicon.yandex.net/favicon/${domain}`
-                ];
+            // ----- FUNÇÃO PARA GERAR LISTA DE CANDIDATOS A FAVICON -----
+            function getFaviconCandidates(domain) {
+                const candidates = [];
+                // 1. Google S2 (melhor para sites populares)
+                candidates.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=64`);
+                // 2. DuckDuckGo
+                candidates.push(`https://icons.duckduckgo.com/ip3/${domain}.ico`);
+                // 3. Yandex
+                candidates.push(`https://favicon.yandex.net/favicon/${domain}`);
+                // 4. Favicon.ico direto (com e sem www)
+                candidates.push(`https://${domain}/favicon.ico`);
+                if (domain.startsWith('www.')) {
+                    const withoutWww = domain.slice(4);
+                    candidates.push(`https://${withoutWww}/favicon.ico`);
+                } else {
+                    candidates.push(`https://www.${domain}/favicon.ico`);
+                }
+                return candidates;
             }
 
-            // ----- TESTAR SE UMA IMAGEM É VÁLIDA (não é placeholder) -----
-            function isValidFavicon(img) {
-                // Se a imagem tem tamanho 0 ou é muito pequena, é provavelmente placeholder
-                // Também podemos verificar se a URL contém 'google' ou 'duckduckgo' (placeholder)
-                const url = img.src;
-                if (url.includes('google.com/s2/favicons') && img.naturalWidth <= 16) return false;
-                if (url.includes('duckduckgo.com') && img.naturalWidth <= 16) return false;
-                if (url.includes('yandex.net') && img.naturalWidth <= 16) return false;
-                return true;
+            // ----- FUNÇÃO PARA TESTAR SE A IMAGEM É UM PLACEHOLDER GENÉRICO -----
+            function isPlaceholder(img) {
+                // Se a área for muito pequena, provavelmente é placeholder
+                const area = img.naturalWidth * img.naturalHeight;
+                if (area < 100) return true; // menos de 10x10
+
+                // Verificar cores médias? Para simplificar, rejeitamos imagens que são muito quadradas (proporção 1:1) e pequenas.
+                // Mas vamos apenas confiar no tamanho.
+                return false;
             }
 
-            // ----- CARREGAR FAVICON COM TENTATIVA MÚLTIPLA -----
+            // ----- CARREGAR FAVICON COM TENTATIVA MÚLTIPLA (PROMISE) -----
             function loadFavicon(domain) {
                 return new Promise((resolve) => {
-                    const sources = getFaviconSources(domain);
-                    let currentIndex = 0;
+                    const candidates = getFaviconCandidates(domain);
+                    let index = 0;
 
                     function tryNext() {
-                        if (currentIndex >= sources.length) {
-                            // Nenhuma fonte funcionou → fallback
+                        if (index >= candidates.length) {
                             resolve(null);
                             return;
                         }
-                        const url = sources[currentIndex];
+                        const url = candidates[index];
                         const img = new Image();
                         img.crossOrigin = 'anonymous';
                         img.onload = function () {
-                            // Verifica se a imagem é válida (não placeholder)
-                            if (isValidFavicon(img)) {
+                            // Verifica se é um ícone válido
+                            if (!isPlaceholder(img)) {
                                 resolve(url);
                             } else {
-                                // Tenta a próxima fonte
-                                currentIndex++;
+                                index++;
                                 tryNext();
                             }
                         };
                         img.onerror = function () {
-                            currentIndex++;
+                            index++;
                             tryNext();
                         };
                         img.src = url;
@@ -554,31 +559,29 @@
                 });
             }
 
-            // ----- CARREGAR DADOS DO localStorage -----
+            // ----- CARREGAR DADOS -----
             function loadLinks() {
                 const stored = localStorage.getItem(STORAGE_KEY);
                 if (stored) {
                     try {
                         const parsed = JSON.parse(stored);
                         if (Array.isArray(parsed) && parsed.length > 0) {
-                            // Adiciona campo 'icon' vazio (será preenchido depois)
                             return parsed.map(item => ({ ...item, icon: null }));
                         }
                     } catch (e) {}
                 }
-                // Se não houver dados, usa os padrão
                 return defaultLinks.map(item => ({ ...item, icon: null }));
             }
 
             let links = loadLinks();
 
-            // ----- SALVAR NO localStorage (sem o campo 'icon') -----
+            // ----- SALVAR (sem o campo 'icon') -----
             function saveLinks() {
                 const toStore = links.map(({ id, name, url }) => ({ id, name, url }));
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
             }
 
-            // ----- RENDERIZAR CARDS (com ícone assíncrono) -----
+            // ----- RENDERIZAR CARDS (COM CARREGAMENTO ASSÍNCRONO) -----
             async function renderCards() {
                 grid.innerHTML = '';
 
@@ -605,24 +608,22 @@
                                 iconUrl = await loadFavicon(domain);
                             }
                         } catch (e) {
-                            // Ignora
+                            // ignora
                         }
                     }
 
                     if (iconUrl) {
-                        // Ícone encontrado → usar <img>
                         const img = document.createElement('img');
                         img.src = iconUrl;
                         img.alt = 'favicon';
                         img.crossOrigin = 'anonymous';
                         img.onerror = function () {
-                            // Se falhar, substitui por fallback
+                            // Se falhar, usa fallback
                             this.remove();
                             addFallback(iconWrapper, item.name);
                         };
                         iconWrapper.appendChild(img);
                     } else {
-                        // Fallback: inicial do nome ou ícone genérico
                         addFallback(iconWrapper, item.name);
                     }
 
@@ -655,9 +656,8 @@
                 }
             }
 
-            // ----- FUNÇÃO AUXILIAR: adicionar fallback no wrapper -----
+            // ----- FUNÇÃO AUXILIAR PARA FALLBACK (letra ou ícone) -----
             function addFallback(wrapper, name) {
-                // Se nome tiver pelo menos 1 caractere, usa a primeira letra
                 if (name && name.length > 0) {
                     const span = document.createElement('span');
                     span.className = 'fallback-text';
@@ -745,7 +745,7 @@
                 }
             });
 
-            // Renderizar inicial
+            // Renderizar
             renderCards();
         });
     </script>
