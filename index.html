@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ThiagoHV · Links</title>
+    <!-- Favicon da maçã -->
+    <link rel="icon" type="image/png" href="maça.png" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome (fallback) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ===== RESET E BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: #0f0d0c;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, #2a1f1a 0%, #0f0d0c 70%),
+                radial-gradient(ellipse at 80% 20%, #1e1410 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, #1a110e 0%, transparent 50%);
+            background-blend-mode: normal;
+        }
+
+        /* Partículas sutis */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(2px 2px at 20px 30px, #d4af37, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(2px 2px at 50px 160px, #d4af37, transparent),
+                radial-gradient(2px 2px at 90px 40px, rgba(212, 175, 55, 0.2), transparent),
+                radial-gradient(2px 2px at 130px 80px, #d4af37, transparent),
+                radial-gradient(2px 2px at 160px 30px, rgba(212, 175, 55, 0.4), transparent);
+            background-size: 200px 200px;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            background: rgba(20, 17, 15, 0.75);
+            -webkit-backdrop-filter: blur(12px) saturate(1.2);
+            backdrop-filter: blur(12px) saturate(1.2);
+            border-radius: 3rem;
+            padding: 3rem 3rem 2.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(212, 175, 55, 0.08) inset,
+                0 0 60px rgba(212, 175, 55, 0.03);
+            transition: box-shadow 0.5s ease;
+        }
+
+        .container:hover {
+            box-shadow:
+                0 50px 120px rgba(0, 0, 0, 0.9),
+                0 0 0 1px rgba(212, 175, 55, 0.25) inset,
+                0 0 80px rgba(212, 175, 55, 0.05);
+        }
+
+        /* ===== CABEÇALHO ===== */
+        .header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2.8rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4af37, #b8860b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #1a1410;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-style: italic;
+            font-size: 2.6rem;
+            color: #f5ede4;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.1);
+        }
+
+        h1 span {
+            color: #d4af37;
+            font-style: normal;
+        }
+
+        .subtitle {
+            color: #b8a58a;
+            font-weight: 300;
+            font-size: 0.95rem;
+            letter-spacing: 0.4px;
+            border-left: 2px solid #d4af37;
+            padding-left: 1rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* ===== GRID DE CARDS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .card {
+            background: rgba(30, 26, 22, 0.6);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            border-radius: 1.8rem;
+            padding: 2rem 1.2rem;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, background 0.4s ease;
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.8rem;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent 50%, rgba(212, 175, 55, 0.1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(40, 34, 28, 0.8);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #f0e6d3;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            width: 100%;
+            height: 100%;
+            transition: color 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card a:hover {
+            color: #d4af37;
+        }
+
+        /* Ícone do favicon (imagem) */
+        .card a .favicon-img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 6px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.05);
+            transition: all 0.4s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .card a:hover .favicon-img {
+            transform: scale(1.08) rotate(-3deg);
+            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Fallback: ícone Font Awesome */
+        .card a i.fallback-icon {
+            font-size: 2.4rem;
+            color: #d4af37;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(184, 134, 11, 0.05));
+            padding: 1rem;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.05);
+            transition: all 0.4s ease;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card a:hover i.fallback-icon {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(184, 134, 11, 0.1));
+            color: #f5d742;
+            transform: scale(1.1) rotate(-3deg);
+            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .card .link-text {
+            word-break: break-all;
+            font-size: 0.65rem;
+            color: #9a8b7a;
+            font-weight: 300;
+            margin-top: 0.2rem;
+            opacity: 0.5;
+            letter-spacing: 0.3px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .card .link-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 0.2px;
+            background: linear-gradient(to right, #f0e6d3, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card a:hover .link-name {
+            background: linear-gradient(to right, #f5ede4, #f5d742);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Ícone de editar */
+        .card .edit-icon {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: rgba(20, 17, 15, 0.7);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b8a58a;
+            font-size: 0.75rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, background 0.3s, transform 0.3s, color 0.3s;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+            z-index: 3;
+        }
+
+        .card:hover .edit-icon {
+            opacity: 1;
+        }
+
+        .card .edit-icon:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            transform: scale(1.15) rotate(15deg);
+            border-color: #d4af37;
+        }
+
+        /* ===== BOTÃO ADICIONAR ===== */
+        .add-btn {
+            grid-column: span 1;
+            background: rgba(30, 26, 22, 0.3);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            border: 2px dashed rgba(212, 175, 55, 0.2);
+            border-radius: 1.8rem;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            color: #7a6b5a;
+            font-weight: 400;
+            gap: 0.3rem;
+            letter-spacing: 0.3px;
+            position: relative;
+        }
+
+        .add-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.8rem;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), transparent 60%, rgba(212, 175, 55, 0.05));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .add-btn:hover::before {
+            opacity: 1;
+        }
+
+        .add-btn:hover {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+            color: #d4af37;
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.03);
+        }
+
+        .add-btn i {
+            font-size: 2.6rem;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s;
+            color: #7a6b5a;
+        }
+
+        .add-btn:hover i {
+            transform: rotate(90deg) scale(1.1);
+            color: #d4af37;
+        }
+
+        .add-btn span {
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* ===== RODAPÉ ===== */
+        .footer-note {
+            margin-top: 2.2rem;
+            text-align: center;
+            color: #4f453a;
+            font-size: 0.7rem;
+            letter-spacing: 0.8px;
+            border-top: 1px solid rgba(212, 175, 55, 0.06);
+            padding-top: 1.4rem;
+            opacity: 0.4;
+            font-weight: 300;
+        }
+
+        .footer-note i {
+            color: #d4af37;
+            opacity: 0.4;
+            margin: 0 4px;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+                border-radius: 2rem;
+            }
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .header-left {
+                width: 100%;
+            }
+            .subtitle {
+                padding-left: 0.8rem;
+                font-size: 0.85rem;
+                border-left: 2px solid #d4af37;
+            }
+            .card {
+                min-height: 120px;
+                padding: 1.2rem 0.8rem;
+            }
+            .add-btn {
+                min-height: 120px;
+            }
+            .avatar-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .card a .favicon-img {
+                width: 50px;
+                height: 50px;
+                padding: 4px;
+            }
+            .card a i.fallback-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+                padding: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <div class="avatar-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h1>Thiago<span>HV</span></h1>
+            </div>
+            <div class="subtitle">✦ curadoria com estilo</div>
+        </div>
+
+        <div class="grid" id="gridLinks">
+            <!-- Os cards serão inseridos via JavaScript -->
+        </div>
+
+        <div class="add-btn" id="addBtn">
+            <i class="fas fa-plus-circle"></i>
+            <span>Adicionar link</span>
+        </div>
+
+        <div class="footer-note">
+            <i class="fas fa-pen-fancy"></i> edite com um clique no lápis ou duplo clique <i class="fas fa-pen-fancy"></i>
+            <br />
+            <span style="opacity: 0.6; font-size: 0.6rem;">(ícones são favicons automáticos · alterações salvas no navegador)</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const grid = document.getElementById('gridLinks');
+            const STORAGE_KEY = 'thiagohv_links';
+
+            // ----- DADOS PADRÃO -----
+            const defaultLinks = [
+                { id: 1, name: 'Google', url: 'https://google.com' },
+                { id: 2, name: 'GitHub', url: 'https://github.com' },
+                { id: 3, name: 'YouTube', url: 'https://youtube.com' },
+                { id: 4, name: 'Twitter', url: 'https://twitter.com' }
+            ];
+
+            // ----- GERAR URL DO FAVICON (Google S2) -----
+            function getFaviconUrl(url) {
+                if (!url || url === '#') return null;
+                try {
+                    const domain = new URL(url).hostname;
+                    if (!domain) return null;
+                    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            // ----- CARREGAR DADOS -----
+            function loadLinks() {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    try {
+                        const parsed = JSON.parse(stored);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            return parsed.map(item => ({
+                                ...item,
+                                icon: getFaviconUrl(item.url) || null
+                            }));
+                        }
+                    } catch (e) {}
+                }
+                return defaultLinks.map(item => ({
+                    ...item,
+                    icon: getFaviconUrl(item.url) || null
+                }));
+            }
+
+            let links = loadLinks();
+
+            // ----- SALVAR (sem a propriedade 'icon') -----
+            function saveLinks() {
+                const toStore = links.map(({ id, name, url }) => ({ id, name, url }));
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
+            }
+
+            // ----- RENDERIZAR CARDS -----
+            function renderCards() {
+                grid.innerHTML = '';
+                links.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.dataset.id = item.id;
+
+                    const link = document.createElement('a');
+                    link.href = item.url || '#';
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+
+                    // Ícone: imagem ou fallback
+                    if (item.icon) {
+                        const img = document.createElement('img');
+                        img.className = 'favicon-img';
+                        img.src = item.icon;
+                        img.alt = 'favicon';
+                        img.addEventListener('error', function () {
+                            this.style.display = 'none';
+                            const fallback = document.createElement('i');
+                            fallback.className = 'fas fa-link fallback-icon';
+                            this.parentNode.insertBefore(fallback, this);
+                            this.remove();
+                        });
+                        link.appendChild(img);
+                    } else {
+                        const fallback = document.createElement('i');
+                        fallback.className = 'fas fa-link fallback-icon';
+                        link.appendChild(fallback);
+                    }
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'link-name';
+                    nameSpan.textContent = item.name;
+                    link.appendChild(nameSpan);
+
+                    const urlSpan = document.createElement('span');
+                    urlSpan.className = 'link-text';
+                    urlSpan.textContent = item.url || 'Sem link';
+                    link.appendChild(urlSpan);
+
+                    card.appendChild(link);
+
+                    const editIcon = document.createElement('div');
+                    editIcon.className = 'edit-icon';
+                    editIcon.innerHTML = '<i class="fas fa-pen"></i>';
+                    editIcon.title = 'Editar link';
+                    editIcon.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        editLink(item.id);
+                    });
+                    card.appendChild(editIcon);
+
+                    grid.appendChild(card);
+                });
+            }
+
+            // ----- EDITAR LINK -----
+            function editLink(id) {
+                const item = links.find(l => l.id === id);
+                if (!item) return;
+
+                const newName = prompt('Nome do link:', item.name);
+                if (newName === null) return;
+                const trimmedName = newName.trim();
+                if (trimmedName === '') {
+                    alert('O nome não pode ficar vazio.');
+                    return;
+                }
+
+                const newUrl = prompt('URL (inclua http:// ou https://):', item.url);
+                if (newUrl === null) return;
+                let trimmedUrl = newUrl.trim();
+                if (trimmedUrl === '') {
+                    trimmedUrl = '#';
+                } else if (!/^https?:\/\//i.test(trimmedUrl)) {
+                    trimmedUrl = 'https://' + trimmedUrl;
+                }
+
+                item.name = trimmedName;
+                item.url = trimmedUrl;
+                item.icon = getFaviconUrl(trimmedUrl);
+
+                saveLinks();
+                renderCards();
+            }
+
+            // ----- ADICIONAR LINK -----
+            function addLink() {
+                const name = prompt('Nome do novo link:');
+                if (name === null) return;
+                const trimmedName = name.trim();
+                if (trimmedName === '') {
+                    alert('O nome não pode ficar vazio.');
+                    return;
+                }
+
+                const url = prompt('URL (inclua http:// ou https://):');
+                if (url === null) return;
+                let trimmedUrl = url.trim();
+                if (trimmedUrl === '') {
+                    trimmedUrl = '#';
+                } else if (!/^https?:\/\//i.test(trimmedUrl)) {
+                    trimmedUrl = 'https://' + trimmedUrl;
+                }
+
+                const maxId = links.reduce((max, l) => Math.max(max, l.id), 0);
+                const newId = maxId + 1;
+
+                const newLink = {
+                    id: newId,
+                    name: trimmedName,
+                    url: trimmedUrl,
+                    icon: getFaviconUrl(trimmedUrl)
+                };
+
+                links.push(newLink);
+                saveLinks();
+                renderCards();
+            }
+
+            // ----- EVENTOS -----
+            document.getElementById('addBtn').addEventListener('click', addLink);
+
+            grid.addEventListener('dblclick', function (e) {
+                const card = e.target.closest('.card');
+                if (card) {
+                    const id = parseInt(card.dataset.id);
+                    if (!isNaN(id)) {
+                        editLink(id);
+                    }
+                }
+            });
+
+            renderCards();
+        });
+    </script>
+</body>
+</html>
