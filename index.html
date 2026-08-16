@@ -6,7 +6,7 @@
     <title>ThiagoHV · Links</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
-    <!-- Font Awesome -->
+    <!-- Font Awesome (apenas para fallback) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* Reset e base */
@@ -157,7 +157,6 @@
             overflow: hidden;
         }
 
-        /* Efeito de borda gradiente */
         .card::before {
             content: '';
             position: absolute;
@@ -205,7 +204,29 @@
             color: #d4af37;
         }
 
-        .card a i {
+        /* Ícone do favicon (imagem) */
+        .card a .favicon-img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 6px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.05);
+            transition: all 0.4s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .card a:hover .favicon-img {
+            transform: scale(1.08) rotate(-3deg);
+            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Fallback: ícone Font Awesome (caso não haja favicon) */
+        .card a i.fallback-icon {
             font-size: 2.4rem;
             color: #d4af37;
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(184, 134, 11, 0.05));
@@ -221,7 +242,7 @@
             justify-content: center;
         }
 
-        .card a:hover i {
+        .card a:hover i.fallback-icon {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(184, 134, 11, 0.1));
             color: #f5d742;
             transform: scale(1.1) rotate(-3deg);
@@ -415,7 +436,12 @@
                 height: 40px;
                 font-size: 1.2rem;
             }
-            .card a i {
+            .card a .favicon-img {
+                width: 50px;
+                height: 50px;
+                padding: 4px;
+            }
+            .card a i.fallback-icon {
                 width: 50px;
                 height: 50px;
                 font-size: 1.8rem;
@@ -448,7 +474,7 @@
         <div class="footer-note">
             <i class="fas fa-pen-fancy"></i> edite com um clique no lápis ou duplo clique <i class="fas fa-pen-fancy"></i>
             <br />
-            <span style="opacity: 0.6; font-size: 0.6rem;">(alterações salvas automaticamente no seu navegador)</span>
+            <span style="opacity: 0.6; font-size: 0.6rem;">(ícones são favicons automáticos · alterações salvas no navegador)</span>
         </div>
     </div>
 
@@ -457,13 +483,27 @@
             const grid = document.getElementById('gridLinks');
             const STORAGE_KEY = 'thiagohv_links';
 
-            // ----- DADOS PADRÃO (usados apenas se não houver nada salvo) -----
+            // ----- DADOS PADRÃO (com favicon automático) -----
             const defaultLinks = [
-                { id: 1, name: 'Google', url: 'https://google.com', icon: 'fa-brands fa-google' },
-                { id: 2, name: 'GitHub', url: 'https://github.com', icon: 'fa-brands fa-github' },
-                { id: 3, name: 'YouTube', url: 'https://youtube.com', icon: 'fa-brands fa-youtube' },
-                { id: 4, name: 'Twitter', url: 'https://twitter.com', icon: 'fa-brands fa-twitter' }
+                { id: 1, name: 'Google', url: 'https://google.com' },
+                { id: 2, name: 'GitHub', url: 'https://github.com' },
+                { id: 3, name: 'YouTube', url: 'https://youtube.com' },
+                { id: 4, name: 'Twitter', url: 'https://twitter.com' }
             ];
+
+            // ----- FUNÇÃO PARA GERAR URL DO FAVICON (usando Google S2) -----
+            function getFaviconUrl(url) {
+                if (!url || url === '#') return null;
+                try {
+                    // Extrai o domínio (ex: google.com)
+                    const domain = new URL(url).hostname;
+                    if (!domain) return null;
+                    // Usa o serviço do Google para obter o favicon em tamanho 64x64
+                    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+                } catch (e) {
+                    return null;
+                }
+            }
 
             // ----- CARREGAR DADOS DO localStorage -----
             function loadLinks() {
@@ -472,20 +512,28 @@
                     try {
                         const parsed = JSON.parse(stored);
                         if (Array.isArray(parsed) && parsed.length > 0) {
-                            return parsed;
+                            // Garantir que todos tenham a propriedade 'icon' (será gerada no render)
+                            return parsed.map(item => ({
+                                ...item,
+                                icon: getFaviconUrl(item.url) || null
+                            }));
                         }
-                    } catch (e) {
-                        // se der erro, usa o padrão
-                    }
+                    } catch (e) {}
                 }
-                return defaultLinks;
+                // Se não houver dados salvos, criar com favicon
+                return defaultLinks.map(item => ({
+                    ...item,
+                    icon: getFaviconUrl(item.url) || null
+                }));
             }
 
             let links = loadLinks();
 
-            // ----- SALVAR NO localStorage -----
+            // ----- SALVAR NO localStorage (sem a propriedade icon, pois é derivada) -----
             function saveLinks() {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
+                // Guardamos apenas id, name, url
+                const toStore = links.map(({ id, name, url }) => ({ id, name, url }));
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
             }
 
             // ----- RENDERIZAR CARDS -----
@@ -501,9 +549,28 @@
                     link.target = '_blank';
                     link.rel = 'noopener noreferrer';
 
-                    const icon = document.createElement('i');
-                    icon.className = item.icon || 'fas fa-link';
-                    link.appendChild(icon);
+                    // Ícone: se tiver uma URL de favicon válida, usa <img>, senão fallback com Font Awesome
+                    if (item.icon) {
+                        const img = document.createElement('img');
+                        img.className = 'favicon-img';
+                        img.src = item.icon;
+                        img.alt = 'favicon';
+                        // Se a imagem não carregar, esconde e mostra fallback? Melhor: se falhar, o evento error troca para fallback.
+                        img.addEventListener('error', function () {
+                            // Se falhar, substitui por um ícone genérico
+                            this.style.display = 'none';
+                            const fallback = document.createElement('i');
+                            fallback.className = 'fas fa-link fallback-icon';
+                            this.parentNode.insertBefore(fallback, this);
+                            this.remove();
+                        });
+                        link.appendChild(img);
+                    } else {
+                        // Fallback: ícone da Font Awesome
+                        const fallback = document.createElement('i');
+                        fallback.className = 'fas fa-link fallback-icon';
+                        link.appendChild(fallback);
+                    }
 
                     const nameSpan = document.createElement('span');
                     nameSpan.className = 'link-name';
@@ -556,6 +623,9 @@
 
                 item.name = trimmedName;
                 item.url = trimmedUrl;
+                // Atualiza o ícone com base na nova URL
+                item.icon = getFaviconUrl(trimmedUrl);
+
                 saveLinks();
                 renderCards();
             }
@@ -579,33 +649,17 @@
                     trimmedUrl = 'https://' + trimmedUrl;
                 }
 
-                // Gerar novo ID (maior existente + 1)
                 const maxId = links.reduce((max, l) => Math.max(max, l.id), 0);
                 const newId = maxId + 1;
 
-                const icons = [
-                    'fa-brands fa-google', 'fa-brands fa-github', 'fa-brands fa-youtube',
-                    'fa-brands fa-twitter', 'fa-brands fa-linkedin', 'fa-brands fa-instagram',
-                    'fa-brands fa-facebook', 'fa-brands fa-whatsapp', 'fa-brands fa-telegram',
-                    'fa-brands fa-discord', 'fa-brands fa-reddit', 'fa-brands fa-tiktok',
-                    'fa-brands fa-pinterest', 'fa-brands fa-snapchat', 'fa-brands fa-spotify',
-                    'fa-brands fa-apple', 'fa-brands fa-windows', 'fa-brands fa-linux',
-                    'fa-solid fa-link', 'fa-solid fa-globe', 'fa-solid fa-star',
-                    'fa-solid fa-heart', 'fa-solid fa-camera', 'fa-solid fa-music',
-                    'fa-solid fa-film', 'fa-solid fa-book', 'fa-solid fa-graduation-cap',
-                    'fa-solid fa-code', 'fa-solid fa-cloud', 'fa-solid fa-crown',
-                    'fa-solid fa-gem', 'fa-solid fa-fire', 'fa-solid fa-meteor',
-                    'fa-solid fa-feather', 'fa-solid fa-compass'
-                ];
-                const randomIcon = icons[Math.floor(Math.random() * icons.length)];
-
-                links.push({
+                const newLink = {
                     id: newId,
                     name: trimmedName,
                     url: trimmedUrl,
-                    icon: randomIcon
-                });
+                    icon: getFaviconUrl(trimmedUrl)
+                };
 
+                links.push(newLink);
                 saveLinks();
                 renderCards();
             }
@@ -623,7 +677,7 @@
                 }
             });
 
-            // Renderizar os cards
+            // Renderizar
             renderCards();
         });
     </script>
