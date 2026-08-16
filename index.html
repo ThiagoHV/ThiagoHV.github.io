@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="maça.png" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
-    <!-- Font Awesome (fallback) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ===== RESET E BASE ===== */
@@ -206,50 +206,55 @@
             color: #d4af37;
         }
 
-        /* Ícone do favicon (imagem) */
-        .card a .favicon-img {
+        /* Container do ícone (favicon ou fallback) */
+        .icon-wrapper {
             width: 64px;
             height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
-            object-fit: contain;
             background: rgba(212, 175, 55, 0.05);
-            padding: 6px;
             border: 1px solid rgba(212, 175, 55, 0.15);
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.05);
             transition: all 0.4s ease;
-            background-color: rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            flex-shrink: 0;
         }
 
-        .card a:hover .favicon-img {
+        .card a:hover .icon-wrapper {
             transform: scale(1.08) rotate(-3deg);
             box-shadow: 0 8px 40px rgba(212, 175, 55, 0.15);
             border-color: rgba(212, 175, 55, 0.4);
             background: rgba(212, 175, 55, 0.1);
         }
 
-        /* Fallback: ícone Font Awesome */
-        .card a i.fallback-icon {
-            font-size: 2.4rem;
+        .icon-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 6px;
+            background: transparent;
+        }
+
+        .icon-wrapper .fallback-icon {
+            font-size: 2rem;
             color: #d4af37;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(184, 134, 11, 0.05));
-            padding: 1rem;
-            border-radius: 50%;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.05);
-            transition: all 0.4s ease;
-            width: 64px;
-            height: 64px;
+            background: transparent;
+            width: auto;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .card a:hover i.fallback-icon {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(184, 134, 11, 0.1));
-            color: #f5d742;
-            transform: scale(1.1) rotate(-3deg);
-            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.15);
-            border-color: rgba(212, 175, 55, 0.4);
+        .icon-wrapper .fallback-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37;
+            font-family: 'Inter', sans-serif;
+            line-height: 1;
+            text-transform: uppercase;
         }
 
         .card .link-text {
@@ -438,16 +443,15 @@
                 height: 40px;
                 font-size: 1.2rem;
             }
-            .card a .favicon-img {
+            .icon-wrapper {
                 width: 50px;
                 height: 50px;
-                padding: 4px;
             }
-            .card a i.fallback-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.8rem;
-                padding: 0.6rem;
+            .icon-wrapper .fallback-icon {
+                font-size: 1.5rem;
+            }
+            .icon-wrapper .fallback-text {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -485,58 +489,100 @@
             const grid = document.getElementById('gridLinks');
             const STORAGE_KEY = 'thiagohv_links';
 
-            // ----- DADOS PADRÃO -----
+            // ----- DADOS PADRÃO (substitua pelos seus) -----
             const defaultLinks = [
-                { id: 1, name: 'Google', url: 'https://google.com' },
-                { id: 2, name: 'GitHub', url: 'https://github.com' },
-                { id: 3, name: 'YouTube', url: 'https://youtube.com' },
-                { id: 4, name: 'Twitter', url: 'https://twitter.com' }
+                { id: 1, name: 'Robótica', url: 'https://thigohv.github.io/roboticai' },
+                { id: 2, name: 'GitHub', url: 'https://github.com/ThiagoHV' },
+                { id: 3, name: 'Minecraft', url: 'https://thigohv.github.io/thivj' },
+                { id: 4, name: 'Dodge', url: 'https://thigohv.github.io/dodge' }
             ];
 
-            // ----- GERAR URL DO FAVICON (Google S2) -----
-            function getFaviconUrl(url) {
-                if (!url || url === '#') return null;
-                try {
-                    const domain = new URL(url).hostname;
-                    if (!domain) return null;
-                    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-                } catch (e) {
-                    return null;
-                }
+            // ----- FUNÇÃO PARA GERAR URL DE FAVICON (múltiplas fontes) -----
+            function getFaviconSources(domain) {
+                // Retorna um array de URLs para tentar, em ordem de preferência
+                return [
+                    `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
+                    `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+                    `https://favicon.yandex.net/favicon/${domain}`
+                ];
             }
 
-            // ----- CARREGAR DADOS -----
+            // ----- TESTAR SE UMA IMAGEM É VÁLIDA (não é placeholder) -----
+            function isValidFavicon(img) {
+                // Se a imagem tem tamanho 0 ou é muito pequena, é provavelmente placeholder
+                // Também podemos verificar se a URL contém 'google' ou 'duckduckgo' (placeholder)
+                const url = img.src;
+                if (url.includes('google.com/s2/favicons') && img.naturalWidth <= 16) return false;
+                if (url.includes('duckduckgo.com') && img.naturalWidth <= 16) return false;
+                if (url.includes('yandex.net') && img.naturalWidth <= 16) return false;
+                return true;
+            }
+
+            // ----- CARREGAR FAVICON COM TENTATIVA MÚLTIPLA -----
+            function loadFavicon(domain) {
+                return new Promise((resolve) => {
+                    const sources = getFaviconSources(domain);
+                    let currentIndex = 0;
+
+                    function tryNext() {
+                        if (currentIndex >= sources.length) {
+                            // Nenhuma fonte funcionou → fallback
+                            resolve(null);
+                            return;
+                        }
+                        const url = sources[currentIndex];
+                        const img = new Image();
+                        img.crossOrigin = 'anonymous';
+                        img.onload = function () {
+                            // Verifica se a imagem é válida (não placeholder)
+                            if (isValidFavicon(img)) {
+                                resolve(url);
+                            } else {
+                                // Tenta a próxima fonte
+                                currentIndex++;
+                                tryNext();
+                            }
+                        };
+                        img.onerror = function () {
+                            currentIndex++;
+                            tryNext();
+                        };
+                        img.src = url;
+                    }
+
+                    tryNext();
+                });
+            }
+
+            // ----- CARREGAR DADOS DO localStorage -----
             function loadLinks() {
                 const stored = localStorage.getItem(STORAGE_KEY);
                 if (stored) {
                     try {
                         const parsed = JSON.parse(stored);
                         if (Array.isArray(parsed) && parsed.length > 0) {
-                            return parsed.map(item => ({
-                                ...item,
-                                icon: getFaviconUrl(item.url) || null
-                            }));
+                            // Adiciona campo 'icon' vazio (será preenchido depois)
+                            return parsed.map(item => ({ ...item, icon: null }));
                         }
                     } catch (e) {}
                 }
-                return defaultLinks.map(item => ({
-                    ...item,
-                    icon: getFaviconUrl(item.url) || null
-                }));
+                // Se não houver dados, usa os padrão
+                return defaultLinks.map(item => ({ ...item, icon: null }));
             }
 
             let links = loadLinks();
 
-            // ----- SALVAR (sem a propriedade 'icon') -----
+            // ----- SALVAR NO localStorage (sem o campo 'icon') -----
             function saveLinks() {
                 const toStore = links.map(({ id, name, url }) => ({ id, name, url }));
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
             }
 
-            // ----- RENDERIZAR CARDS -----
-            function renderCards() {
+            // ----- RENDERIZAR CARDS (com ícone assíncrono) -----
+            async function renderCards() {
                 grid.innerHTML = '';
-                links.forEach(item => {
+
+                for (const item of links) {
                     const card = document.createElement('div');
                     card.className = 'card';
                     card.dataset.id = item.id;
@@ -546,25 +592,41 @@
                     link.target = '_blank';
                     link.rel = 'noopener noreferrer';
 
-                    // Ícone: imagem ou fallback
-                    if (item.icon) {
-                        const img = document.createElement('img');
-                        img.className = 'favicon-img';
-                        img.src = item.icon;
-                        img.alt = 'favicon';
-                        img.addEventListener('error', function () {
-                            this.style.display = 'none';
-                            const fallback = document.createElement('i');
-                            fallback.className = 'fas fa-link fallback-icon';
-                            this.parentNode.insertBefore(fallback, this);
-                            this.remove();
-                        });
-                        link.appendChild(img);
-                    } else {
-                        const fallback = document.createElement('i');
-                        fallback.className = 'fas fa-link fallback-icon';
-                        link.appendChild(fallback);
+                    // Container do ícone
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.className = 'icon-wrapper';
+
+                    // Tentar carregar o favicon
+                    let iconUrl = null;
+                    if (item.url && item.url !== '#') {
+                        try {
+                            const domain = new URL(item.url).hostname;
+                            if (domain) {
+                                iconUrl = await loadFavicon(domain);
+                            }
+                        } catch (e) {
+                            // Ignora
+                        }
                     }
+
+                    if (iconUrl) {
+                        // Ícone encontrado → usar <img>
+                        const img = document.createElement('img');
+                        img.src = iconUrl;
+                        img.alt = 'favicon';
+                        img.crossOrigin = 'anonymous';
+                        img.onerror = function () {
+                            // Se falhar, substitui por fallback
+                            this.remove();
+                            addFallback(iconWrapper, item.name);
+                        };
+                        iconWrapper.appendChild(img);
+                    } else {
+                        // Fallback: inicial do nome ou ícone genérico
+                        addFallback(iconWrapper, item.name);
+                    }
+
+                    link.appendChild(iconWrapper);
 
                     const nameSpan = document.createElement('span');
                     nameSpan.className = 'link-name';
@@ -590,11 +652,26 @@
                     card.appendChild(editIcon);
 
                     grid.appendChild(card);
-                });
+                }
+            }
+
+            // ----- FUNÇÃO AUXILIAR: adicionar fallback no wrapper -----
+            function addFallback(wrapper, name) {
+                // Se nome tiver pelo menos 1 caractere, usa a primeira letra
+                if (name && name.length > 0) {
+                    const span = document.createElement('span');
+                    span.className = 'fallback-text';
+                    span.textContent = name.charAt(0).toUpperCase();
+                    wrapper.appendChild(span);
+                } else {
+                    const icon = document.createElement('i');
+                    icon.className = 'fas fa-link fallback-icon';
+                    wrapper.appendChild(icon);
+                }
             }
 
             // ----- EDITAR LINK -----
-            function editLink(id) {
+            async function editLink(id) {
                 const item = links.find(l => l.id === id);
                 if (!item) return;
 
@@ -617,14 +694,13 @@
 
                 item.name = trimmedName;
                 item.url = trimmedUrl;
-                item.icon = getFaviconUrl(trimmedUrl);
-
+                // O ícone será recarregado no render
                 saveLinks();
-                renderCards();
+                await renderCards();
             }
 
             // ----- ADICIONAR LINK -----
-            function addLink() {
+            async function addLink() {
                 const name = prompt('Nome do novo link:');
                 if (name === null) return;
                 const trimmedName = name.trim();
@@ -645,16 +721,15 @@
                 const maxId = links.reduce((max, l) => Math.max(max, l.id), 0);
                 const newId = maxId + 1;
 
-                const newLink = {
+                links.push({
                     id: newId,
                     name: trimmedName,
                     url: trimmedUrl,
-                    icon: getFaviconUrl(trimmedUrl)
-                };
+                    icon: null
+                });
 
-                links.push(newLink);
                 saveLinks();
-                renderCards();
+                await renderCards();
             }
 
             // ----- EVENTOS -----
@@ -670,6 +745,7 @@
                 }
             });
 
+            // Renderizar inicial
             renderCards();
         });
     </script>
