@@ -1,496 +1,1856 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="favicon.ico">
 
 <title>Personagens do Minecraft</title>
 
+
 <style>
 
-{
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-body{
-    font-family: Arial, sans-serif;
-    background:
-    linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
-    url("fundo.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
-    color: white;
-    overflow-x: hidden;
+html{
+    scroll-behavior:smooth;
 }
 
+body{
+
+    font-family:Arial, sans-serif;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.5),
+        rgba(0,0,0,.5)
+    ),
+    url("fundo.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
 header{
+
     padding:40px 20px;
+
     text-align:center;
-    background:linear-gradient(90deg,#0f0,#00a300);
+
+    background:
+    linear-gradient(
+        90deg,
+        #0f0,
+        #00a300
+    );
+
     border-bottom:5px solid #222;
-    box-shadow:0 5px 20px rgba(0,0,0,.5);
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.5);
+
 }
 
 header h1{
+
     font-size:55px;
-    text-shadow:4px 4px 0 #000;
+
+    text-shadow:
+    4px 4px 0 #000;
+
     margin-bottom:15px;
+
 }
 
 header p{
+
     font-size:20px;
+
     margin-bottom:20px;
+
 }
 
+
+/* =========================
+   BOTÃO
+========================= */
+
 .btn{
+
     display:inline-block;
+
     padding:12px 25px;
+
     background:#222;
+
     color:white;
+
     text-decoration:none;
+
     border:3px solid #fff;
+
     transition:.3s;
+
     font-weight:bold;
+
 }
 
 .btn:hover{
+
     background:#fff;
+
     color:#000;
+
     transform:scale(1.05);
+
 }
+
+
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
+
     width:90%;
+
     max-width:1400px;
+
     margin:auto;
+
     padding:50px 0;
+
 }
+
+
+/* =========================
+   TÍTULOS
+========================= */
 
 .section-title{
+
     text-align:center;
+
     font-size:42px;
+
     margin-bottom:40px;
-    text-shadow:3px 3px 0 black;
+
+    text-shadow:
+    3px 3px 0 black;
+
 }
+
+
+/* =========================
+   CARDS DOS PERSONAGENS
+========================= */
 
 .cards{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:30px;
+
 }
+
 
 .card{
-    background:rgba(20,20,20,.9);
-    border:4px solid #4cff00;
+
+    background:
+    rgba(20,20,20,.9);
+
+    border:
+    4px solid #4cff00;
+
     border-radius:20px;
+
     padding:25px;
+
     text-align:center;
+
     transition:.4s;
+
     position:relative;
+
     overflow:hidden;
+
+    scroll-margin-top:25px;
+
 }
 
+
+/* Efeito de luz */
+
 .card::before{
+
     content:"";
+
     position:absolute;
+
     width:100%;
+
     height:100%;
+
     top:-100%;
+
     left:0;
-    background:rgba(76,255,0,.15);
+
+    background:
+    rgba(76,255,0,.15);
+
     transition:.5s;
+
+    pointer-events:none;
+
 }
 
 .card:hover::before{
+
     top:0;
+
 }
+
+
+/* Hover */
 
 .card:hover{
-    transform:translateY(-10px) scale(1.03);
-    box-shadow:0 0 25px #4cff00;
+
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+    box-shadow:
+    0 0 25px #4cff00;
+
 }
+
+
+/* Card selecionado pela âncora */
+
+.card:target{
+
+    border-color:white;
+
+    box-shadow:
+    0 0 15px white,
+    0 0 30px #4cff00,
+    0 0 55px rgba(76,255,0,.7);
+
+    transform:
+    translateY(-8px)
+    scale(1.04);
+
+}
+
+
+/* Imagens */
 
 .card img{
+
     width:120px;
+
     height:120px;
+
     object-fit:contain;
+
     margin-bottom:15px;
+
 }
+
+
+/* Nome */
 
 .card h3{
+
     font-size:28px;
+
     margin-bottom:10px;
+
 }
+
+
+/* Descrição */
 
 .card p{
+
     color:#ddd;
+
     line-height:1.5;
+
 }
+
+
+/* =========================
+   BARRA DE PODER
+========================= */
 
 .power{
+
     margin-top:15px;
+
     background:#333;
+
     border-radius:20px;
+
     overflow:hidden;
+
 }
+
 
 .power-bar{
+
     height:18px;
+
     background:lime;
+
 }
+
+
+/* =========================
+   CARACTERÍSTICAS
+========================= */
+
+.character-traits{
+
+    margin-top:75px;
+
+    padding:40px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,0,0,.88),
+        rgba(10,30,10,.88)
+    );
+
+    border:
+    3px solid #4cff00;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 0 20px rgba(76,255,0,.25);
+
+}
+
+
+/* Título */
+
+.character-traits .traits-title{
+
+    text-align:center;
+
+    font-size:40px;
+
+    margin-bottom:15px;
+
+    text-shadow:
+    3px 3px 0 #000;
+
+}
+
+
+/* Subtítulo */
+
+.character-traits .traits-subtitle{
+
+    max-width:850px;
+
+    margin:
+    0 auto 35px;
+
+    text-align:center;
+
+    color:#bbb;
+
+    font-size:16px;
+
+    line-height:1.6;
+
+}
+
+
+/* Lista */
+
+.character-traits ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+
+/* Cada característica */
+
+.character-traits li{
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(25,25,25,.98),
+        rgba(10,10,10,.98)
+    );
+
+    border:
+    1px solid
+    rgba(76,255,0,.4);
+
+    border-left:
+    5px solid #4cff00;
+
+    border-radius:14px;
+
+    padding:22px;
+
+    min-height:220px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    transition:.3s;
+
+}
+
+
+/* Hover */
+
+.character-traits li:hover{
+
+    transform:
+    translateY(-6px);
+
+    border-color:#4cff00;
+
+    box-shadow:
+    0 0 20px
+    rgba(76,255,0,.3);
+
+}
+
+
+/* Cabeçalho de cada característica */
+
+.trait-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    margin-bottom:15px;
+
+    padding-bottom:12px;
+
+    border-bottom:
+    1px solid
+    rgba(255,255,255,.1);
+
+}
+
+
+/* Nome clicável */
+
+.character-name{
+
+    color:#4cff00;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    transition:.25s;
+
+}
+
+
+.character-name:hover{
+
+    color:white;
+
+    text-shadow:
+    0 0 8px #4cff00;
+
+}
+
+
+/* Tipo */
+
+.trait-badge{
+
+    padding:5px 10px;
+
+    background:#4cff00;
+
+    color:#111;
+
+    border-radius:15px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+}
+
+
+/* Texto */
+
+.trait-description{
+
+    color:#ccc;
+
+    line-height:1.65;
+
+    font-size:15px;
+
+    flex:1;
+
+}
+
+
+/* Link para o card */
+
+.jump-link{
+
+    display:inline-block;
+
+    margin-top:18px;
+
+    color:#4cff00;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.jump-link:hover{
+
+    color:white;
+
+    transform:
+    translateX(5px);
+
+}
+
+
+/* =========================
+   INVENTÁRIO
+========================= */
 
 .inventory-section{
+
     margin-top:80px;
+
 }
+
 
 .inventory{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(120px,1fr)
+    );
+
     gap:15px;
+
 }
+
 
 .slot{
+
     background:#8b8b8b;
-    border:5px solid #3d3d3d;
+
+    border:
+    5px solid #3d3d3d;
+
     height:120px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     flex-direction:column;
+
     font-size:20px;
+
     transition:.3s;
+
     cursor:pointer;
+
     position:relative;
+
 }
+
 
 .slot:hover{
+
     transform:scale(1.08);
+
     background:#a8a8a8;
+
 }
+
 
 .slot span{
+
     font-size:45px;
+
 }
+
+
+/* =========================
+   TABELA
+========================= */
 
 .table-section{
+
     margin-top:80px;
+
 }
+
 
 table{
+
     width:100%;
+
     border-collapse:collapse;
-    background:rgba(0,0,0,.8);
+
+    background:
+    rgba(0,0,0,.8);
+
 }
 
-th, td{
+
+th,
+td{
+
     padding:15px;
-    border:2px solid #4cff00;
+
+    border:
+    2px solid #4cff00;
+
     text-align:center;
+
 }
+
 
 th{
+
     background:#1c1c1c;
+
     color:#4cff00;
+
 }
+
+
+/* =========================
+   GALERIA
+========================= */
 
 .gallery{
+
     margin-top:80px;
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(300px,1fr)
+    );
+
     gap:20px;
+
 }
+
 
 .gallery img{
+
     width:100%;
-    border:4px solid white;
+
+    border:
+    4px solid white;
+
     border-radius:15px;
+
     transition:.4s;
+
 }
+
 
 .gallery img:hover{
+
     transform:scale(1.05);
-    box-shadow:0 0 20px lime;
+
+    box-shadow:
+    0 0 20px lime;
+
 }
+
+
+/* =========================
+   RODAPÉ
+========================= */
 
 footer{
+
     margin-top:80px;
+
     text-align:center;
+
     padding:30px;
+
     background:#111;
-    border-top:5px solid lime;
+
+    border-top:
+    5px solid lime;
+
 }
 
+
 footer p{
+
     color:#aaa;
+
 }
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media(max-width:900px){
+
+    .cards{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+
+    .character-traits ul{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+}
+
 
 @media(max-width:700px){
 
     header h1{
+
         font-size:38px;
+
     }
 
+
     .section-title{
+
         font-size:32px;
+
+    }
+
+
+    .cards{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .character-traits{
+
+        padding:25px 18px;
+
+    }
+
+
+    .character-traits .traits-title{
+
+        font-size:30px;
+
+    }
+
+
+    .character-traits ul{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .trait-header{
+
+        align-items:flex-start;
+
+    }
+
+
+    .trait-badge{
+
+        font-size:9px;
+
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<header>
-    <h1>⛏️ Personagens do Minecraft</h1>
-    <p>Explore os mobs, heróis e criaturas mais famosas do jogo!</p>
 
-    <a class="btn" href="index.html">⬅ Voltar ao Início</a>
+<!-- =========================
+     CABEÇALHO
+========================= -->
+
+<header>
+
+    <h1>
+        ⛏️ Personagens do Minecraft
+    </h1>
+
+    <p>
+        Explore os mobs, heróis e criaturas mais famosas do jogo!
+    </p>
+
+    <a
+        class="btn"
+        href="index.html">
+
+        ⬅ Voltar ao Início
+
+    </a>
+
 </header>
+
+
 
 <div class="container">
 
-    <!-- PERSONAGENS -->
 
-    <h2 class="section-title">Personagens Principais</h2>
+<!-- =========================
+     PERSONAGENS PRINCIPAIS
+========================= -->
 
-    <div class="cards">
+<h2 class="section-title">
 
-        <div class="card">
-            <img src="personagens/steve.gif" alt="Steve">
-            <h3>Steve</h3>
+    Personagens Principais
 
-            <p>
-                O personagem clássico do Minecraft.
-                Especialista em mineração, construção e sobrevivência.
-            </p>
+</h2>
 
-            <div class="power">
-                <div class="power-bar" style="width:100%;"></div>
+
+<div class="cards">
+
+
+    <!-- STEVE -->
+
+    <div
+        class="card"
+        id="steve">
+
+        <img
+            src="personagens/steve.gif"
+            alt="Steve">
+
+        <h3>
+            Steve
+        </h3>
+
+        <p>
+            O personagem clássico do Minecraft.
+            Especialista em mineração,
+            construção e sobrevivência.
+        </p>
+
+        <div class="power">
+
+            <div
+                class="power-bar"
+                style="width:100%;">
+
             </div>
 
-            <p>Jogatina: 100%</p>
         </div>
 
-        <div class="card">
-            <img src="personagens/creeper.gif" alt="Creeper">
-            <h3>Creeper</h3>
-
-            <p>
-                O mob mais temido do jogo.
-                Se aproxima silenciosamente e explode tudo.
-            </p>
-
-            <div class="power">
-                <div class="power-bar" style="width:100%; background:red;"></div>
-            </div>
-
-            <p>Explosão: 100%</p>
-        </div>
-
-        <div class="card">
-            <img src="personagens/enderman.gif" alt="Enderman">
-            <h3>Enderman</h3>
-
-            <p>
-                Criatura misteriosa que se teletransporta
-                e odeia contato visual.
-            </p>
-
-            <div class="power">
-                <div class="power-bar" style="width:90%; background:purple;"></div>
-            </div>
-
-            <p>Teleportação: 90%</p>
-        </div>
-
-        <div class="card">
-            <img src="personagens/zombie.gif" alt="Zombie">
-            <h3>Zombie</h3>
-
-            <p>
-                Surge durante a noite e persegue jogadores sem parar.
-            </p>
-
-            <div class="power">
-                <div class="power-bar" style="width:75%; background:green;"></div>
-            </div>
-
-            <p>Hordas: 75%</p>
-        </div>
-
-        <div class="card">
-            <img src="personagens/skeleton.gif" alt="Skeleton">
-            <h3>Skeleton</h3>
-
-            <p>
-                Usa arco e flecha para atacar à distância.
-            </p>
-
-            <div class="power">
-                <div class="power-bar" style="width:85%; background:white;"></div>
-            </div>
-
-            <p>Precisão: 85%</p>
-        </div>
-
-        <div class="card">
-            <img src="personagens/warden.gif" alt="Warden">
-            <h3>Warden</h3>
-
-            <p>
-                O mob mais poderoso e assustador das cavernas profundas.
-            </p>
-
-            <div class="power">
-                <div class="power-bar" style="width:100%; background:cyan;"></div>
-            </div>
-
-            <p>Poder: 100%</p>
-        </div>
+        <p>
+            Jogatina: 100%
+        </p>
 
     </div>
 
-    <!-- INVENTARIO -->
 
-    <section class="inventory-section">
 
-        <h2 class="section-title">Inventário Minecraft</h2>
+    <!-- CREEPER -->
 
-        <div class="inventory">
+    <div
+        class="card"
+        id="creeper">
 
-            <div class="slot"><span>🪓</span>Machado</div>
-            <div class="slot"><span>⛏️</span>Picareta</div>
-            <div class="slot"><span>🗡️</span>Espada</div>
-            <div class="slot"><span>🪏</span>Pá</div>
-            <div class="slot"><span></span></div>
-            <div class="slot"><span></span></div>
-            <div class="slot"><span>🪣</span>Balde Água</div>
-            <div class="slot"><span>🍖</span>Comida</div>
-            <div class="slot"><span>🔥</span>Tocha</div>
+        <img
+            src="personagens/creeper.gif"
+            alt="Creeper">
 
-        </div>
+        <h3>
+            Creeper
+        </h3>
 
-    </section>
+        <p>
+            O mob mais temido do jogo.
+            Se aproxima silenciosamente
+            e explode tudo.
+        </p>
 
-    <!-- TABELA -->
+        <div class="power">
 
-    <section class="table-section">
+            <div
+                class="power-bar"
+                style="
+                    width:100%;
+                    background:red;
+                ">
 
-        <h2 class="section-title">Comparação dos Personagens</h2>
-
-        <table>
-
-            <tr>
-                <th>Personagem</th>
-                <th>Tipo</th>
-                <th>Perigo</th>
-                <th>Habilidade</th>
-            </tr>
-
-            <tr>
-                <td>Steve</td>
-                <td>Jogador</td>
-                <td>N/A</td>
-                <td>Construção</td>
-            </tr>
-
-            <tr>
-                <td>Creeper</td>
-                <td>Hostil</td>
-                <td>⭐⭐⭐⭐⭐</td>
-                <td>Explosão</td>
-            </tr>
-
-            <tr>
-                <td>Enderman</td>
-                <td>Neutro</td>
-                <td>⭐⭐⭐⭐</td>
-                <td>Teleportação</td>
-            </tr>
-
-            <tr>
-                <td>Warden</td>
-                <td>Boss</td>
-                <td>⭐⭐⭐⭐⭐⭐</td>
-                <td>Sensibilidade sonora</td>
-            </tr>
-
-        </table>
-
-    </section>
-
-    <br><br><br>
-
-    <section>
-
-        <h2 class="section-title">Galeria Minecraft</h2>
-
-        <div class="gallery">
-
-            <img src="galery/print.jpg">
-            <img src="galery/mine.png">
-            <img src="galery/herobrine.jpg">
+            </div>
 
         </div>
 
-    </section>
+        <p>
+            Explosão: 100%
+        </p>
+
+    </div>
+
+
+
+    <!-- ENDERMAN -->
+
+    <div
+        class="card"
+        id="enderman">
+
+        <img
+            src="personagens/enderman.gif"
+            alt="Enderman">
+
+        <h3>
+            Enderman
+        </h3>
+
+        <p>
+            Criatura misteriosa que se
+            teletransporta e odeia
+            contato visual.
+        </p>
+
+        <div class="power">
+
+            <div
+                class="power-bar"
+                style="
+                    width:90%;
+                    background:purple;
+                ">
+
+            </div>
+
+        </div>
+
+        <p>
+            Teleportação: 90%
+        </p>
+
+    </div>
+
+
+
+    <!-- ZOMBIE -->
+
+    <div
+        class="card"
+        id="zombie">
+
+        <img
+            src="personagens/zombie.gif"
+            alt="Zombie">
+
+        <h3>
+            Zombie
+        </h3>
+
+        <p>
+            Surge durante a noite e
+            persegue jogadores sem parar.
+        </p>
+
+        <div class="power">
+
+            <div
+                class="power-bar"
+                style="
+                    width:75%;
+                    background:green;
+                ">
+
+            </div>
+
+        </div>
+
+        <p>
+            Hordas: 75%
+        </p>
+
+    </div>
+
+
+
+    <!-- SKELETON -->
+
+    <div
+        class="card"
+        id="skeleton">
+
+        <img
+            src="personagens/skeleton.gif"
+            alt="Skeleton">
+
+        <h3>
+            Skeleton
+        </h3>
+
+        <p>
+            Usa arco e flecha para
+            atacar à distância.
+        </p>
+
+        <div class="power">
+
+            <div
+                class="power-bar"
+                style="
+                    width:85%;
+                    background:white;
+                ">
+
+            </div>
+
+        </div>
+
+        <p>
+            Precisão: 85%
+        </p>
+
+    </div>
+
+
+
+    <!-- WARDEN -->
+
+    <div
+        class="card"
+        id="warden">
+
+        <img
+            src="personagens/warden.gif"
+            alt="Warden">
+
+        <h3>
+            Warden
+        </h3>
+
+        <p>
+            O mob mais poderoso e
+            assustador das cavernas profundas.
+        </p>
+
+        <div class="power">
+
+            <div
+                class="power-bar"
+                style="
+                    width:100%;
+                    background:cyan;
+                ">
+
+            </div>
+
+        </div>
+
+        <p>
+            Poder: 100%
+        </p>
+
+    </div>
+
 
 </div>
 
+
+
+<!-- =========================
+     CARACTERÍSTICAS
+========================= -->
+
+<section
+    class="character-traits"
+    id="caracteristicas">
+
+
+    <h2 class="traits-title">
+
+        Características dos Personagens
+
+    </h2>
+
+
+    <p class="traits-subtitle">
+
+        Conheça um pouco mais sobre cada personagem,
+        suas habilidades e seu comportamento.
+        Clique no nome para voltar diretamente
+        ao personagem.
+
+    </p>
+
+
+    <ul>
+
+
+        <!-- STEVE -->
+
+        <li>
+
+            <div class="trait-header">
+
+                <a
+                    class="character-name"
+                    href="#steve">
+
+                    Steve
+
+                </a>
+
+                <span class="trait-badge">
+                    JOGADOR
+                </span>
+
+            </div>
+
+
+            <p class="trait-description">
+
+                Personagem controlado pelo jogador.
+                Pode minerar, construir, lutar,
+                explorar e utilizar praticamente
+                todos os recursos disponíveis no jogo.
+                É extremamente versátil e pode assumir
+                diferentes estilos durante a aventura.
+
+            </p>
+
+
+            <a
+                class="jump-link"
+                href="#steve">
+
+                ↳ Ver o Steve
+
+            </a>
+
+        </li>
+
+
+
+        <!-- CREEPER -->
+
+        <li>
+
+            <div class="trait-header">
+
+                <a
+                    class="character-name"
+                    href="#creeper">
+
+                    Creeper
+
+                </a>
+
+                <span class="trait-badge">
+                    HOSTIL
+                </span>
+
+            </div>
+
+
+            <p class="trait-description">
+
+                Um dos mobs mais conhecidos do Minecraft.
+                Aproxima-se do jogador silenciosamente
+                e, quando está próximo, pode explodir,
+                causando dano e destruindo blocos ao redor.
+
+            </p>
+
+
+            <a
+                class="jump-link"
+                href="#creeper">
+
+                ↳ Ver o Creeper
+
+            </a>
+
+        </li>
+
+
+
+        <!-- ENDERMAN -->
+
+        <li>
+
+            <div class="trait-header">
+
+                <a
+                    class="character-name"
+                    href="#enderman">
+
+                    Enderman
+
+                </a>
+
+                <span class="trait-badge">
+                    NEUTRO
+                </span>
+
+            </div>
+
+
+            <p class="trait-description">
+
+                Criatura alta e misteriosa que consegue
+                se teletransportar rapidamente.
+                Também consegue carregar determinados
+                blocos e pode se tornar agressiva
+                quando provocada.
+
+            </p>
+
+
+            <a
+                class="jump-link"
+                href="#enderman">
+
+                ↳ Ver o Enderman
+
+            </a>
+
+        </li>
+
+
+
+        <!-- ZOMBIE -->
+
+        <li>
+
+            <div class="trait-header">
+
+                <a
+                    class="character-name"
+                    href="#zombie">
+
+                    Zombie
+
+                </a>
+
+                <span class="trait-badge">
+                    HOSTIL
+                </span>
+
+            </div>
+
+
+            <p class="trait-description">
+
+                Mob hostil que aparece principalmente
+                durante a noite ou em locais escuros.
+                Persegue jogadores diretamente e pode
+                surgir em grupos, tornando os encontros
+                mais perigosos.
+
+            </p>
+
+
+            <a
+                class="jump-link"
+                href="#zombie">
+
+                ↳ Ver o Zombie
+
+            </a>
+
+        </li>
+
+
+
+        <!-- SKELETON -->
+
+        <li>
+
+            <div class="trait-header">
+
+                <a
+                    class="character-name"
+                    href="#skeleton">
+
+                    Skeleton
+
+                </a>
+
+                <span class="trait-badge">
+                    HOSTIL
+                </span>
+
+            </div>
+
+
+            <p class="trait-description">
+
+                Mob especializado em combate à distância.
+                Utiliza um arco para disparar flechas
+                contra o jogador, tornando a distância
+                uma de suas principais vantagens
+                durante o combate.
+
+            </p>
+
+
+            <a
+                class="jump-link"
+                href="#skeleton">
+
+                ↳ Ver o Skeleton
+
+            </a>
+
+        </li>
+
+
+
+        <!-- WARDEN -->
+
+        <li>
+
+            <div class="trait-header">
+
+                <a
+                    class="character-name"
+                    href="#warden">
+
+                    Warden
+
+                </a>
+
+                <span class="trait-badge">
+                    BOSS
+                </span>
+
+            </div>
+
+
+            <p class="trait-description">
+
+                Uma das criaturas mais perigosas
+                do Minecraft. Encontrado nas regiões
+                profundas do mundo, possui enorme
+                força e resistência e consegue detectar
+                jogadores principalmente através de
+                sons e vibrações.
+
+            </p>
+
+
+            <a
+                class="jump-link"
+                href="#warden">
+
+                ↳ Ver o Warden
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+
+</section>
+
+
+
+<!-- =========================
+     INVENTÁRIO
+========================= -->
+
+<section
+    class="inventory-section">
+
+
+    <h2 class="section-title">
+
+        Inventário Minecraft
+
+    </h2>
+
+
+    <div class="inventory">
+
+
+        <div class="slot">
+
+            <span>🪓</span>
+
+            Machado
+
+        </div>
+
+
+        <div class="slot">
+
+            <span>⛏️</span>
+
+            Picareta
+
+        </div>
+
+
+        <div class="slot">
+
+            <span>🗡️</span>
+
+            Espada
+
+        </div>
+
+
+        <div class="slot">
+
+            <span>🪏</span>
+
+            Pá
+
+        </div>
+
+
+        <div class="slot">
+
+            <span></span>
+
+        </div>
+
+
+        <div class="slot">
+
+            <span></span>
+
+        </div>
+
+
+        <div class="slot">
+
+            <span>🪣</span>
+
+            Balde Água
+
+        </div>
+
+
+        <div class="slot">
+
+            <span>🍖</span>
+
+            Comida
+
+        </div>
+
+
+        <div class="slot">
+
+            <span>🔥</span>
+
+            Tocha
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     TABELA
+========================= -->
+
+<section
+    class="table-section">
+
+
+    <h2 class="section-title">
+
+        Comparação dos Personagens
+
+    </h2>
+
+
+    <table>
+
+
+        <tr>
+
+            <th>
+                Personagem
+            </th>
+
+            <th>
+                Tipo
+            </th>
+
+            <th>
+                Perigo
+            </th>
+
+            <th>
+                Habilidade
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Steve
+            </td>
+
+            <td>
+                Jogador
+            </td>
+
+            <td>
+                N/A
+            </td>
+
+            <td>
+                Construção
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Creeper
+            </td>
+
+            <td>
+                Hostil
+            </td>
+
+            <td>
+                ⭐⭐⭐⭐⭐
+            </td>
+
+            <td>
+                Explosão
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Enderman
+            </td>
+
+            <td>
+                Neutro
+            </td>
+
+            <td>
+                ⭐⭐⭐⭐
+            </td>
+
+            <td>
+                Teleportação
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Warden
+            </td>
+
+            <td>
+                Boss
+            </td>
+
+            <td>
+                ⭐⭐⭐⭐⭐⭐
+            </td>
+
+            <td>
+                Sensibilidade sonora
+            </td>
+
+        </tr>
+
+
+    </table>
+
+
+</section>
+
+
+
+<br>
+<br>
+<br>
+
+
+
+<!-- =========================
+     GALERIA
+========================= -->
+
+<section>
+
+
+    <h2 class="section-title">
+
+        Galeria Minecraft
+
+    </h2>
+
+
+    <div class="gallery">
+
+
+        <img
+            src="galery/print.jpg"
+            alt="Imagem do Minecraft">
+
+
+        <img
+            src="galery/mine.png"
+            alt="Imagem do Minecraft">
+
+
+        <img
+            src="galery/herobrine.jpg"
+            alt="Imagem do Herobrine">
+
+
+    </div>
+
+
+</section>
+
+
+</div>
+
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
+
 <footer>
-    <p> Feito por: Thiago H. Vieira </p>
+
+    <p>
+        Feito por: Thiago H. Vieira
+    </p>
+
 </footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
-const slots = document.querySelectorAll(".slot");
+
+/* =========================
+   INVENTÁRIO
+========================= */
+
+const slots =
+document.querySelectorAll(".slot");
+
 
 slots.forEach(slot => {
 
-    slot.addEventListener("click", () => {
 
-        slot.style.background = "lime";
-        slot.style.color = "black";
+    slot.addEventListener(
+        "click",
+        () => {
 
-        setTimeout(() => {
-            slot.style.background = "#8b8b8b";
-            slot.style.color = "white";
-        }, 500);
 
-    });
+            slot.style.background =
+            "lime";
 
-});
 
-const cards = document.querySelectorAll(".card");
+            slot.style.color =
+            "black";
 
-window.addEventListener("scroll", () => {
 
-    cards.forEach(card => {
+            setTimeout(
+                () => {
 
-        const top = card.getBoundingClientRect().top;
 
-        if(top < window.innerHeight - 100){
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
+                    slot.style.background =
+                    "#8b8b8b";
+
+
+                    slot.style.color =
+                    "white";
+
+
+                },
+                500
+            );
+
+
         }
+    );
 
-    });
 
 });
+
+
+
+/* =========================
+   ANIMAÇÃO DOS CARDS
+========================= */
+
+const cards =
+document.querySelectorAll(".card");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+
+        cards.forEach(card => {
+
+
+            const top =
+            card.getBoundingClientRect().top;
+
+
+            if(
+                top <
+                window.innerHeight - 100
+            ){
+
+                card.style.opacity =
+                "1";
+
+
+                card.style.transform =
+                "translateY(0)";
+
+            }
+
+
+        });
+
+
+    }
+);
+
 
 cards.forEach(card => {
-    card.style.opacity = "0";
-    card.style.transform = "translateY(50px)";
-    card.style.transition = ".6s";
+
+    card.style.opacity =
+    "0";
+
+    card.style.transform =
+    "translateY(50px)";
+
+    card.style.transition =
+    ".6s";
+
 });
+
 
 </script>
 
+
 </body>
+
 </html>
