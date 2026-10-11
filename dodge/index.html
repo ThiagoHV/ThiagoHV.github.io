@@ -290,6 +290,83 @@
         #btnDifficultyStart { margin-top:5px; width:min(430px,88%); padding:12px; border:0; border-radius:12px; background:#fff; color:#111; font-weight:1000; cursor:pointer; letter-spacing:1px; }
         #btnDifficultyBack { background:none; border:0; color:#8d96ad; cursor:pointer; margin-top:2px; }
 
+        #customScreen{
+            background:
+                radial-gradient(circle at 15% 10%, rgba(117,137,255,.10), transparent 28%),
+                radial-gradient(circle at 88% 8%, rgba(247,217,78,.07), transparent 22%),
+                linear-gradient(180deg,#080a10 0%,#05060b 100%);
+            padding:14px;
+            overflow:hidden;
+            z-index:26;
+        }
+        #customScreen::before{
+            content:"";position:absolute;inset:0;pointer-events:none;
+            background:linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px);
+            background-size:36px 36px;opacity:.35;
+            mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 86%);
+        }
+        .custom-shell{
+            position:relative;z-index:2;width:min(1040px,97%);height:min(568px,94%);
+            display:grid;grid-template-rows:auto 1fr auto;gap:10px;
+            padding:14px;
+            border:1px solid rgba(255,255,255,.07);border-radius:24px;
+            background:linear-gradient(180deg,rgba(12,15,24,.97),rgba(7,9,15,.97));
+            box-shadow:0 32px 100px rgba(0,0,0,.72),0 0 55px rgba(105,120,255,.06),inset 0 1px rgba(255,255,255,.045);
+            backdrop-filter:blur(18px);
+        }
+        .custom-head{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0;padding:2px 2px 4px}
+        .custom-title-wrap{min-width:0;display:flex;align-items:flex-start;gap:12px}
+        .custom-logo-mark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(247,217,78,.14),rgba(109,124,255,.12));border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px rgba(255,255,255,.06),0 8px 24px rgba(0,0,0,.2);font-size:17px;flex:none}
+        .custom-eyebrow{font-size:8px;font-weight:1000;letter-spacing:2.6px;color:#6f7a90;text-transform:uppercase;margin:1px 0 4px}
+        .custom-head h2{color:#f5f7fc;font-size:24px;line-height:1;letter-spacing:1.3px;margin:0}
+        .custom-head p{color:#7f899e;font-size:9px;margin:6px 0 0;max-width:430px}
+        .custom-actions-top{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}
+        .custom-mini-btn{border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.025);color:#c8d0df;border-radius:10px;padding:7px 10px;font-size:8px;font-weight:1000;letter-spacing:.65px;cursor:pointer;transition:.16s;box-shadow:inset 0 1px rgba(255,255,255,.025)}
+        .custom-mini-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14)}
+        #customPresetBalanced{color:#f6d84d;border-color:rgba(247,217,78,.17)}
+        #customPresetBoss{color:#ff9aa8;border-color:rgba(255,73,101,.14)}
+        #customPresetChaos{color:#c5b1ff;border-color:rgba(140,95,255,.15)}
+        #customSave,#customLoad{color:#aeb9cb}
+
+        .custom-main{min-height:0;display:grid;grid-template-columns:174px minmax(0,1fr);gap:10px}
+        .custom-sidebar{min-height:0;padding:8px;border:1px solid rgba(255,255,255,.06);border-radius:16px;background:rgba(255,255,255,.018);box-shadow:inset 0 1px rgba(255,255,255,.025)}
+        .custom-side-kicker{font-size:7px;font-weight:1000;letter-spacing:1.8px;color:#5f6b82;text-transform:uppercase;padding:4px 8px 9px}
+        .custom-tab{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 10px;margin-bottom:5px;border:1px solid transparent;border-radius:11px;background:transparent;color:#8f9bb0;font-size:8px;font-weight:1000;letter-spacing:.9px;cursor:pointer;text-align:left;transition:.15s}
+        .custom-tab:hover{background:rgba(255,255,255,.035);color:#d7deeb}
+        .custom-tab.active{background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.03));border-color:rgba(255,255,255,.07);color:#f1f4fa;box-shadow:inset 0 1px rgba(255,255,255,.05),0 6px 18px rgba(0,0,0,.15)}
+        .custom-tab .tab-icon{width:23px;height:23px;display:grid;place-items:center;border-radius:7px;background:rgba(255,255,255,.04);color:#aeb9cd;font-size:10px;flex:none}
+        .custom-tab.active .tab-icon{background:rgba(247,217,78,.09);color:#f7d94e}
+        .custom-tab small{font-size:7px;color:#59667c;font-weight:900;letter-spacing:.4px}
+        .custom-side-tip{margin-top:auto;padding:9px;border-radius:11px;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.018);color:#68758b;font-size:7px;line-height:1.45}
+
+        .custom-content{min-width:0;min-height:0;overflow:hidden;border:1px solid rgba(255,255,255,.06);border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.01));box-shadow:inset 0 1px rgba(255,255,255,.02)}
+        .custom-tab-panel{display:none;height:100%;min-height:0;overflow:auto;padding:13px}.custom-tab-panel.active{display:block}
+        .custom-panel-title{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:11px}
+        .custom-panel-title h3{margin:0;color:#edf2fb;font-size:13px;letter-spacing:1.1px}.custom-panel-title p{margin:4px 0 0;color:#69758a;font-size:8px}.custom-status-pill{padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);font-size:7px;font-weight:1000;letter-spacing:.7px;color:#7f8da2;white-space:nowrap}
+
+        .custom-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+        .custom-setting-card{padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.055);background:rgba(255,255,255,.018);box-shadow:inset 0 1px rgba(255,255,255,.022)}
+        .custom-setting-card.span2{grid-column:1/-1}
+        .custom-setting-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px}.custom-setting-top label{color:#9ca8bc;font-size:7px;font-weight:1000;letter-spacing:.85px}.custom-setting-top output,.custom-range-row output{color:#f4d83f;font-size:9px;font-weight:1000}
+        .custom-field{display:flex;flex-direction:column;gap:3px;min-width:0}.custom-field label{color:#8793a8;font-size:7px;font-weight:900;letter-spacing:.45px}
+        .custom-field input[type=number],.custom-field select{width:100%;border:1px solid rgba(255,255,255,.07);background:#0b0f18;color:#f2f5fb;border-radius:8px;padding:7px 8px;outline:none;font-size:9px}.custom-field input[type=number]:focus,.custom-field select:focus{border-color:rgba(247,217,78,.35);box-shadow:0 0 0 2px rgba(247,217,78,.04)}
+        .custom-range-row{display:grid;grid-template-columns:minmax(0,1fr) 38px;align-items:center;gap:7px}.custom-field input[type=range]{width:100%;accent-color:#f7d94e;height:14px}
+        .custom-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);margin:11px 0}
+        .custom-mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+        .custom-chip-card{padding:9px;border-radius:11px;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.017)}.custom-chip-card strong{display:block;color:#eff2f8;font-size:10px}.custom-chip-card span{color:#69768b;font-size:7px}
+        .custom-checks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}.custom-check{display:flex;align-items:center;gap:7px;padding:9px;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.016);border-radius:10px;cursor:pointer}.custom-check input{accent-color:#f7d94e}.custom-check span{color:#b5bfd0;font-size:8px;font-weight:800;line-height:1.25}
+
+        .custom-attack-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:10px}.custom-attack-tools{display:flex;gap:5px}.custom-attack-tools button{border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:6px 9px;background:rgba(255,255,255,.025);color:#9eabbe;font-size:7px;font-weight:1000;cursor:pointer}.custom-attack-tools button:hover{background:rgba(255,255,255,.05);color:#eef2f9}
+        .custom-attack-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;overflow:auto;padding:1px 2px 4px;max-height:calc(100% - 92px)}
+        .custom-attack-card{display:flex;align-items:center;gap:7px;min-height:40px;padding:7px 9px;border:1px solid rgba(255,255,255,.05);border-radius:10px;background:rgba(255,255,255,.016);cursor:pointer;transition:.14s}.custom-attack-card:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.11);transform:translateY(-1px)}.custom-attack-card:has(input:checked){border-color:rgba(247,217,78,.34);background:rgba(247,217,78,.045);box-shadow:0 0 18px rgba(247,217,78,.035)}
+        .custom-attack-card input{accent-color:#f7d94e}.custom-attack-card .atk-id{width:20px;color:#58647a;font-size:7px;font-weight:1000;text-align:center}.custom-attack-card .atk-name{flex:1;color:#dfe5f1;font-size:8px;font-weight:900;line-height:1.15}.custom-attack-card .atk-tag{font-size:6px;font-weight:1000;letter-spacing:.6px;padding:2px 5px;border-radius:5px;background:rgba(255,255,255,.045);color:#7e8ba1}.custom-attack-card.super .atk-tag{color:#ff9aa6;background:rgba(255,60,85,.075)}.custom-attack-card.normal .atk-tag{color:#7edfff;background:rgba(50,180,255,.06)}
+        .custom-preview{margin-top:10px;padding:9px 10px;border-radius:11px;background:linear-gradient(135deg,rgba(247,217,78,.055),rgba(109,124,255,.035));border:1px solid rgba(247,217,78,.08)}.custom-preview-title{color:#e6c93a;font-size:7px;font-weight:1000;letter-spacing:1.3px}.custom-preview-text{color:#818ca0;font-size:8px;line-height:1.35;margin-top:3px}
+
+        .custom-footer{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px;padding-top:2px}.custom-footer-note{color:#566378;font-size:7px;line-height:1.3}.custom-start-btn{border:0;border-radius:11px;padding:11px 16px;font-size:9px;font-weight:1000;letter-spacing:1px;cursor:pointer;transition:.16s}.custom-start-btn:hover{transform:translateY(-1px);filter:brightness(1.04)}#btnCustomStart{background:linear-gradient(135deg,#f8dc58,#e9ad13);color:#10110d;box-shadow:0 12px 28px rgba(247,217,78,.1)}#btnCustomBossTest{background:rgba(255,255,255,.035);color:#f0b2bb;border:1px solid rgba(255,80,105,.14)}
+        #btnCustomBack{margin:0;background:transparent;border:0;color:#7f8ca0;cursor:pointer;font-size:8px;padding:8px 4px}#btnCustomBack:hover{color:#d3d9e4}
+        .custom-key-hint{display:inline-flex;align-items:center;gap:4px}.custom-key{padding:2px 5px;border:1px solid rgba(255,255,255,.08);border-bottom-color:rgba(255,255,255,.15);border-radius:5px;background:rgba(255,255,255,.03);font-size:6px;color:#8b97aa}
+        @media (max-width: 820px){.custom-main{grid-template-columns:1fr}.custom-sidebar{display:flex;gap:5px;overflow:auto}.custom-side-kicker,.custom-side-tip{display:none}.custom-tab{min-width:145px;margin:0}.custom-footer{grid-template-columns:auto 1fr}.custom-footer .footer-start-wrap{grid-column:2;display:flex;justify-content:flex-end}.custom-footer .footer-start-wrap .custom-start-btn{flex:1;max-width:220px}.custom-head{align-items:flex-start}.custom-actions-top{max-width:52%}}
+        @media (max-width: 620px){.custom-shell{height:96%;width:97%;padding:10px;border-radius:18px}.custom-head{flex-direction:column;gap:8px}.custom-actions-top{max-width:none;width:100%;justify-content:flex-start}.custom-card-grid,.custom-checks,.custom-attack-list{grid-template-columns:1fr}.custom-mini-grid{grid-template-columns:1fr 1fr}.custom-setting-card.span2{grid-column:auto}.custom-footer{grid-template-columns:1fr}.custom-footer .footer-start-wrap{grid-column:auto}.custom-footer-note{display:none}}
         #gameOverScreen {
             background: radial-gradient(ellipse at center, #1a0a0a 0%, #0a0510 100%);
             gap: 10px;
@@ -470,60 +547,13 @@
             border-color: #ffd700;
             box-shadow: 0 0 60px rgba(247, 217, 78, 0.4);
         }
-        #bossBarContainer {
-            display: none !important;
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70%;
-            max-width: 500px;
-            height: 22px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 68, 102, 0.4);
-            backdrop-filter: blur(4px);
-            z-index: 10;
-            display: none;
-            overflow: hidden;
-            box-shadow: 0 0 40px rgba(255, 68, 102, 0.2);
-        }
-        #bossBarFill {
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(90deg, #ff4466, #ff6b6b);
-            border-radius: 20px;
-            transition: width 0.2s ease;
-            box-shadow: inset 0 0 20px rgba(255, 100, 100, 0.3);
-        }
-        #bossName {
-            position: absolute;
-            top: -26px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ff6b6b;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(255, 68, 102, 0.5);
-            white-space: nowrap;
-        }
-        #bossPlayerHP { position:absolute; left:50%; bottom:14px; transform:translateX(-50%); width:82%; max-width:620px; z-index:18; display:none; pointer-events:none; }
-        #bossPlayerHP .hp-title { color:#fff; font-size:12px; font-weight:900; letter-spacing:2px; text-align:center; margin-bottom:5px; text-shadow:0 2px 8px #000; }
-        #bossPlayerHP .hp-bars { display:flex; gap:3px; height:20px; }
-        #bossPlayerHP .hp-segment { flex:1; min-width:6px; border:2px solid rgba(255,255,255,.35); border-radius:5px; background:#171717; box-shadow:0 0 8px rgba(0,0,0,.6); transition:background .15s, transform .12s, box-shadow .12s; }
-        #bossPlayerHP .hp-segment.full { background:linear-gradient(90deg,#20e070,#8cff5a); border-color:#b7ffb0; box-shadow:0 0 10px rgba(50,255,100,.45); }
-        #bossPlayerHP .hp-segment.lost { background:#171717; }
-        #bossPlayerHP.danger .hp-segment.full { animation:hpDanger .11s infinite alternate; }
-        @keyframes hpDanger { from { transform:scaleY(1) translateX(-1px); filter:brightness(1); } to { transform:scaleY(1.32) translateX(1px); filter:brightness(2.4); } }
-        #bossPlayerHP.danger .hp-segment:last-child { background:linear-gradient(90deg,#ff1e2d,#ff7a18); border-color:#ff4b4b; box-shadow:0 0 22px rgba(255,30,45,.9); }
-        #bossPlayerHP.danger .hp-title { color:#ff4040; animation:dangerText .18s infinite alternate; }
-        @keyframes dangerText { from { transform:scale(1); } to { transform:scale(1.08); } }
-        #gameContainer.boss-danger canvas { animation:bossShake .055s infinite alternate; }
-        #gameContainer.boss-danger { box-shadow:0 0 55px rgba(255,0,30,.95),0 0 140px rgba(255,0,30,.65), inset 0 0 55px rgba(255,0,30,.22); animation:dangerFrame .16s infinite alternate; }
-        @keyframes bossShake { from { transform:translate(-4px,2px) rotate(-0.15deg); } to { transform:translate(4px,-2px) rotate(0.15deg); } }
-        @keyframes dangerFrame { from { filter:brightness(1); } to { filter:brightness(1.18); } }
-
+        #bossBarContainer{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:min(500px,72%);padding:3px 5px;display:none;z-index:22;pointer-events:none;background:rgba(0,0,0,.26);border:1px solid rgba(255,255,255,.13);border-radius:7px;box-shadow:0 3px 10px rgba(0,0,0,.25);backdrop-filter:none;overflow:hidden}
+        #bossBarContainer:after{content:none}@keyframes bossHudSweep{from{opacity:1}to{opacity:1}}
+        #bossHudTop{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}#bossName{position:static;transform:none;color:#fff;font-size:13px;font-weight:1000;letter-spacing:2px;text-shadow:0 0 16px rgba(255,70,90,.55)}#bossName .boss-type{color:#ff6b7d}#bossPhaseLabel{font-size:10px;font-weight:1000;letter-spacing:1.5px;padding:4px 8px;border-radius:999px;color:#d8def0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}#bossHpValue{font-size:12px;font-weight:1000;color:#fff;white-space:nowrap}
+        #bossBarTrack{position:relative;height:16px;background:#12050a;border:1px solid rgba(255,255,255,.14);border-radius:999px;overflow:hidden;box-shadow:inset 0 0 16px rgba(0,0,0,.8)}#bossBarFill{height:100%;width:100%;background:linear-gradient(90deg,#ff2146,#ff6677,#ff9a62);border-radius:999px;transition:width .18s cubic-bezier(.22,.75,.15,1);box-shadow:0 0 18px rgba(255,45,70,.5);position:relative}#bossBarFill:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-100%);animation:barGlint 1.6s linear infinite}@keyframes barGlint{to{transform:translateX(100%)}}
+        #bossBarTicks{position:absolute;inset:0;display:flex;justify-content:space-between}#bossBarTicks span{width:1px;background:rgba(255,255,255,.17)}#bossAttackLabel{position:relative;margin-top:6px;min-height:11px;font-size:9px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:#93a0bd}#bossAttackLabel strong{color:#fff}
+        #bossPlayerHP{position:absolute;left:50%;bottom:9px;transform:translateX(-50%);width:min(430px,70%);z-index:22;display:none;pointer-events:none}#bossPlayerHP .player-hud-shell{padding:2px 4px 3px;border-radius:5px;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.1);box-shadow:none;backdrop-filter:none}#bossPlayerHP .hp-title-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}#bossPlayerHP .hp-title{font-size:7px;font-weight:900;letter-spacing:1.2px;color:#d9dfeb}#bossPlayerHP .hp-value{font-size:8px;font-weight:900;letter-spacing:.7px;color:#e7ebf2}#bossPlayerHP .hp-caption{display:none}#bossPlayerHP .hp-bars{display:flex;gap:2px;height:6px}#bossPlayerHP .hp-segment{flex:1;min-width:2px;border:1px solid rgba(255,255,255,.1);border-radius:2px;background:#0d1118;box-shadow:none;transition:.12s}#bossPlayerHP .hp-segment.full{background:#63d38b;border-color:rgba(180,255,205,.35);box-shadow:none}
+        #dangerOverlay{position:absolute;inset:0;z-index:20;pointer-events:none;opacity:0;transition:opacity .2s}#dangerOverlay:before{content:'';position:absolute;inset:0;background:radial-gradient(circle,transparent 45%,rgba(255,20,30,.10) 78%,rgba(255,20,30,.20) 100%)}#dangerOverlay:after{content:'';position:absolute;inset:7px;border:1px solid rgba(255,70,80,.16);border-radius:14px;box-shadow:inset 0 0 18px rgba(255,0,20,.08)}#dangerBanner{position:absolute;left:50%;bottom:54px;transform:translateX(-50%) translateY(4px);opacity:0;z-index:23;color:#ff9fa8;font-size:8px;font-weight:900;letter-spacing:2px;padding:2px 6px;background:rgba(20,0,4,.55);border:1px solid rgba(255,100,110,.2);border-radius:4px;transition:.2s;pointer-events:none}.boss-phase-2 #bossBarContainer{border-color:rgba(255,210,65,.24)}.boss-phase-3 #bossBarContainer{border-color:rgba(255,45,75,.32);box-shadow:0 3px 14px rgba(255,30,60,.12)}#gameContainer.boss-danger #dangerOverlay{opacity:1;animation:dangerPulse .75s infinite alternate}#gameContainer.boss-danger #dangerBanner{opacity:1;transform:translateX(-50%) translateY(0);animation:dangerBannerPulse .75s infinite alternate}#bossPlayerHP.danger .player-hud-shell{border-color:rgba(255,90,100,.38);box-shadow:none}#bossPlayerHP.danger .hp-segment.full{background:#e55b68;border-color:rgba(255,170,180,.45);box-shadow:none;animation:hpDanger .38s infinite alternate}#bossPlayerHP.danger .hp-title,#bossPlayerHP.danger .hp-value{color:#ffb2b9;text-shadow:none}#bossPlayerHP.danger .hp-bars:after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(255,80,90,.24)}@keyframes hpDanger{from{opacity:.72}to{opacity:1}}@keyframes dangerPulse{from{filter:brightness(1)}to{filter:brightness(1.035)}}@keyframes dangerBannerPulse{from{opacity:.55}to{opacity:.95}}#gameContainer.boss-danger{box-shadow:0 0 30px rgba(255,0,30,.25),inset 0 0 28px rgba(255,0,30,.08)}#gameContainer.boss-danger canvas{animation:none}@keyframes bossShake{from{transform:none}to{transform:none}}
         #bossVictoryScreen { gap:12px; text-align:center; background:radial-gradient(circle at 50% 38%,rgba(255,216,77,.12),transparent 35%),rgba(2,4,12,.94); }
         .victory-card { width:min(560px,92%); padding:28px 24px 24px; border:1px solid rgba(255,216,77,.25); border-radius:22px; background:linear-gradient(180deg,rgba(20,24,38,.96),rgba(6,8,16,.96)); box-shadow:0 20px 80px rgba(0,0,0,.55),0 0 45px rgba(255,216,77,.08); position:relative; overflow:hidden; }
         .victory-card:before { content:""; position:absolute; inset:0; background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.045) 50%,transparent 80%); transform:translateX(-120%); animation:victorySweep 2.2s ease-in-out infinite; pointer-events:none; }
@@ -686,12 +716,8 @@
             </div>
         </div>
 
-        <div id="bossPlayerHP"><div class="hp-title">♥ HP — <span id="bossPlayerHPText">20 / 20</span></div><div class="hp-bars"><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div></div></div>
-
-        <div id="bossBarContainer">
-            <div id="bossName">👾 BOSS</div>
-            <div id="bossBarFill" style="width:100%;"></div>
-        </div>
+        <div id="bossPlayerHP"><div class="player-hud-shell"><div class="hp-title-row"><div><div class="hp-title">HP</div></div><div class="hp-value" id="bossPlayerHPText">20 / 20</div></div><div class="hp-bars"><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div><div class="hp-segment"></div></div></div></div>
+        <div id="bossBarContainer"><div id="bossHudTop"><div id="bossName">👑 <span class="boss-type">BOSS</span> LVL 5</div><div id="bossPhaseLabel">PHASE 1</div><div id="bossHpValue">30 / 30 HP</div></div><div id="bossBarTrack"><div id="bossBarFill" style="width:100%"></div><div id="bossBarTicks"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div id="bossAttackLabel">ATAQUE ATUAL · <strong>ANALISANDO...</strong></div></div><div id="dangerOverlay"></div><div id="dangerBanner">♡ 1 HP</div>
 
         <div id="joystickArea">
             <div id="joystickKnob"></div>
@@ -702,7 +728,10 @@
             <div class="subtitle">Escolha seu <span>piloto</span></div>
             <div class="coin-balance">🪙 <span id="balanceAmount">0</span></div>
             <div class="char-grid" id="charGrid"></div>
-            <button class="btn-start" id="btnStart">▶ ESCOLHER DIFICULDADE</button>
+            <div style="display:flex;gap:8px;position:relative;z-index:2;flex-wrap:wrap;justify-content:center;">
+                <button class="btn-start" id="btnStart">▶ ESCOLHER DIFICULDADE</button>
+                <button class="btn-start" id="btnCustom">⚙ PARTIDA PERSONALIZADA</button>
+            </div>
             <div class="hint">WASD / SETAS · Desvie · Colete <span id="secretM">m</span>oedas · Seja o melhor!</div>
         </div>
 
@@ -718,35 +747,131 @@
 
         <div id="difficultyScreen" class="screen">
             <h2>ESCOLHA A DIFICULDADE</h2>
-            <div class="diff-sub">quanto mais baixo, pior 😈</div>
+            <div class="diff-sub">velocidade fixa · desafio por inimigos, ataques e boss</div>
             <div class="difficulty-list" id="difficultyList">
                 <div class="difficulty-option diff-easy" data-diff="easy">
-                    <span>🟢 EASY</span><small>75% · combo 10x</small>
-                    <div class="difficulty-tooltip"><div class="tt-title"><span>🟢 EASY</span><span class="tt-badge">TRANQUILO</span></div><div class="tt-grid"><div class="tt-row"><span>Velocidade</span><strong>75%</strong></div><div class="tt-row"><span>Seu HP</span><strong>20</strong></div><div class="tt-row"><span>Recarga da bala</span><strong>5s</strong></div><div class="tt-row"><span>Janela da bala</span><strong>3s</strong></div><div class="tt-row"><span>Combo máximo</span><strong>10x</strong></div><div class="tt-row"><span>Boss</span><strong>30 HP · 4 hits</strong></div></div><div class="tt-note">A opção mais fácil. Tudo acontece mais devagar e você tem bastante tempo para pegar as balas douradas. Os ataques do boss são mais leves.</div></div>
+                    <span>🟢 EASY</span><small>6 inimigos · streak 2x</small>
+                    <div class="difficulty-tooltip"><div class="tt-title"><span>🟢 EASY</span><span class="tt-badge">TRANQUILO</span></div><div class="tt-grid"><div class="tt-row"><span>Inimigos na tela</span><strong>até 6</strong></div><div class="tt-row"><span>Novo inimigo</span><strong>~1,7s</strong></div><div class="tt-row"><span>Ataques</span><strong>mais simples</strong></div><div class="tt-row"><span>Streak</span><strong>2x · janela 7s</strong></div><div class="tt-row"><span>Bala do boss</span><strong>4s · fica 6s</strong></div><div class="tt-row"><span>Seu HP no boss</span><strong>20</strong></div><div class="tt-row"><span>Boss</span><strong>30 HP · 4 acertos</strong></div><div class="tt-row"><span>Perfect automático</span><strong>a cada 18s</strong></div></div><div class="tt-note">Poucos inimigos e mais tempo para reagir. O boss usa padrões básicos, ataca com intervalos maiores e não tem superataques.</div></div>
                 </div>
                 <div class="difficulty-option diff-normal selected" data-diff="normal">
-                    <span>🟡 NORMAL</span><small>85% · combo 5x</small>
-                    <div class="difficulty-tooltip"><div class="tt-title"><span>🟡 NORMAL</span><span class="tt-badge">PADRÃO</span></div><div class="tt-grid"><div class="tt-row"><span>Velocidade</span><strong>85%</strong></div><div class="tt-row"><span>Seu HP</span><strong>20</strong></div><div class="tt-row"><span>Recarga da bala</span><strong>7s</strong></div><div class="tt-row"><span>Janela da bala</span><strong>3s</strong></div><div class="tt-row"><span>Combo máximo</span><strong>5x</strong></div><div class="tt-row"><span>Boss</span><strong>35 HP · 5 hits</strong></div></div><div class="tt-note">A experiência padrão. A velocidade é moderada e a rajada diagonal do boss é desativada para deixar os desvios mais previsíveis.</div></div>
+                    <span>🟡 NORMAL</span><small>8 inimigos · streak 3x</small>
+                    <div class="difficulty-tooltip"><div class="tt-title"><span>🟡 NORMAL</span><span class="tt-badge">PADRÃO</span></div><div class="tt-grid"><div class="tt-row"><span>Inimigos na tela</span><strong>até 8</strong></div><div class="tt-row"><span>Novo inimigo</span><strong>~1,4s</strong></div><div class="tt-row"><span>Ataques</span><strong>mistos</strong></div><div class="tt-row"><span>Streak</span><strong>3x · janela 6,5s</strong></div><div class="tt-row"><span>Bala do boss</span><strong>5s · fica 5s</strong></div><div class="tt-row"><span>Seu HP no boss</span><strong>20</strong></div><div class="tt-row"><span>Boss</span><strong>40 HP · 5 acertos</strong></div><div class="tt-row"><span>Perfect automático</span><strong>a cada 22s</strong></div></div><div class="tt-note">Ritmo padrão com inimigos de tipos diferentes. O boss combina padrões básicos e de perseguição, mas não usa superataques.</div></div>
                 </div>
                 <div class="difficulty-option diff-hard" data-diff="hard">
-                    <span>🟠 DIFÍCIL</span><small>90% · combo 5x</small>
-                    <div class="difficulty-tooltip"><div class="tt-title"><span>🟠 DIFÍCIL</span><span class="tt-badge">DESAFIO</span></div><div class="tt-grid"><div class="tt-row"><span>Velocidade</span><strong>90%</strong></div><div class="tt-row"><span>Seu HP</span><strong>20</strong></div><div class="tt-row"><span>Recarga da bala</span><strong>10s</strong></div><div class="tt-row"><span>Janela da bala</span><strong>3s</strong></div><div class="tt-row"><span>Combo máximo</span><strong>5x</strong></div><div class="tt-row"><span>Boss</span><strong>45 HP · 7 hits</strong></div></div><div class="tt-note">Mantém a base do Normal, mas acelera tudo e aumenta o intervalo entre suas oportunidades de atacar o boss.</div></div>
+                    <span>🟠 DIFÍCIL</span><small>10 inimigos · streak 4x</small>
+                    <div class="difficulty-tooltip"><div class="tt-title"><span>🟠 DIFÍCIL</span><span class="tt-badge">DESAFIO</span></div><div class="tt-grid"><div class="tt-row"><span>Inimigos na tela</span><strong>até 10</strong></div><div class="tt-row"><span>Novo inimigo</span><strong>~1,2s</strong></div><div class="tt-row"><span>Ataques</span><strong>tanques e bombas</strong></div><div class="tt-row"><span>Streak</span><strong>4x · janela 5,5s</strong></div><div class="tt-row"><span>Bala do boss</span><strong>6s · fica 4,5s</strong></div><div class="tt-row"><span>Seu HP no boss</span><strong>18</strong></div><div class="tt-row"><span>Boss</span><strong>52 HP · 6 acertos</strong></div><div class="tt-row"><span>Superataques</span><strong>raros · fase 2+</strong></div></div><div class="tt-note">Mais inimigos pressionam ao mesmo tempo. O boss ganha padrões avançados e pode usar um superataque ocasional a partir da segunda fase.</div></div>
                 </div>
                 <div class="difficulty-option diff-insane" data-diff="insane">
-                    <span>🔴 INSANO</span><small>100% · combo 3x · você 15 HP</small>
-                    <div class="difficulty-tooltip"><div class="tt-title"><span>🔴 INSANO</span><span class="tt-badge">MUITO DIFÍCIL</span></div><div class="tt-grid"><div class="tt-row"><span>Velocidade</span><strong>100%</strong></div><div class="tt-row"><span>Seu HP</span><strong>15</strong></div><div class="tt-row"><span>Recarga da bala</span><strong>15s</strong></div><div class="tt-row"><span>Janela da bala</span><strong>3s</strong></div><div class="tt-row"><span>Combo máximo</span><strong>3x</strong></div><div class="tt-row"><span>Boss</span><strong>50 HP · 9 hits</strong></div></div><div class="tt-note">Velocidade normal do jogo, menos HP para você e ataques completos do boss. A batalha começa a exigir bastante precisão.</div></div>
+                    <span>🔴 INSANO</span><small>12 inimigos · streak 5x</small>
+                    <div class="difficulty-tooltip"><div class="tt-title"><span>🔴 INSANO</span><span class="tt-badge">MUITO DIFÍCIL</span></div><div class="tt-grid"><div class="tt-row"><span>Inimigos na tela</span><strong>até 12</strong></div><div class="tt-row"><span>Novo inimigo</span><strong>~1s</strong></div><div class="tt-row"><span>Ataques</span><strong>mais projéteis</strong></div><div class="tt-row"><span>Streak</span><strong>5x · janela 5s</strong></div><div class="tt-row"><span>Bala do boss</span><strong>7s · fica 4s</strong></div><div class="tt-row"><span>Seu HP no boss</span><strong>16</strong></div><div class="tt-row"><span>Boss</span><strong>64 HP · 7 acertos</strong></div><div class="tt-row"><span>Superataques</span><strong>ocasionais · fase 2+</strong></div></div><div class="tt-note">O número de inimigos e a mistura de ataques aumentam. O boss pode manter dois padrões ativos e usar superataques nas fases finais.</div></div>
                 </div>
                 <div class="difficulty-option diff-master" data-diff="master">
-                    <span>🟣 MESTRE</span><small>125% · combo 2x · você 10 HP</small>
-                    <div class="difficulty-tooltip"><div class="tt-title"><span>🟣 MESTRE</span><span class="tt-badge">EXTREMO</span></div><div class="tt-grid"><div class="tt-row"><span>Velocidade</span><strong>125%</strong></div><div class="tt-row"><span>Seu HP</span><strong>10</strong></div><div class="tt-row"><span>Recarga da bala</span><strong>20s</strong></div><div class="tt-row"><span>Janela da bala</span><strong>3s</strong></div><div class="tt-row"><span>Combo máximo</span><strong>2x</strong></div><div class="tt-row"><span>Arena</span><strong>+12%</strong></div><div class="tt-row"><span>Boss</span><strong>75 HP · 12 hits</strong></div></div><div class="tt-note">Tudo fica 25% mais rápido, sua vida cai para 10 HP e a arena aumenta. Os padrões do boss ficam mais imprevisíveis.</div></div>
+                    <span>🟣 MESTRE</span><small>14 inimigos · streak 7x</small>
+                    <div class="difficulty-tooltip"><div class="tt-title"><span>🟣 MESTRE</span><span class="tt-badge">EXTREMO</span></div><div class="tt-grid"><div class="tt-row"><span>Inimigos na tela</span><strong>até 14</strong></div><div class="tt-row"><span>Novo inimigo</span><strong>~0,9s</strong></div><div class="tt-row"><span>Ataques</span><strong>pressão alta</strong></div><div class="tt-row"><span>Streak</span><strong>7x · janela 4,5s</strong></div><div class="tt-row"><span>Bala do boss</span><strong>8s · fica 3,5s</strong></div><div class="tt-row"><span>Seu HP no boss</span><strong>12</strong></div><div class="tt-row"><span>Boss</span><strong>82 HP · 9 acertos</strong></div><div class="tt-row"><span>Superataques</span><strong>frequentes · fase 2+</strong></div></div><div class="tt-note">O boss mistura padrões mais complexos, lança mais projéteis e pode sobrepor dois ataques. A arena cresce um pouco para manter espaço de manobra.</div></div>
                 </div>
                 <div class="difficulty-option diff-secret" data-diff="secret">
-                    <span>⚫ ???</span><small>150% · combo 1x · você 1 HP</small>
-                    <div class="difficulty-tooltip"><div class="tt-title"><span>⚫ ???</span><span class="tt-badge">VOCÊ FOI AVISADO</span></div><div class="tt-grid"><div class="tt-row"><span>Velocidade</span><strong>150%</strong></div><div class="tt-row"><span>Seu HP</span><strong>1</strong></div><div class="tt-row"><span>Recarga da bala</span><strong>30s</strong></div><div class="tt-row"><span>Janela da bala</span><strong>3s</strong></div><div class="tt-row"><span>Combo máximo</span><strong>1x</strong></div><div class="tt-row"><span>Arena</span><strong>+40%</strong></div><div class="tt-row"><span>Boss</span><strong>100 HP · 15 hits</strong></div></div><div class="tt-note">😈 A dificuldade secreta. Um único hit acaba com você. O jogo corre a 150%, a arena é 40% maior e sua oportunidade de atacar aparece só a cada 30 segundos.</div></div>
+                    <span>⚫ ???</span><small>16 inimigos · streak 10x</small>
+                    <div class="difficulty-tooltip"><div class="tt-title"><span>⚫ ???</span><span class="tt-badge">VOCÊ FOI AVISADO</span></div><div class="tt-grid"><div class="tt-row"><span>Inimigos na tela</span><strong>até 16</strong></div><div class="tt-row"><span>Novo inimigo</span><strong>~0,8s</strong></div><div class="tt-row"><span>Ataques</span><strong>todos os tipos</strong></div><div class="tt-row"><span>Streak</span><strong>10x · janela 4s</strong></div><div class="tt-row"><span>Bala do boss</span><strong>9s · fica 3s</strong></div><div class="tt-row"><span>Seu HP no boss</span><strong>5</strong></div><div class="tt-row"><span>Boss</span><strong>110 HP · 12 acertos</strong></div><div class="tt-row"><span>Superataques</span><strong>desde a fase 1</strong></div></div><div class="tt-note">Desafio máximo: todos os tipos de inimigo, três padrões simultâneos e superataques desde o início. A velocidade global continua em 100%; a dificuldade vem dos padrões e da pressão.</div></div>
                 </div>
             </div>
             <button id="btnDifficultyStart">▶ COMEÇAR</button>
             <button id="btnDifficultyBack">← Voltar para skins</button>
+        </div>
+
+        <div id="customScreen" class="screen">
+            <div class="custom-shell">
+                <div class="custom-head">
+                    <div class="custom-title-wrap">
+                        <div class="custom-logo-mark">⚙</div>
+                        <div>
+                            <div class="custom-eyebrow">CUSTOM LOADOUT</div>
+                            <h2>PARTIDA PERSONALIZADA</h2>
+                            <p>Controle o essencial. O resto fica fora do caminho.</p>
+                        </div>
+                    </div>
+                    <div class="custom-actions-top">
+                        <button class="custom-mini-btn" id="customPresetBalanced">BALANCEADO</button>
+                        <button class="custom-mini-btn" id="customPresetBoss">BOSS TEST</button>
+                        <button class="custom-mini-btn" id="customPresetChaos">CAOS</button>
+                        <button class="custom-mini-btn" id="customSave">SALVAR</button>
+                        <button class="custom-mini-btn" id="customLoad">CARREGAR</button>
+                    </div>
+                </div>
+
+                <div class="custom-main">
+                    <aside class="custom-sidebar">
+                        <div class="custom-side-kicker">CONFIGURAÇÃO</div>
+                        <button class="custom-tab active" data-custom-tab="game"><span style="display:flex;align-items:center;gap:8px"><span class="tab-icon">◈</span><span>JOGABILIDADE</span></span><small>01</small></button>
+                        <button class="custom-tab" data-custom-tab="boss"><span style="display:flex;align-items:center;gap:8px"><span class="tab-icon">♛</span><span>BOSS</span></span><small>02</small></button>
+                        <button class="custom-tab" data-custom-tab="ai"><span style="display:flex;align-items:center;gap:8px"><span class="tab-icon">◎</span><span>IA & FASES</span></span><small>03</small></button>
+                        <button class="custom-tab" data-custom-tab="attacks"><span style="display:flex;align-items:center;gap:8px"><span class="tab-icon">✦</span><span>ATAQUES</span></span><small>04</small></button>
+                        <div class="custom-side-tip">Dica: use <span class="custom-key-hint"><span class="custom-key">ENTER</span> para iniciar</span> e <span class="custom-key">ESC</span> para voltar.</div>
+                    </aside>
+
+                    <section class="custom-content">
+                        <div class="custom-tab-panel active" data-custom-panel="game">
+                            <div class="custom-panel-title"><div><h3>JOGABILIDADE</h3><p>Os ajustes que mais mudam a sensação da partida.</p></div><div class="custom-status-pill">BASE</div></div>
+                            <div class="custom-card-grid">
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>VELOCIDADE DA CORRIDA</label><output id="customSpeedOut">100%</output></div><input id="customSpeed" type="range" min="0.25" max="2.5" step="0.05" value="1"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>COMBO MÁXIMO</label><output id="customComboOut">5x</output></div><input id="customCombo" type="range" min="1" max="20" step="1" value="5"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>ARENA</label><output id="customArenaOut">100%</output></div><input id="customArena" type="range" min="60" max="200" step="5" value="100"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>IA / INTENSIDADE</label><output id="customAIOut">5</output></div><input id="customAI" type="range" min="0" max="10" step="1" value="5"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>BOSS SPEED</label><output id="customBossSpeedOut">100%</output></div><input id="customBossSpeed" type="range" min="0.5" max="2" step="0.05" value="1"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>VELOCIDADE DA ALMA</label><output id="customPlayerBossSpeedOut">3.8</output></div><input id="customPlayerBossSpeed" type="range" min="1.5" max="9" step="0.1" value="3.8"></div>
+                                <div class="custom-setting-card" style="display:flex;align-items:center;gap:9px"><div class="custom-field" style="flex:1"><label>SEU HP</label><input id="customPlayerHp" type="number" min="1" max="50" value="20"></div><div style="color:#5e6a80;font-size:7px;line-height:1.4;max-width:120px">Mais HP = maior margem para erro.</div></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>FASE 2 EM</label><output id="customPhase2Out">66%</output></div><input id="customPhase2" type="range" min="40" max="80" step="1" value="66"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>FASE 3 EM</label><output id="customPhase3Out">33%</output></div><input id="customPhase3" type="range" min="10" max="60" step="1" value="33"></div>
+                            </div>
+                        </div>
+
+                        <div class="custom-tab-panel" data-custom-panel="boss">
+                            <div class="custom-panel-title"><div><h3>BOSS</h3><p>Ajuste resistência, ritmo e frequência dos ataques.</p></div><div class="custom-status-pill">COMBATE</div></div>
+                            <div class="custom-card-grid">
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>VIDA DO BOSS</label></div><input id="customBossHp" type="number" min="1" max="500" value="50"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>HITS PARA DERROTAR</label></div><input id="customBossShots" type="number" min="1" max="100" value="9"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>ATAQUES SIMULTÂNEOS</label><output id="customMaxAttacksOut">2</output></div><input id="customMaxAttacks" type="range" min="1" max="5" step="1" value="2"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>CHANCE DE SUPER</label><output id="customSuperChanceOut">8%</output></div><input id="customSuperChance" type="range" min="0" max="100" step="1" value="8"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>COOLDOWN MÍN.</label></div><input id="customAttackMin" type="number" min="0.2" max="10" step="0.1" value="1.1"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>COOLDOWN MÁX.</label></div><input id="customAttackMax" type="number" min="0.2" max="10" step="0.1" value="1.6"></div>
+                            </div>
+                            <div class="custom-divider"></div>
+                            <div class="custom-mini-grid">
+                                <div class="custom-chip-card"><strong>Ritmo</strong><span>Controlado por cooldown</span></div>
+                                <div class="custom-chip-card"><strong>Fases</strong><span>Escalonamento configurável</span></div>
+                                <div class="custom-chip-card"><strong>Supers</strong><span>Podem mudar a arena inteira</span></div>
+                            </div>
+                        </div>
+
+                        <div class="custom-tab-panel" data-custom-panel="ai">
+                            <div class="custom-panel-title"><div><h3>IA & FASES</h3><p>Deixe o comportamento mais previsível ou mais agressivo.</p></div><div class="custom-status-pill">COMPORTAMENTO</div></div>
+                            <div class="custom-card-grid">
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>RECARGA DA BALA</label></div><input id="customShotInterval" type="number" min="0.5" max="120" step="0.5" value="10"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>BALA NO MAPA</label></div><input id="customBulletWindow" type="number" min="0.5" max="30" step="0.5" value="5"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>PERFECT AUTOMÁTICO</label></div><input id="customPerfect" type="number" min="0" max="120" step="1" value="20"></div>
+                                <div class="custom-setting-card"><div class="custom-setting-top"><label>PERFECT</label></div><select id="customPerfectOnlyBoss" disabled><option value="1" selected>Somente no boss</option></select></div>
+                            </div>
+                            <div class="custom-divider"></div>
+                            <div class="custom-checks">
+                                <label class="custom-check"><input id="customLearning" type="checkbox" checked><span>Boss aprende seus movimentos</span></label>
+                                <label class="custom-check"><input id="customNoDiagonal" type="checkbox"><span>Desativar diagonal</span></label>
+                                <label class="custom-check"><input id="customPhaseEscalation" type="checkbox" checked><span>Escalonar por fases</span></label>
+                            </div>
+                        </div>
+
+                        <div class="custom-tab-panel" data-custom-panel="attacks">
+                            <div class="custom-attack-head"><div><h3 style="margin:0;color:#edf2fb;font-size:13px;letter-spacing:1.1px">ATAQUES DO BOSS</h3><p style="margin:4px 0 0;color:#69758a;font-size:8px">Escolha apenas o que realmente quer enfrentar.</p></div><div class="custom-attack-tools"><button id="attackAll">TODOS</button><button id="attackNone">NENHUM</button></div></div>
+                            <div class="custom-attack-list" id="customAttackList"></div>
+                            <div class="custom-preview"><div class="custom-preview-title">CONFIGURAÇÃO ATUAL</div><div class="custom-preview-text" id="customPreview">0 ataques</div></div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="custom-footer">
+                    <button id="btnCustomBack" class="btnDifficultyBack">← Voltar</button>
+                    <div class="custom-footer-note">A configuração é salva localmente no seu navegador.</div>
+                    <div class="footer-start-wrap" style="display:flex;gap:7px;justify-content:flex-end"><button class="custom-start-btn" id="btnCustomBossTest">⚔ TESTAR BOSS</button><button class="custom-start-btn" id="btnCustomStart">▶ COMEÇAR PARTIDA</button></div>
+                </div>
+            </div>
         </div>
 
         <div id="bossVictoryScreen" class="screen">
@@ -795,6 +920,12 @@
         const ctx = canvas.getContext('2d');
         const selectScreen = document.getElementById('selectScreen');
         const difficultyScreen = document.getElementById('difficultyScreen');
+        const customScreen = document.getElementById('customScreen');
+        const btnCustom = document.getElementById('btnCustom');
+        const btnCustomStart = document.getElementById('btnCustomStart');
+        const btnCustomBossTest = document.getElementById('btnCustomBossTest');
+        const btnCustomBack = document.getElementById('btnCustomBack');
+        const customPreview = document.getElementById('customPreview');
         const difficultyList = document.getElementById('difficultyList');
         const secretM = document.getElementById('secretM');
         const godModePopup = document.getElementById('godModePopup');
@@ -804,6 +935,8 @@
         let godMode = false;
         let secretMClicks = 0;
         let secretMTimer = null;
+        let godMKeyClicks = 0;
+        let godMKeyTimer = null;
         const btnDifficultyStart = document.getElementById('btnDifficultyStart');
         const btnDifficultyBack = document.getElementById('btnDifficultyBack');
         const gameOverScreen = document.getElementById('gameOverScreen');
@@ -823,8 +956,12 @@
         const hud = document.getElementById('hud');
         const bossBarContainer = document.getElementById('bossBarContainer');
         const bossBarFill = document.getElementById('bossBarFill');
+        const bossHpValue = document.getElementById('bossHpValue');
+        const bossPhaseLabel = document.getElementById('bossPhaseLabel');
+        const bossAttackLabel = document.getElementById('bossAttackLabel');
         const bossPlayerHP = document.getElementById('bossPlayerHP');
         const bossPlayerHPText = document.getElementById('bossPlayerHPText');
+        const dangerBanner = document.getElementById('dangerBanner');
         const gameContainer = document.getElementById('gameContainer');
         const bossName = document.getElementById('bossName');
         const balanceAmount = document.getElementById('balanceAmount');
@@ -877,16 +1014,136 @@
         let bestScore = parseInt(localStorage.getItem('spaceRacerBest')) || 0;
         let difficulty = 5;
         let selectedDifficultyId = 'normal';
-        let gameSpeed = 0.85;
+        let gameSpeed = 1.0;
         let simulationAccumulator = 0;
+        // Nas dificuldades prontas a velocidade global é sempre 100%.
+        // A progressão acontece por pressão de inimigos, streaks e padrões do boss.
         const DIFFICULTIES = {
-            easy:   { speed:0.75, combo:10, ai:3, bossHp:30, bossShots:4, playerHp:20, arena:1, noDiagonal:false, shotInterval:300 },
-            normal: { speed:0.85, combo:5,  ai:5, bossHp:35, bossShots:5, playerHp:20, arena:1, noDiagonal:true, shotInterval:420 },
-            hard:   { speed:0.90, combo:5,  ai:5, bossHp:45, bossShots:7, playerHp:20, arena:1, noDiagonal:false, shotInterval:600 },
-            insane: { speed:1.00, combo:3,  ai:5, bossHp:50, bossShots:9, playerHp:15, arena:1, noDiagonal:false, shotInterval:900 },
-            master: { speed:1.25, combo:2,  ai:6, bossHp:75, bossShots:12, playerHp:10, arena:1.12, noDiagonal:false, shotInterval:1200 },
-            secret: { speed:1.50, combo:1,  ai:7, bossHp:100, bossShots:15, playerHp:1,  arena:1.40, noDiagonal:false, shotInterval:1800 }
+            easy:   { speed:1, combo:2, comboWindow:7000, ai:2.3, maxEnemies:6, spawnCadence:100, bonusSpawnInterval:300, enemyMix:{normal:.48,sinusoidal:.25,shooter:.15,tank:.08,bomber:.04}, bossHp:30, bossShots:4, playerHp:20, arena:1, noDiagonal:false, shotInterval:240, bulletWindow:360, perfectInterval:18, maxAttacks:1, attackCooldownMin:108, attackCooldownMax:132, projectilesBase:4, extraWaveChance:.10, superChance:0, superStartPhase:99, superCooldown:900, superPool:[] },
+            normal: { speed:1, combo:3, comboWindow:6500, ai:3.2, maxEnemies:8, spawnCadence:86, bonusSpawnInterval:270, enemyMix:{normal:.40,sinusoidal:.22,shooter:.18,tank:.13,bomber:.07}, bossHp:40, bossShots:5, playerHp:20, arena:1, noDiagonal:true, shotInterval:300, bulletWindow:300, perfectInterval:22, maxAttacks:1, attackCooldownMin:92, attackCooldownMax:116, projectilesBase:5, extraWaveChance:.15, superChance:0, superStartPhase:99, superCooldown:840, superPool:[] },
+            hard:   { speed:1, combo:4, comboWindow:5500, ai:4.2, maxEnemies:10, spawnCadence:72, bonusSpawnInterval:240, enemyMix:{normal:.32,sinusoidal:.20,shooter:.20,tank:.16,bomber:.12}, bossHp:52, bossShots:6, playerHp:18, arena:1.05, noDiagonal:false, shotInterval:360, bulletWindow:270, perfectInterval:26, maxAttacks:1, attackCooldownMin:80, attackCooldownMax:102, projectilesBase:6, extraWaveChance:.22, superChance:.04, superStartPhase:2, superCooldown:720, superPool:[0,4] },
+            insane: { speed:1, combo:5, comboWindow:5000, ai:5.4, maxEnemies:12, spawnCadence:62, bonusSpawnInterval:210, enemyMix:{normal:.26,sinusoidal:.18,shooter:.20,tank:.19,bomber:.17}, bossHp:64, bossShots:7, playerHp:16, arena:1.08, noDiagonal:false, shotInterval:420, bulletWindow:240, perfectInterval:30, maxAttacks:2, attackCooldownMin:70, attackCooldownMax:92, projectilesBase:7, extraWaveChance:.30, superChance:.07, superStartPhase:2, superCooldown:660, superPool:[0,1,4] },
+            master: { speed:1, combo:7, comboWindow:4500, ai:6.5, maxEnemies:14, spawnCadence:54, bonusSpawnInterval:190, enemyMix:{normal:.22,sinusoidal:.17,shooter:.20,tank:.21,bomber:.20}, bossHp:82, bossShots:9, playerHp:12, arena:1.12, noDiagonal:false, shotInterval:480, bulletWindow:210, perfectInterval:34, maxAttacks:2, attackCooldownMin:62, attackCooldownMax:84, projectilesBase:8, extraWaveChance:.38, superChance:.12, superStartPhase:2, superCooldown:600, superPool:[0,1,2,4] },
+            secret: { speed:1, combo:10, comboWindow:4000, ai:7.5, maxEnemies:16, spawnCadence:48, bonusSpawnInterval:175, enemyMix:{normal:.16,sinusoidal:.16,shooter:.20,tank:.24,bomber:.24}, bossHp:110, bossShots:12, playerHp:5, arena:1.16, noDiagonal:false, shotInterval:540, bulletWindow:180, perfectInterval:null, maxAttacks:3, attackCooldownMin:54, attackCooldownMax:74, projectilesBase:9, extraWaveChance:.45, superChance:.18, superStartPhase:1, superCooldown:540, superPool:[0,1,2,4] }
         };
+
+        const BOSS_ATTACK_NAMES = [
+            'CHUVA ESCARLATE','CRUZ DE IMPACTO','ANEL DO CAOS','PERDIÇÃO / PREDIÇÃO','RICOCHETE','ESPIRAL INVERTIDA','BALA FANTASMA','ONDULAÇÃO','CAÇADOR','ÓRBITA MORTAL','MINA TEMPORAL','X FÚRIA','MURAL HORIZONTAL / VERTICAL','CÁPSULA PARTIDA','BOOMERANG','EXECUÇÃO','QUARTO MORTAL'
+        ];
+        const SUPER_ATTACK_IDS = [0,1,2,4];
+        const SUPER_ATTACK_NAMES = ['JULGAMENTO CELESTE','VÓRTICE ZERO','CAÇA ABSOLUTA','EXECUÇÃO SUPREMA'];
+        const SUPER_ATTACK_LABELS = {0:'JULGAMENTO CELESTE',1:'VÓRTICE ZERO',2:'CAÇA ABSOLUTA',4:'EXECUÇÃO SUPREMA'};
+        let customMode = false;
+        let customBossTest = false;
+        let customConfig = null;
+
+        function cloneCustomConfig(){
+            return {
+                speed:1, combo:5, ai:5, bossHp:50, bossShots:9, playerHp:20, arena:1,
+                bossSpeed:1, playerBossSpeed:3.8, phase2At:.66, phase3At:.33, shotInterval:10*60, bulletWindow:300, perfectInterval:20,
+                maxAttacks:2, attackCooldownMin:66, attackCooldownMax:96, superChance:.08,
+                learning:true, noDiagonal:false, superEnabled:true, phaseEscalation:true,
+                perfectOnlyBoss:true,
+                attackPool:[],
+                superPool:[]
+            };
+        }
+        customConfig = cloneCustomConfig();
+        function getActiveDifficultyConfig(){ return customMode && customConfig ? customConfig : DIFFICULTIES[selectedDifficultyId]; }
+        function cfgNumber(id, fallback){ const el=document.getElementById(id); const n=Number(el?.value); return Number.isFinite(n)?n:fallback; }
+        function checkedIds(containerId){ return [...document.querySelectorAll(`#${containerId} input:checked`)].map(x=>Number(x.value)); }
+        function writeCustomControls(c){
+            const set=(id,v)=>{const e=document.getElementById(id); if(e)e.value=v;};
+            set('customSpeed',c.speed); set('customCombo',c.combo); set('customPlayerHp',c.playerHp); set('customArena',Math.round(c.arena*100)); set('customAI',c.ai); set('customBossSpeed',c.bossSpeed); set('customPlayerBossSpeed',c.playerBossSpeed); set('customPhase2',Math.round(c.phase2At*100)); set('customPhase3',Math.round(c.phase3At*100));
+            set('customBossHp',c.bossHp); set('customBossShots',c.bossShots); set('customMaxAttacks',c.maxAttacks); set('customAttackMin',(c.attackCooldownMin/60).toFixed(1)); set('customAttackMax',(c.attackCooldownMax/60).toFixed(1)); set('customSuperChance',Math.round(c.superChance*100));
+            set('customShotInterval',(c.shotInterval/60).toFixed(1)); set('customBulletWindow',(c.bulletWindow/60).toFixed(1)); set('customPerfect',c.perfectInterval ?? 0); set('customPerfectOnlyBoss',c.perfectOnlyBoss?1:0);
+            ['learning','noDiagonal','superEnabled','phaseEscalation'].forEach(k=>{const e=document.getElementById('custom'+k[0].toUpperCase()+k.slice(1)); if(e)e.checked=!!c[k];});
+            [...document.querySelectorAll('#customAttackList input')].forEach(e=>{const id=Number(e.value);e.checked=e.dataset.kind==='normal'?c.attackPool.includes(id):c.superPool.includes(id);});
+            updateCustomOutputs(); updateCustomPreview();
+        }
+        function readCustomControls(){
+            customConfig={
+                speed:cfgNumber('customSpeed',1), combo:Math.round(cfgNumber('customCombo',5)), ai:Math.round(cfgNumber('customAI',5)), bossHp:Math.max(1,Math.round(cfgNumber('customBossHp',50))),
+                bossShots:Math.max(1,Math.round(cfgNumber('customBossShots',9))), playerHp:Math.max(1,Math.round(cfgNumber('customPlayerHp',20))), arena:cfgNumber('customArena',100)/100,
+                bossSpeed:cfgNumber('customBossSpeed',1), playerBossSpeed:cfgNumber('customPlayerBossSpeed',3.8), phase2At:cfgNumber('customPhase2',66)/100, phase3At:cfgNumber('customPhase3',33)/100, shotInterval:Math.max(1,cfgNumber('customShotInterval',10)*60), bulletWindow:Math.max(1,cfgNumber('customBulletWindow',5)*60),
+                perfectInterval:(cfgNumber('customPerfect',20)<=0 ? null : Math.max(0,cfgNumber('customPerfect',20))), maxAttacks:Math.max(1,Math.round(cfgNumber('customMaxAttacks',2))),
+                attackCooldownMin:Math.max(12,cfgNumber('customAttackMin',1.1)*60), attackCooldownMax:Math.max(12,cfgNumber('customAttackMax',1.6)*60),
+                superChance:Math.max(0,Math.min(1,cfgNumber('customSuperChance',8)/100)), learning:document.getElementById('customLearning').checked,
+                noDiagonal:document.getElementById('customNoDiagonal').checked, superEnabled:true,
+                phaseEscalation:document.getElementById('customPhaseEscalation').checked, perfectOnlyBoss:document.getElementById('customPerfectOnlyBoss').value==='1',
+                attackPool:[...document.querySelectorAll('#customAttackList input[data-kind="normal"]:checked')].map(e=>Number(e.value)),
+                superPool:[...document.querySelectorAll('#customAttackList input[data-kind="super"]:checked')].map(e=>Number(e.value))
+            };
+            if(customConfig.attackCooldownMax<customConfig.attackCooldownMin) customConfig.attackCooldownMax=customConfig.attackCooldownMin;
+            if(customConfig.phase3At>=customConfig.phase2At) customConfig.phase3At=Math.max(.10,customConfig.phase2At-.05);
+            customConfig.attackPool=[...new Set(customConfig.attackPool.map(Number).filter(i=>i>=0&&i< BOSS_ATTACK_NAMES.length))];
+            customConfig.superPool=[...new Set(customConfig.superPool.map(Number).filter(i=>SUPER_ATTACK_IDS.includes(i)))];
+            updateCustomPreview();
+        }
+        function updateCustomOutputs(){
+            const pairs=[['customSpeed','customSpeedOut',v=>`${Math.round(Number(v)*100)}%`],['customCombo','customComboOut',v=>`${v}x`],['customArena','customArenaOut',v=>`${v}%`],['customAI','customAIOut',v=>v],['customBossSpeed','customBossSpeedOut',v=>`${Math.round(Number(v)*100)}%`],['customPlayerBossSpeed','customPlayerBossSpeedOut',v=>Number(v).toFixed(1)],['customPhase2','customPhase2Out',v=>`${v}%`],['customPhase3','customPhase3Out',v=>`${v}%`],['customMaxAttacks','customMaxAttacksOut',v=>v],['customSuperChance','customSuperChanceOut',v=>`${v}%`]];
+            for(const [a,b,fn] of pairs){const e=document.getElementById(a),o=document.getElementById(b);if(e&&o)o.textContent=fn(e.value);}
+        }
+        function updateCustomPreview(){
+            if(!customPreview) return;
+            const c=customConfig||readCustomControls();
+            const count=c.attackPool.length+c.superPool.length;
+            customPreview.innerHTML=`<b>${count}</b> ataques · <b>${c.maxAttacks}</b> simultâneos · <b>${c.bossHp} HP</b> boss · <b>${c.playerHp} HP</b> jogador`;
+        }
+        function buildCustomAttackLists(){
+            const box=document.getElementById('customAttackList');
+            const normals=BOSS_ATTACK_NAMES.map((name,i)=>({kind:'normal',id:i,name,tag:'NORMAL'}));
+            const supers=SUPER_ATTACK_IDS.map(id=>({kind:'super',id,name:SUPER_ATTACK_LABELS[id],tag:'SUPER'}));
+            box.innerHTML=[...normals,...supers].map(a=>`<label class="custom-attack-card ${a.kind}"><input type="checkbox" data-kind="${a.kind}" value="${a.id}" ${a.kind==='normal'?customConfig.attackPool.includes(a.id)?'checked':'':customConfig.superPool.includes(a.id)?'checked':''}><span class="atk-id">${a.kind==='normal'?String(a.id+1).padStart(2,'0'):'★'}</span><span class="atk-name">${a.name}</span><span class="atk-tag">${a.tag}</span></label>`).join('');
+            box.onchange=()=>readCustomControls();
+        }
+        function openCustomScreen(){ initAudio(); selectScreen.classList.remove('active'); difficultyScreen.classList.remove('active'); customScreen.classList.add('active'); buildCustomAttackLists(); writeCustomControls(customConfig); }
+        function closeCustomScreen(){ customScreen.classList.remove('active'); selectScreen.classList.add('active'); }
+        function saveCustomConfig(){ readCustomControls(); localStorage.setItem('spaceRacerCustomConfig',JSON.stringify(customConfig)); playBeep(700,.1,'sine',.06); }
+        function loadCustomConfig(){
+            const raw=localStorage.getItem('spaceRacerCustomConfig'); if(!raw)return;
+            try{
+                const saved=JSON.parse(raw);
+                customConfig={...cloneCustomConfig(),...saved};
+                customConfig.attackPool=[...new Set((Array.isArray(saved.attackPool)?saved.attackPool:[]).map(Number).filter(i=>i>=0&&i<BOSS_ATTACK_NAMES.length))];
+                customConfig.superPool=[...new Set((Array.isArray(saved.superPool)?saved.superPool:[]).map(Number).filter(i=>SUPER_ATTACK_IDS.includes(i)))];
+                buildCustomAttackLists();writeCustomControls(customConfig);playBeep(540,.1,'sine',.06);
+            }catch(_){}
+        }
+        function applyCustomPreset(type){
+            const c=cloneCustomConfig();
+            if(type==='balanced'){ Object.assign(c,{speed:1,combo:5,ai:5,bossHp:50,bossShots:9,playerHp:20,arena:1,bossSpeed:1,shotInterval:600,bulletWindow:300,perfectInterval:20,maxAttacks:1,attackCooldownMin:72,attackCooldownMax:100,superChance:.03,attackPool:[0,1,2,3,4,5,6,7,8],superPool:[0,4],learning:true}); }
+            if(type==='bosstest'){ Object.assign(c,{speed:1,combo:10,ai:6,bossHp:75,bossShots:12,playerHp:20,arena:1.2,bossSpeed:1,shotInterval:300,bulletWindow:300,perfectInterval:10,maxAttacks:2,attackCooldownMin:48,attackCooldownMax:72,superChance:.12,attackPool:[2,3,4,5,8,9,10,12,13,14,15],superPool:[0,1,2,4],learning:true}); }
+            if(type==='chaos'){ Object.assign(c,{speed:1.25,combo:20,ai:10,bossHp:150,bossShots:25,playerHp:30,arena:1.4,bossSpeed:1.25,shotInterval:120,bulletWindow:240,perfectInterval:5,maxAttacks:3,attackCooldownMin:30,attackCooldownMax:48,superChance:.2,attackPool:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],superPool:[0,1,2,4]}); }
+            customConfig=c; buildCustomAttackLists(); writeCustomControls(c);
+        }
+
+        function startCustomGame(testBoss=false){
+            initAudio();
+            readCustomControls();
+            customMode=true;
+            customBossTest=testBoss;
+            selectedDifficultyId='normal';
+            resetGame();
+            selectScreen.classList.remove('active');
+            difficultyScreen.classList.remove('active');
+            customScreen.classList.remove('active');
+            gameOverScreen.classList.remove('active');
+            pauseScreen.classList.remove('active');
+            hud.style.display='flex';
+            if(testBoss){ nextBossScore=Infinity; triggerBoss(); }
+        }
+
+        function restartCurrentGame(){
+            // Mantém exatamente o modo em que o jogador morreu.
+            // Partida personalizada continua personalizada e preserva o tipo de teste do boss.
+            if(customMode && customConfig){
+                startCustomGame(!!customBossTest);
+            }else{
+                startGame();
+            }
+        }
+
         let maxCombo = 5;
         let frameCount = 0;
         let comboCount = 0;
@@ -900,6 +1157,8 @@
         let coins = [];
         let bullets = [];
         let enemies = [];
+        let enemyLasers = [];
+        let enemyAttackFX = [];
         let particles = [];
         let stars = [];
         let powerups = [];
@@ -915,6 +1174,17 @@
         let bossAttackTimer = 0;
         let bossAttackSequence = 0;
         let bossAttackWarning = 0;
+        let bossTelegraph = null;
+        let bossCurrentAttack = 'ANALISANDO';
+        let bossAttackLabelTimer = 0;
+        let bossRage = 0;
+        let bossSuperAttackActive = false;
+        let bossSuperAttackGroup = null;
+        let bossSuperAttackTimer = 0;
+        let bossSuperAttackCooldown = 0;
+        let bossSuperAttackName = '';
+        let bossSuperHazard = null;
+        let bossExecutionLunge = null;
         let bossEntranceFlash = 0;
         let bossEntranceText = 0;
         let bossAttackProjectiles = [];
@@ -927,6 +1197,12 @@
         let bossPhase = 1;
         let bossPhaseFlash = 0;
         let perfectDodgeCooldown = 0;
+        let perfectDodgeTimer = null;
+        // Qualquer dano sofrido durante a boss fight reinicia a contagem do Perfect.
+        function resetPerfectDodgeTimerOnHit(){
+            const interval = getActiveDifficultyConfig().perfectInterval;
+            perfectDodgeTimer = interval === null ? null : interval;
+        }
         let bossHitCount = 0;
         // Memória simples do boss: aprende onde/direção o jogador costuma se mover.
         let bossLearning = {
@@ -1002,6 +1278,23 @@
         function soundBossDefeat() { playBeep(600, 0.3, 'sine', 0.15);
             setTimeout(() => playBeep(800, 0.3, 'sine', 0.15), 200);
             setTimeout(() => playBeep(1000, 0.4, 'sine', 0.15), 400); }
+
+        // ---- MENU PERSONALIZADO: NAVEGAÇÃO CLEAN ----
+        document.querySelectorAll('.custom-tab').forEach(tab=>{
+            tab.addEventListener('click',()=>{
+                const target=tab.dataset.customTab;
+                document.querySelectorAll('.custom-tab').forEach(x=>x.classList.toggle('active',x===tab));
+                document.querySelectorAll('.custom-tab-panel').forEach(panel=>panel.classList.toggle('active',panel.dataset.customPanel===target));
+                try{ playBeep(420,.045,'sine',.025); }catch(_){ }
+            });
+        });
+        // Mantém o painel sempre iniciando no primeiro separador ao abrir.
+        const _openCustomScreen = openCustomScreen;
+        openCustomScreen = function(){
+            _openCustomScreen();
+            const first=document.querySelector('.custom-tab[data-custom-tab="game"]');
+            if(first) first.click();
+        };
 
         // ---- INICIALIZAÇÃO ----
         function initStars() {
@@ -1204,70 +1497,102 @@
         function spawnEnemy(type = 'normal') {
             const side = Math.floor(Math.random() * 4);
             let x, y;
-            if (side === 0) { x = Math.random() * W;
-                y = -30; } else if (side === 1) { x = W + 30;
-                y = Math.random() * H; } else if (side === 2) { x = Math.random() * W;
-                y = H + 30; } else { x = -30;
-                y = Math.random() * H; }
-            const dx = player.x - x;
-            const dy = player.y - y;
+            if (side === 0) { x = Math.random() * W; y = -30; }
+            else if (side === 1) { x = W + 30; y = Math.random() * H; }
+            else if (side === 2) { x = Math.random() * W; y = H + 30; }
+            else { x = -30; y = Math.random() * H; }
+
+            const dx = player.x - x, dy = player.y - y;
             const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-            const baseSpeed = 1.2 + difficulty * 0.15;
+            const baseSpeed = 1.15 + difficulty * 0.16;
+            const attackJitter = Math.floor(Math.random() * 45);
             let enemy = {
-                x,
-                y,
-                r: ENEMY_RADIUS,
-                shootTimer: 0,
-                shootInterval: Math.max(50, 140 - difficulty * 5),
-                color: '#ff4466',
-                glow: 'rgba(255,68,102,0.5)',
-                type: type || 'normal',
-                health: 1,
-                phase: 0,
-                waveTimer: 0
+                x, y, r: ENEMY_RADIUS, shootTimer: attackJitter,
+                shootInterval: Math.max(48, 135 - difficulty * 5 + Math.random() * 24),
+                color: '#ff4466', glow: 'rgba(255,68,102,.55)',
+                type: type || 'normal', health: 1, phase: Math.random() * Math.PI * 2,
+                waveTimer: 0, attackCooldown: 30 + Math.random() * 70,
+                laserTelegraph: 0, laserActive: 0, laserAngle: 0,
+                uniqueSeed: Math.random() * 9999, dashTimer: 0, orbitAngle: Math.random() * Math.PI * 2
             };
+
             switch (type) {
                 case 'normal':
-                    enemy.vx = (dx / dist) * baseSpeed;
-                    enemy.vy = (dy / dist) * baseSpeed;
+                    enemy.vx = (dx / dist) * baseSpeed; enemy.vy = (dy / dist) * baseSpeed;
+                    enemy.color = '#ff3d5d'; enemy.glow = 'rgba(255,45,80,.55)';
+                    enemy.uniqueName = 'LASER';
                     break;
                 case 'sinusoidal':
-                    enemy.vx = (dx / dist) * baseSpeed * 0.7;
-                    enemy.vy = (dy / dist) * baseSpeed * 0.7;
-                    enemy.phase = Math.random() * Math.PI * 2;
-                    enemy.waveAmp = 2 + Math.random() * 2;
-                    enemy.waveFreq = 0.04 + Math.random() * 0.04;
+                    enemy.vx = (dx / dist) * baseSpeed * 0.68; enemy.vy = (dy / dist) * baseSpeed * 0.68;
+                    enemy.waveAmp = 2.5 + Math.random() * 3.5;
+                    enemy.waveFreq = 0.035 + Math.random() * 0.055;
+                    enemy.uniqueName = 'ONDULAÇÃO';
+                    enemy.color = '#2ee6ff'; enemy.glow = 'rgba(46,230,255,.55)';
                     break;
                 case 'shooter':
-                    enemy.vx = (dx / dist) * baseSpeed * 0.5;
-                    enemy.vy = (dy / dist) * baseSpeed * 0.5;
-                    enemy.shootInterval = Math.max(40, 100 - difficulty * 4);
-                    enemy.burstCount = 0;
-                    enemy.burstMax = 3;
-                    enemy.color = '#ff8800';
-                    enemy.glow = 'rgba(255,136,0,0.5)';
+                    enemy.vx = (dx / dist) * baseSpeed * 0.46; enemy.vy = (dy / dist) * baseSpeed * 0.46;
+                    enemy.shootInterval = Math.max(46, 92 - difficulty * 3) + Math.random() * 20;
+                    enemy.burstCount = 0; enemy.burstMax = 3 + Math.floor(Math.random() * 2);
+                    enemy.color = '#ff9a2e'; enemy.glow = 'rgba(255,154,46,.55)';
+                    enemy.uniqueName = 'RAJADA';
                     break;
                 case 'tank':
-                    enemy.vx = (dx / dist) * baseSpeed * 0.3;
-                    enemy.vy = (dy / dist) * baseSpeed * 0.3;
-                    enemy.r = ENEMY_RADIUS * 1.6;
-                    enemy.health = 3;
-                    enemy.color = '#aa44ff';
-                    enemy.glow = 'rgba(170,68,255,0.5)';
+                    enemy.vx = (dx / dist) * baseSpeed * 0.26; enemy.vy = (dy / dist) * baseSpeed * 0.26;
+                    enemy.r = ENEMY_RADIUS * 1.58; enemy.health = 3;
+                    enemy.color = '#9d4dff'; enemy.glow = 'rgba(157,77,255,.58)';
+                    enemy.uniqueName = 'PULSO ROXO';
+                    enemy.attackCooldown = 85 + Math.random() * 70;
                     break;
                 case 'bomber':
-                    enemy.vx = (dx / dist) * baseSpeed * 1.0;
-                    enemy.vy = (dy / dist) * baseSpeed * 1.0;
-                    enemy.r = ENEMY_RADIUS * 0.8;
-                    enemy.color = '#ffaa00';
-                    enemy.glow = 'rgba(255,170,0,0.6)';
-                    enemy.explodeRadius = 80;
+                    enemy.vx = (dx / dist) * baseSpeed * 1.0; enemy.vy = (dy / dist) * baseSpeed * 1.0;
+                    enemy.r = ENEMY_RADIUS * 0.8; enemy.color = '#ffd43b'; enemy.glow = 'rgba(255,212,59,.6)';
+                    enemy.explodeRadius = 80 + Math.random() * 25; enemy.uniqueName = 'DETONADOR';
+                    enemy.dashTimer = 110 + Math.random() * 100;
                     break;
                 default:
-                    enemy.vx = (dx / dist) * baseSpeed;
-                    enemy.vy = (dy / dist) * baseSpeed;
+                    enemy.vx = (dx / dist) * baseSpeed; enemy.vy = (dy / dist) * baseSpeed;
             }
             enemies.push(enemy);
+        }
+
+        function spawnEnemyLaser(e) {
+            // O laser usa uma das duas tangentes ao círculo de segurança do jogador.
+            // Assim ele passa muito perto, mas nunca nasce diretamente em cima dele.
+            const dx = player.x - e.x, dy = player.y - e.y;
+            const dist = Math.hypot(dx, dy) || 1;
+            const base = Math.atan2(dy, dx);
+            const safeRadius = Math.min(96, 70 + difficulty * 2.2);
+            let angle;
+            if (dist > safeRadius + 8) {
+                const tangentOffset = Math.acos(Math.min(.97, safeRadius / dist));
+                angle = base + (Math.random() < .5 ? tangentOffset : -tangentOffset);
+            } else {
+                angle = base + (Math.random() < .5 ? Math.PI/2 : -Math.PI/2);
+            }
+            const length = Math.hypot(W, H) * 1.25;
+            // Rajada em 5 raios saindo do mesmo inimigo.
+            // Mantemos uma abertura razoável entre eles para continuar sendo desviável.
+            const rayOffsets = [-0.72, -0.36, 0, 0.36, 0.72];
+            for (const offset of rayOffsets) {
+                enemyLasers.push({
+                    x:e.x, y:e.y, angle: angle + offset, length,
+                    telegraph: 42, active: 28, life: 70,
+                    width: Math.min(7.2, 4.8 + difficulty * .28),
+                    owner:e, safeRadius
+                });
+            }
+            e.laserTelegraph = 42;
+            e.laserActive = 28;
+            e.laserAngle = angle;
+            playBeep(155 + difficulty * 7, .10, 'sawtooth', .05);
+        }
+
+        function segmentPointDistance(px, py, x1, y1, x2, y2) {
+            const vx=x2-x1, vy=y2-y1, wx=px-x1, wy=py-y1;
+            const c1=wx*vx+wy*vy; const c2=vx*vx+vy*vy;
+            const t=c2?Math.max(0,Math.min(1,c1/c2)):0;
+            const dx=px-(x1+vx*t), dy=py-(y1+vy*t);
+            return Math.hypot(dx,dy);
         }
 
         function spawnEnemyBullet(ex, ey, targetX, targetY, color = '#ff4466') {
@@ -1308,7 +1633,7 @@
         // ---- BOSS / BATALHA ESTILO UNDERTALE ----
         let BOSS_ARENA = { left: 245, right: 555, top: 315, bottom: 515 };
         function applyDifficultyArena() {
-            const d = DIFFICULTIES[selectedDifficultyId];
+            const d = getActiveDifficultyConfig();
             const cx = W / 2, cy = 415;
             const halfW = 155 * d.arena, halfH = 100 * d.arena;
             BOSS_ARENA.left = cx-halfW; BOSS_ARENA.right = cx+halfW;
@@ -1357,51 +1682,373 @@
             };
         }
 
-        function spawnBossBullet(pattern = -1, index = 0, count = 1) {
-            if (!boss || boss.state !== 'fighting') return;
-            const a = BOSS_ARENA;
-            const cx = (a.left + a.right) / 2;
-            const cy = (a.top + a.bottom) / 2;
-            const p = pattern < 0 ? Math.floor(Math.random() * 7) : pattern;
-            const speed = 1.65 + Math.min(0.95, difficulty * 0.045);
+        function setBossAttack(name,detail=''){
+            bossCurrentAttack=name;
+            bossAttackLabelTimer=72;
+            bossAttackLabel.innerHTML=`ATAQUE ATUAL · <strong>${name}</strong>${detail?` · ${detail}`:''}`;
+        }
+        function setBossTelegraph(o){bossTelegraph={...o,life:o.life||18};}
+        function getBossMaxSimultaneousAttacks(){
+            if(customMode && customConfig) return Math.max(1,Math.min(5,customConfig.maxAttacks));
+            return DIFFICULTIES[selectedDifficultyId]?.maxAttacks ?? 1;
+        }
+        function getBossSuperCooldownFrames(){
+            if(customMode && customConfig) return Math.max(0,Math.round(customConfig.attackCooldownMin));
+            return DIFFICULTIES[selectedDifficultyId]?.superCooldown ?? 720;
+        }
+        function getActiveBossAttackGroups(){
+            const groups=new Set();
+            for(const p of bossAttackProjectiles){ if(p.attackGroup!==undefined) groups.add(p.attackGroup); }
+            if(bossSuperHazard && bossHazardGroup!==null) groups.add(bossHazardGroup);
+            return groups;
+        }
+        function getCustomSelectedAttackDescriptors(){
+            if(!customMode || !customConfig) return [];
+            const normals=[...new Set((customConfig.attackPool||[]).map(Number))].filter(i=>i>=0&&i<BOSS_ATTACK_NAMES.length).map(id=>({kind:'normal',id,key:`n:${id}`}));
+            const supers=[...new Set((customConfig.superPool||[]).map(Number))].filter(id=>SUPER_ATTACK_IDS.includes(id)).map(id=>({kind:'super',id,key:`s:${id}`}));
+            return normals.concat(supers);
+        }
+        function chooseCustomAttack(selected){ return selected.length ? selected[Math.floor(Math.random()*selected.length)] : null; }
+        function isCustomExactAttackTest(){
+            return !!(customMode && customConfig);
+        }
+        let bossSpawnAttackGroup = 0;
+        let bossHazardGroup = null;
+        let bossHazardIsSuper = false;
+        function pushBossProjectile(o){
+            if(!boss || boss.state!=='fighting') return;
+            if(o.attackGroup===undefined) o.attackGroup=bossSpawnAttackGroup;
+            if(bossAttackProjectiles.length>=220 && !o.isSuper) return;
+            bossAttackProjectiles.push(o);
+        }
+        function beginBossSuperAttack(name){
+            if(!boss || boss.state!=='fighting' || bossSuperAttackActive) return false;
+            if(getActiveBossAttackGroups().size>0) return false;
+            // Super attacks only appear from Hard onward, with much higher weight in the final phases.
+            const allowed = customMode ? !!customConfig.superEnabled : ['hard','insane','master','secret'].includes(selectedDifficultyId);
+            if(!allowed) return false;
+            bossSpawnAttackGroup=++bossSpawnAttackGroup;
+            bossSuperAttackGroup=bossSpawnAttackGroup;
+            bossSuperAttackActive=true;
+            bossSuperAttackName=name;
+            bossSuperAttackTimer=0;
+            bossSuperAttackCooldown=getBossSuperCooldownFrames();
+            bossAttackTimer=0;
+            bossAttackWarning=0;
+            bossTelegraph=null;
+            return true;
+        }
+        function pickQuadrant(){
+            // O QUARTO MORTAL usa SOMENTE os quatro cantos da arena.
+            const dirs=[
+                {id:'TL',cx:0.25,cy:0.25}, // topo-esquerda
+                {id:'TR',cx:0.75,cy:0.25}, // topo-direita
+                {id:'BL',cx:0.25,cy:0.75}, // baixo-esquerda
+                {id:'BR',cx:0.75,cy:0.75}  // baixo-direita
+            ];
+            return dirs[Math.floor(Math.random()*dirs.length)];
+        }
 
-            if (p === 0) { // chuva vertical irregular
-                const x = a.left + 10 + Math.random() * (a.right - a.left - 20);
-                bossAttackProjectiles.push({ x, y:a.top-18, vx:(Math.random()-.5)*1.2, vy:speed+Math.random()*1.5, r:7, life:190, type:'vertical' });
-            } else if (p === 1) { // cruz horizontal irregular
-                const y = a.top + 10 + Math.random() * (a.bottom-a.top-20);
-                const left = Math.random() < .5;
-                bossAttackProjectiles.push({ x:left?a.left-18:a.right+18, y, vx:left?(speed+Math.random()):-(speed+Math.random()), vy:(Math.random()-.5)*1.2, r:7, life:170, type:'horizontal' });
-            } else if (p === 2) { // radial com rotação variável
-                const ang = (index/count)*Math.PI*2 + bossAttackSequence*.47 + Math.sin(frameCount*.07)*.8;
-                bossAttackProjectiles.push({ x:boss.x, y:boss.y+35, vx:Math.cos(ang)*speed, vy:Math.sin(ang)*speed, r:7, life:190, type:'radial' });
-            } else if (p === 3) { // mira no coração + desvio
-                const target = getBossLearnedTarget();
-                const dx=target.x-boss.x, dy=target.y-boss.y, len=Math.hypot(dx,dy)||1;
-                const ang=Math.atan2(dy,dx)+(Math.random()-.5)*.65;
-                const sp=speed+Math.random()*1.5;
-                bossAttackProjectiles.push({ x:boss.x, y:boss.y+35, vx:Math.cos(ang)*sp, vy:Math.sin(ang)*sp, r:8, life:220, type:'aimed' });
-            } else if (p === 4) { // ricochete dentro da arena
-                const side=Math.floor(Math.random()*4);
-                let x,y,vx,vy;
-                if(side===0){x=a.left-8;y=a.top+Math.random()*(a.bottom-a.top);vx=speed;vy=(Math.random()-.5)*2;} 
-                if(side===1){x=a.right+8;y=a.top+Math.random()*(a.bottom-a.top);vx=-speed;vy=(Math.random()-.5)*2;}
-                if(side===2){x=a.left+Math.random()*(a.right-a.left);y=a.top-8;vx=(Math.random()-.5)*2;vy=speed;}
-                if(side===3){x=a.left+Math.random()*(a.right-a.left);y=a.bottom+8;vx=(Math.random()-.5)*2;vy=-speed;}
-                bossAttackProjectiles.push({x,y,vx,vy,r:7,life:260,type:'bounce',bounces:2});
-            } else if (p === 5) { // espiral
-                const ang=bossAttackSequence*.3+index*.42;
-                const sp=1.35+index*.075;
-                bossAttackProjectiles.push({x:cx,y:cy,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,r:6,life:240,type:'spiral'});
-            } else { // tiro imprevisível de uma borda
-                const side=Math.floor(Math.random()*4);
-                const tx=a.left+Math.random()*(a.right-a.left), ty=a.top+Math.random()*(a.bottom-a.top);
-                let x=tx,y=ty;
-                if(side===0)y=a.top-15; else if(side===1)y=a.bottom+15; else if(side===2)x=a.left-15; else x=a.right+15;
-                const target = getBossLearnedTarget();
-                const ang=Math.atan2(target.y-y,target.x-x)+(Math.random()-.5)*1.1;
-                const sp=speed+Math.random()*1.1;
-                bossAttackProjectiles.push({x,y,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,r:8,life:230,type:'wild'});
+        function startBossSuperAttack(forcedId=null){
+            if(!boss || boss.state!=='fighting' || bossSuperAttackActive || bossSuperHazard) return false;
+            if(bossSuperAttackCooldown>0 || getActiveBossAttackGroups().size>0) return false;
+            const defaultIds=DIFFICULTIES[selectedDifficultyId]?.superPool || [0,1,2,4];
+            const selectedIds=(customMode&&customConfig)?customConfig.superPool:defaultIds;
+            const pool=selectedIds.filter(id=>SUPER_ATTACK_LABELS[id]);
+            if(!pool.length) return false;
+            const id=forcedId!==null ? Number(forcedId) : pool[Math.floor(Math.random()*pool.length)];
+            if(customMode && customConfig && !pool.includes(id)) return false;
+            if(!SUPER_ATTACK_LABELS[id]) return false;
+            const name=SUPER_ATTACK_LABELS[id];
+            if(!beginBossSuperAttack(name)) return false;
+            const a=BOSS_ARENA, cx=(a.left+a.right)/2, cy=(a.top+a.bottom)/2;
+            const tgt=getBossLearnedTarget();
+            setBossAttack(name,'SUPER ATAQUE · nenhum outro padrão');
+
+            if(id===0){
+                const n=9;
+                const gap=Math.max(1,Math.min(n-2,Math.floor(((tgt.x-a.left)/(a.right-a.left))*n)));
+                setBossTelegraph({type:'columns',a:a.left,b:a.right,y:a.top,color:'#ffcf4a',life:54,gap,n});
+                for(let k=0;k<n;k++){
+                    if(k===gap) continue;
+                    const x=a.left+(k+.5)*(a.right-a.left)/n;
+                    pushBossProjectile({x,y:a.top-28,vx:0,vy:2.35+(k%2)*.12,r:8,life:240,type:'drop',hue:42,attackGroup:bossSuperAttackGroup,isSuper:true,superStyle:'judgment'});
+                }
+            }else if(id===1){
+                const n=30, outerR=Math.min(a.right-a.left,a.bottom-a.top)*.34;
+                setBossTelegraph({type:'circle',x:cx,y:cy,r:outerR*.72,color:'#b773ff',life:62});
+                for(let k=0;k<n;k++){
+                    const ang=(k/n)*Math.PI*2 + bossAttackSequence*.17;
+                    const r0=18+(k%3)*8, sp=1.55+(k%4)*.10;
+                    pushBossProjectile({x:cx+Math.cos(ang)*r0,y:cy+Math.sin(ang)*r0,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,r:6.3,life:330,type:'spiral',spiralTurn:k%2?-.082:.082,hue:275,attackGroup:bossSuperAttackGroup,isSuper:true,superStyle:'vortex',vortexOuterR:outerR});
+                }
+            }else if(id===2){
+                for(let k=0;k<7;k++){
+                    const side=k%4; let x,y;
+                    if(side===0){x=a.left-18;y=a.top+30+k*24;}else if(side===1){x=a.right+18;y=a.bottom-30-k*24;}else if(side===2){x=a.left+35+k*30;y=a.top-18;}else{x=a.right-35-k*30;y=a.bottom+18;}
+                    const aa=Math.atan2(tgt.y-y,tgt.x-x)+(k-3)*.06;
+                    pushBossProjectile({x,y,vx:Math.cos(aa)*2.05,vy:Math.sin(aa)*2.05,r:8,life:240,type:'homing',turn:.028,hue:325,attackGroup:bossSuperAttackGroup,isSuper:true,superStyle:'hunter'});
+                }
+                setBossTelegraph({type:'aim',x:cx,y:cy,x2:tgt.x,y2:tgt.y,color:'#ff4f9a',life:50});
+            }else if(id===4){
+                // EXECUÇÃO SUPREMA — versão extrema:
+                // o boss fica no topo, aponta a boca para a arena e varre um cone colossal.
+                // O ataque não fica preso no centro: ele acompanha uma trajetória lateral e muda de lado.
+                const arenaW=a.right-a.left;
+                const side=Math.random()<.5?-1:1;
+                const start=side>0 ? -0.58 : 0.58;
+                const end=side>0 ? 0.58 : -0.58;
+                boss.x = a.left + arenaW*(side>0 ? .22 : .78);
+                boss.y = Math.max(135, a.top-58);
+                bossExecutionLunge={
+                    kind:'mouthBeam',
+                    state:'warning',
+                    warningTimer:68,
+                    activeTimer:Math.round(285/Math.max(.72,getBossBattleSpeed())),
+                    fadeTimer:24,
+                    damageTimer:0,
+                    angle:Math.PI/2 + start,
+                    sweepStart:Math.PI/2 + start,
+                    sweepEnd:Math.PI/2 + end,
+                    sweepDir:side>0?1:-1,
+                    sweepSpeed:0.0145 * Math.max(1,getBossBattleSpeed()*.95),
+                    beamNear:Math.max(58,arenaW*.22),
+                    beamFar:Math.max(235,arenaW*.88),
+                    pulse:0,
+                    color:'#ff122f',
+                    chargeSide:side
+                };
+                setBossAttack('EXECUÇÃO SUPREMA','⚠ VARREDURA TOTAL · RAIO DA BOCA');
+                setBossTelegraph({type:'executionBeam',life:68,color:'#ff304d',width:arenaW*.86,angle:bossExecutionLunge.angle});
+            }
+            return true;
+        }
+
+        function updateBossSuperAttackState(){
+            if(bossSuperAttackCooldown>0) bossSuperAttackCooldown--;
+
+            // EXECUÇÃO SUPREMA: cone de energia frontal, em primeiro plano, com hitbox idêntica ao desenho.
+            if(bossExecutionLunge && bossExecutionLunge.kind==='mouthBeam'){
+                const e=bossExecutionLunge;
+                e.pulse++;
+                if(e.state==='warning'){
+                    e.warningTimer--;
+                    // O boss acompanha a lateral da própria arena antes de disparar.
+                    const a=BOSS_ARENA;
+                    const xTarget=a.left+(a.right-a.left)*(e.chargeSide>0?.22:.78);
+                    boss.x += (xTarget-boss.x)*.06;
+                    boss.y += ((a.top-58)-boss.y)*.08;
+                    if(e.warningTimer<=0){
+                        e.state='active';
+                        e.damageTimer=0;
+                        setBossAttack('EXECUÇÃO SUPREMA','☠ VARREDURA ATIVA · FIQUE FORA DO CONE');
+                    }
+                }else if(e.state==='active'){
+                    if(e.activeTimer>0)e.activeTimer--;
+                    if(e.damageTimer>0)e.damageTimer--;
+                    const a=BOSS_ARENA;
+                    // Varredura de ponta a ponta. A direção inverte quando chega às bordas.
+                    e.angle += e.sweepSpeed*e.sweepDir;
+                    const minA=Math.min(e.sweepStart,e.sweepEnd), maxA=Math.max(e.sweepStart,e.sweepEnd);
+                    if(e.angle<=minA){ e.angle=minA; e.sweepDir=1; }
+                    if(e.angle>=maxA){ e.angle=maxA; e.sweepDir=-1; }
+                    // Pequena perseguição do alvo: o boss tenta manter o cone perto do jogador, sem destruir a previsibilidade.
+                    const targetAngle=Math.atan2(bossSoul.y-boss.y,bossSoul.x-boss.x);
+                    const clampedTarget=Math.max(minA,Math.min(maxA,targetAngle));
+                    e.angle += (clampedTarget-e.angle)*0.012;
+
+                    const mouthX=boss.x;
+                    const mouthY=boss.y+boss.r*.42;
+                    const dirX=Math.cos(e.angle), dirY=Math.sin(e.angle);
+                    const vx=bossSoul.x-mouthX, vy=bossSoul.y-mouthY;
+                    const along=vx*dirX+vy*dirY;
+                    const perp=Math.abs(vx*dirY-vy*dirX);
+                    const depth=Math.hypot(a.right-a.left,a.bottom-a.top)*1.45;
+                    // A hitbox abre com a distância exatamente como o cone desenhado.
+                    const t=Math.max(0,Math.min(1,along/depth));
+                    const halfWidth=(e.beamNear*.5) + (e.beamFar*.5-e.beamNear*.5)*t;
+                    const inBeam=along>-boss.r*.35 && along<depth && perp<halfWidth;
+                    if(inBeam && !godMode && e.damageTimer<=0 && bossSoul.invuln<=0){
+                        bossSoul.hp=Math.max(0,bossSoul.hp-1);
+                        bossSoul.invuln=2;
+                        resetPerfectDodgeTimerOnHit();
+                        e.damageTimer=7;
+                        updateBossPlayerHP();
+                        soundHit();
+                        bossEntranceFlash=7;
+                        // Empurrão curto evita que o jogador fique preso no cone.
+                        const push=2.2;
+                        bossSoul.x=Math.max(a.left+8,Math.min(a.right-8,bossSoul.x+(bossSoul.x-mouthX>0?push:-push)));
+                        if(bossSoul.hp<=0){
+                            bossExecutionLunge=null; bossSuperAttackActive=false; bossSuperAttackGroup=null;
+                            bossActive=false; bossBullets=[]; bossAttackProjectiles=[]; bossHitEffects=[]; bossPlayerShot=null;
+                            bossPlayerHP.style.display='none'; gameContainer.classList.remove('boss-danger'); endGame(); return;
+                        }
+                    }
+                    if(e.activeTimer<=0){
+                        e.state='fade';
+                        e.fadeTimer=24;
+                        setBossAttack('EXECUÇÃO SUPREMA','RAIO COLAPSANDO · CORRA PARA A BORDA');
+                    }
+                }else if(e.state==='fade'){
+                    e.fadeTimer--;
+                    if(e.fadeTimer<=0){
+                        bossExecutionLunge=null;
+                        bossSuperAttackActive=false; bossSuperAttackGroup=null; bossSuperAttackTimer=0; bossSuperAttackName='';
+                        bossSuperAttackCooldown=getBossSuperCooldownFrames();
+                        bossTelegraph=null;
+                        setBossAttack('RECUPERANDO','EXECUÇÃO FINALIZADA');
+                    }
+                }
+            }
+
+            // Quarto Mortal: agora é um ataque NORMAL, mas mantém seu sistema próprio de aviso/dano.
+            if(bossSuperHazard){
+                const h=bossSuperHazard;
+                h.timer++;
+                if(h.state==='warning'){
+                    h.warningTimer--;
+                    if(h.warningTimer<=0){
+                        h.state='active';
+                        h.activeTimer=h.moveDelay;
+                        h.damageTimer=0;
+                        bossTelegraph=null;
+                        setBossAttack('QUARTO MORTAL','IMPACTO · não encoste no vermelho');
+                    }
+                }else{
+                    if(h.activeTimer>0) h.activeTimer--;
+                    if(h.damageTimer>0) h.damageTimer--;
+                    const dx=bossSoul.x-h.cx, dy=bossSoul.y-h.cy;
+                    const hitHazard=Math.abs(dx)<h.w/2+bossSoul.r*.55 && Math.abs(dy)<h.h/2+bossSoul.r*.55;
+                    if(hitHazard && !godMode && h.damageTimer<=0 && bossSoul.invuln<=0){
+                        bossSoul.hp=Math.max(0,bossSoul.hp-1);
+                        bossSoul.invuln=10;
+                        resetPerfectDodgeTimerOnHit();
+                        h.damageTimer=7;
+                        updateBossPlayerHP(); soundHit(); bossEntranceFlash=6;
+                        if(bossSoul.hp<=0){
+                            bossSuperHazard=null; bossHazardGroup=null; bossHazardIsSuper=false;
+                            bossSuperAttackActive=false; bossActive=false; bossBullets=[]; bossAttackProjectiles=[]; bossHitEffects=[]; bossPlayerShot=null;
+                            bossPlayerHP.style.display='none'; gameContainer.classList.remove('boss-danger'); endGame(); return;
+                        }
+                    }
+                    if(h.activeTimer<=0 && h.step<h.maxSteps){
+                        const a=BOSS_ARENA; let q=pickQuadrant(); let guard=0;
+                        while(q.id===h.lastKey && guard++<10) q=pickQuadrant();
+                        h.cx=a.left+(a.right-a.left)*q.cx;
+                        h.cy=a.top+(a.bottom-a.top)*q.cy;
+                        h.lastKey=q.id; h.step++; h.state='warning'; h.warningTimer=88; h.activeTimer=0; h.damageTimer=0;
+                        setBossAttack('QUARTO MORTAL',`⚠ NOVA POSIÇÃO · movimento ${h.step}/${h.maxSteps}`);
+                        setBossTelegraph({type:'dangerQuarter',cx:h.cx,cy:h.cy,w:h.w,h:h.h,angle:0,color:'#ff273c',life:60,warning:true});
+                    }
+                    if(h.activeTimer<=0 && h.step>=h.maxSteps){
+                        const wasSuper=bossHazardIsSuper;
+                        bossSuperHazard=null; bossHazardGroup=null; bossHazardIsSuper=false;
+                        if(wasSuper){ bossSuperAttackActive=false; bossSuperAttackGroup=null; bossSuperAttackTimer=0; bossSuperAttackName=''; bossSuperAttackCooldown=getBossSuperCooldownFrames(); }
+                        bossTelegraph=null;
+                        setBossAttack('RECUPERANDO','o boss abriu a arena');
+                    }
+                }
+            }
+
+            if(!bossSuperAttackActive) return;
+            if(bossExecutionLunge) return;
+            bossSuperAttackTimer++;
+            const hasGroup=bossAttackProjectiles.some(p=>p.attackGroup===bossSuperAttackGroup);
+            if(!hasGroup){
+                bossSuperAttackActive=false;
+                bossSuperAttackGroup=null;
+                bossSuperAttackName='';
+                bossSuperAttackTimer=0;
+                bossTelegraph=null;
+                setBossAttack('RECUPERANDO','prepare-se para o próximo ataque');
+            }
+        }
+
+        function spawnBossBullet(pattern=-1,index=0,count=1){
+            if(!boss||boss.state!=='fighting')return;
+            const a=BOSS_ARENA,cx=(a.left+a.right)/2,cy=(a.top+a.bottom)/2;
+            const p=pattern<0?Math.floor(Math.random()*16):pattern;
+            const spd=1.7+Math.min(1.35,difficulty*.055)+(bossPhase===3?.25:bossPhase===2?.12:0), tgt=getBossLearnedTarget();
+            if(p===0){
+                let x=a.left+10+Math.random()*(a.right-a.left-20);
+                pushBossProjectile({x,y:a.top-16,vx:(Math.random()-.5),vy:spd+Math.random()*1.4,r:7,life:190,type:'drop',hue:350});setBossAttack('CHUVA ESCARLATE','olhe para cima');
+            }else if(p===1){
+                let y=a.top+15+Math.random()*(a.bottom-a.top-30),left=Math.random()<.5;
+                pushBossProjectile({x:left?a.left-16:a.right+16,y,vx:left?spd:-spd,vy:(Math.random()-.5)*.8,r:7,life:175,type:'shot',hue:20});setBossAttack('CRUZ DE IMPACTO','mude de faixa');
+            }else if(p===2){
+                const n=24,gap=Math.floor(((tgt.x-a.left)/(a.right-a.left))*n),ringR=Math.min(a.right-a.left,a.bottom-a.top)*.40,gapCenter=(gap/n)*Math.PI*2,gapWidth=(3.4/n)*Math.PI*2;
+                for(let k=0;k<n;k++){const ang=k/n*Math.PI*2,d=Math.atan2(Math.sin(ang-gapCenter),Math.cos(ang-gapCenter));if(Math.abs(d)<gapWidth/2)continue;pushBossProjectile({x:cx+Math.cos(ang)*ringR,y:cy+Math.sin(ang)*ringR,vx:0,vy:0,r:7,life:360,type:'chaosRing',hue:55,ringCx:cx,ringCy:cy,ringRadius:ringR,ringAngle:ang,ringSpeed:.030,ringIndex:k});}
+                setBossAttack('ANEL DO CAOS','corredor em movimento');setBossTelegraph({type:'ringGap',x:cx,y:cy,r:ringR,gapIndex:gap,n,color:'#ffd34f',life:46});
+            }else if(p===3){
+                for(let w=0;w<3;w++){const aimX=tgt.x+(Math.random()-.5)*55,aimY=tgt.y+(Math.random()-.5)*55,side=w%2;for(let k=-1;k<=1;k++){let x,y;if(side===0){x=a.left-24;y=aimY+k*28;}else{x=aimX+k*28;y=a.top-24;}const ang=Math.atan2(tgt.y-y,tgt.x-x)+(Math.random()-.5)*.16;pushBossProjectile({x,y,vx:Math.cos(ang)*(spd+.25+w*.18),vy:Math.sin(ang)*(spd+.25+w*.18),r:8,life:240,type:'prediction',delay:18+w*10,predTurn:.010,hue:285});}}
+                setBossAttack('PERDIÇÃO / PREDIÇÃO','três ondas');setBossTelegraph({type:'aim',x:cx,y:cy,x2:tgt.x,y2:tgt.y,color:'#c77dff',life:50});
+            }else if(p===4){
+                let side=Math.floor(Math.random()*4),x,y,vx,vy;
+                if(side===0){x=a.left-8;y=a.top+Math.random()*(a.bottom-a.top);vx=spd;vy=(Math.random()-.5)*2}else if(side===1){x=a.right+8;y=a.top+Math.random()*(a.bottom-a.top);vx=-spd;vy=(Math.random()-.5)*2}else if(side===2){x=a.left+Math.random()*(a.right-a.left);y=a.top-8;vx=(Math.random()-.5)*2;vy=spd}else{x=a.left+Math.random()*(a.right-a.left);y=a.bottom+8;vx=(Math.random()-.5)*2;vy=-spd}
+                pushBossProjectile({x,y,vx,vy,r:7,life:290,type:'bounce',bounces:3,hue:170});setBossAttack('RICOCHETE','três quinas e volta');
+            }else if(p===5){
+                const n=20;
+                for(let k=0;k<n;k++){
+                    const ang=bossAttackSequence*.24+(k/n)*Math.PI*2;
+                    const rr=10+(k%2)*8;
+                    pushBossProjectile({x:cx+Math.cos(ang)*rr,y:cy+Math.sin(ang)*rr,vx:Math.cos(ang)*1.95,vy:Math.sin(ang)*1.95,r:7,life:310,type:'spiral',spiralTurn:(k%2?-.092:.092),hue:210});
+                }
+                setBossAttack('ESPIRAL INVERTIDA','a arena inteira entra no giro');
+                setBossTelegraph({type:'circle',x:cx,y:cy,r:74,color:'#4cd7ff',life:26});
+            }else if(p===6){
+                let side=Math.floor(Math.random()*4),x=cx,y=cy;
+                if(side===0)y=a.top-16;else if(side===1)y=a.bottom+16;else if(side===2)x=a.left-16;else x=a.right+16;
+                let ang=Math.atan2(tgt.y-y,tgt.x-x)+(Math.random()-.5);
+                pushBossProjectile({x,y,vx:Math.cos(ang)*(spd+.3),vy:Math.sin(ang)*(spd+.3),r:8,life:235,type:'wild',hue:115});setBossAttack('BALA FANTASMA','imprevisível');
+            }else if(p===7){
+                let x=a.left+Math.random()*(a.right-a.left);
+                pushBossProjectile({x,y:a.top-10,vx:(Math.random()-.5)*.6,vy:spd,baseX:x,w:Math.random()*6.28,amp:20+Math.random()*16,r:7,life:215,type:'sine',hue:195});setBossAttack('ONDULAÇÃO','movimento falso');
+            }else if(p===8){
+                let side=Math.floor(Math.random()*4),x,y;
+                if(side===0){x=a.left-15;y=a.top+Math.random()*(a.bottom-a.top)}else if(side===1){x=a.right+15;y=a.top+Math.random()*(a.bottom-a.top)}else if(side===2){x=a.left+Math.random()*(a.right-a.left);y=a.top-15}else{x=a.left+Math.random()*(a.right-a.left);y=a.bottom+15}
+                let ang=Math.atan2(tgt.y-y,tgt.x-x);pushBossProjectile({x,y,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd,r:8,life:220,type:'homing',turn:.024,hue:330});setBossAttack('CAÇADOR','não pare de se mover');
+            }else if(p===9){
+                const n=28,ringR=Math.min(a.right-a.left,a.bottom-a.top)*.13;
+                for(let k=0;k<n;k++)pushBossProjectile({cx,cy,orbitAngle:k/n*Math.PI*2,orbitRadius:ringR,orbitSpeed:.031+(k%5)*.0012,orbitAge:0,orbitPhase:0,spreadSeed:k,spreadAt:104,r:6.2,life:330,type:'orbitSpread',hue:270});
+                setBossAttack('ÓRBITA MORTAL','espalha do centro para os cantos');setBossTelegraph({type:'circle',x:cx,y:cy,r:ringR,color:'#b773ff',life:58});
+            }else if(p===10){
+                let x=a.left+35+Math.random()*(a.right-a.left-70),y=a.top+35+Math.random()*(a.bottom-a.top-70);
+                pushBossProjectile({x,y,vx:0,vy:0,r:9,life:126,arm:34,flash:0,type:'mine',hue:40});setBossAttack('MINA TEMPORAL','ela vai explodir');setBossTelegraph({type:'circle',x,y,r:24,color:'#ffd34f',life:30});
+            }else if(p===11){
+                let ang=bossAttackSequence*.25;
+                for(let k=0;k<8;k++){let aa=ang+k*Math.PI/4+(k%2?.06:-.04);pushBossProjectile({x:cx,y:cy,vx:Math.cos(aa)*spd*1.32,vy:Math.sin(aa)*spd*1.32,r:6.6,life:225,type:'radial',hue:5,accent:true});}
+                setBossAttack('X FÚRIA','oito direções');setBossTelegraph({type:'cross',rot:ang,color:'#ff4055',life:14});
+            }else if(p===12){
+                const horizontal=Math.random()<.5,n=8;
+                let gap=Math.floor(Math.random()*(n-3))+1;
+                for(let k=0;k<n;k++){
+                    const t=(k+.5)/n; if(k===gap||k===gap+1||k===gap+2) continue;
+                    if(horizontal) pushBossProjectile({x:a.left-26,y:a.top+t*(a.bottom-a.top),vx:spd*0.96,vy:0,r:6.5,life:225,type:'sweep',delay:k*9,hue:75,wall:true});
+                    else pushBossProjectile({x:a.left+t*(a.right-a.left),y:a.top-26,vx:0,vy:spd*0.96,r:6.5,life:225,type:'sweep',delay:k*9,hue:75,wall:true});
+                }
+                setBossAttack(horizontal?'MURAL HORIZONTAL':'MURAL VERTICAL','corredor muito maior');
+                setBossTelegraph({type:'wallGap',horizontal,gap,n,color:'#ffd34f',life:38});
+            }else if(p===13){
+                const ang=Math.atan2(tgt.y-boss.y,tgt.x-boss.x);pushBossProjectile({x:cx,y:a.top+10,vx:Math.cos(ang)*(spd+.8),vy:Math.sin(ang)*(spd+.8),r:13,life:190,age:0,splitAtAge:58,splitDone:false,type:'split',hue:160,splitCount:6});
+                setBossAttack('CÁPSULA PARTIDA','abre em seis caçadores');setBossTelegraph({type:'aim',x:boss.x,y:boss.y,x2:tgt.x,y2:tgt.y,color:'#52ffcc',life:36});
+            }else if(p===14){
+                const ang=Math.atan2(tgt.y-boss.y,tgt.x-boss.x);pushBossProjectile({x:cx,y:a.top+10,vx:Math.cos(ang)*(spd+1.25),vy:Math.sin(ang)*(spd+1.25),r:10,life:260,age:0,turnAtAge:48,turned:false,type:'boomerang',hue:95,returnTurn:.055});
+                setBossAttack('BOOMERANG','vai, vira e retorna');setBossTelegraph({type:'aim',x:boss.x,y:boss.y,x2:tgt.x,y2:tgt.y,color:'#9cff66',life:32});
+            }else if(p===15){
+                const base=Math.atan2(tgt.y-boss.y,tgt.x-boss.x);for(let k=0;k<3;k++){const ang=base+(k-1)*.14;pushBossProjectile({x:cx,y:a.top+10,vx:Math.cos(ang)*(spd+2+k*.25),vy:Math.sin(ang)*(spd+2+k*.25),r:8,life:165,dashDelay:28+k*22,type:'dash',hue:0,executionPulse:k});}
+                setBossAttack('EXECUÇÃO','três investidas');setBossTelegraph({type:'aim',x:boss.x,y:boss.y,x2:tgt.x,y2:tgt.y,color:'#ff4055',life:52});
+            }else if(p===16){
+                if(bossSuperHazard && bossHazardGroup===bossSpawnAttackGroup) return;
+                const q=pickQuadrant();
+                const w=(a.right-a.left)*.50, h=(a.bottom-a.top)*.50;
+                bossHazardGroup=bossSpawnAttackGroup; bossHazardIsSuper=false;
+                bossSuperHazard={
+                    cx:a.left+(a.right-a.left)*q.cx, cy:a.top+(a.bottom-a.top)*q.cy, w,h,angle:0,
+                    timer:0,step:0,maxSteps:5,state:'warning',warningTimer:60,activeTimer:0,damageTimer:0,moveDelay:66,lastKey:q.id,color:'#ff1729',danger:true
+                };
+                setBossAttack('QUARTO MORTAL','⚠ prepare-se');
+                setBossTelegraph({type:'dangerQuarter',cx:bossSuperHazard.cx,cy:bossSuperHazard.cy,w,h,angle:0,color:'#ff273c',life:88,warning:true});
             }
         }
 
@@ -1413,7 +2060,7 @@
                 x: a.left + 25 + Math.random() * (a.right - a.left - 50),
                 y: a.top + 25 + Math.random() * (a.bottom - a.top - 50),
                 r: 9,
-                life: 300,
+                life: Math.round(getActiveDifficultyConfig().bulletWindow || 300),
                 pulse: 0
             };
             soundShoot();
@@ -1423,6 +2070,8 @@
             if (bossTriggered || bossActive || !gameRunning) return;
             bossTriggered = true;
             enemies = [];
+            enemyLasers = [];
+            enemyAttackFX = [];
             coins = [];
             bullets = [];
             powerups = [];
@@ -1430,26 +2079,26 @@
             bossAttackProjectiles = [];
             bossHitEffects = [];
             bossPlayerShot = null;
-            bossPlayerShotTimer = DIFFICULTIES[selectedDifficultyId].shotInterval;
+            bossPlayerShotTimer = getActiveDifficultyConfig().shotInterval;
             bossPlayerShotGrace = 0;
             bossAttackSequence = 0;
             bossAttackWarning = 0;
-            bossEntranceFlash = 90;
+            bossTelegraph = null; bossCurrentAttack='ANALISANDO'; bossAttackLabelTimer=0; bossRage=0; bossSuperAttackActive=false; bossSuperAttackGroup=null; bossSuperAttackTimer=0; bossSuperAttackCooldown=0; bossSuperAttackName=''; bossExecutionLunge=null; bossSuperHazard=null; bossHazardGroup=null; bossHazardIsSuper=false; bossEntranceFlash=90;
             bossEntranceText = 120;
             boss = {
                 x: W / 2, y: -130, r: 48,
-                hp: DIFFICULTIES[selectedDifficultyId].bossHp,
-                maxHp: DIFFICULTIES[selectedDifficultyId].bossHp,
+                hp: getActiveDifficultyConfig().bossHp,
+                maxHp: getActiveDifficultyConfig().bossHp,
                 state: 'entering', entranceTimer: 150,
-                attackTimer: 0, attackCooldown: 78,
-                phase: 1,
-                phaseTimer: 0
+                attackTimer: 0, attackCooldown: 72,
+                phase: 1, phaseTimer: 0, lastPattern: -1
             };
             bossSoul.x = W / 2;
             bossSoul.y = 415;
-            bossSoul.maxHp = DIFFICULTIES[selectedDifficultyId].playerHp;
-            bossSoul.hp = bossSoul.maxHp;
-            bossSoul.invuln = 0;
+            // O HP é persistente entre bosses: o próximo boss começa
+            // com a mesma vida restante da batalha anterior.
+            bossSoul.maxHp = getActiveDifficultyConfig().playerHp;
+            bossSoul.hp = Math.min(bossSoul.hp, bossSoul.maxHp);
             bossLearning = { samples: [], lastX: bossSoul.x, lastY: bossSoul.y, dx: 0, dy: 0, left: 0, right: 0, top: 0, bottom: 0, horizontal: 0, vertical: 0, preferredX: .5, preferredY: .5, pressure: 0 };
             bossPlayerHP.classList.remove('danger');
             bossPlayerHP.style.display = 'block';
@@ -1461,37 +2110,20 @@
             bossActive = true;
             bossBarContainer.style.display = 'block';
             bossBarFill.style.width = '100%';
-            bossBarFill.style.background = 'linear-gradient(90deg,#20e070,#8cff5a)';
-            bossName.textContent = `♥ BOSS LVL ${Math.floor(difficulty)}`;
+            bossBarFill.style.background = 'linear-gradient(90deg,#ff2146,#ff6677,#ff9a62)';
+            bossName.innerHTML = `👑 <span class="boss-type">BOSS</span> LVL ${Math.floor(difficulty)}`;
+            bossHpValue.textContent = `${Math.ceil(boss.maxHp)} / ${boss.maxHp} HP`;
+            bossPhaseLabel.textContent = 'PHASE 1';
+            bossAttackLabel.innerHTML = 'ATAQUE ATUAL · <strong>ANALISANDO...</strong>';
             soundBoss();
         }
 
-        function updateBossPlayerHP() {
-            const maxHp = bossSoul.maxHp;
-            const hp = Math.max(0, Math.min(maxHp, bossSoul.hp));
-            bossPlayerHPText.textContent = `${hp} / ${maxHp}`;
-            const segments = bossPlayerHP.querySelectorAll('.hp-segment');
-            segments.forEach((seg, i) => {
-                const active = i < hp;
-                seg.classList.toggle('full', active);
-                seg.classList.toggle('lost', !active);
-                if (active) {
-                    const t = (20 - hp) / 19;
-                    const hue = 125 - (t * 125);
-                    seg.style.background = `linear-gradient(90deg,hsl(${hue},85%,42%),hsl(${Math.max(0,hue-8)},95%,58%))`;
-                    seg.style.borderColor = `hsl(${Math.max(0,hue)},90%,70%)`;
-                } else {
-                    seg.style.background = '#171717';
-                    seg.style.borderColor = 'rgba(255,255,255,.35)';
-                }
-            });
-            if (hp === 1) {
-                bossPlayerHP.classList.add('danger');
-                gameContainer.classList.add('boss-danger');
-            } else {
-                bossPlayerHP.classList.remove('danger');
-                gameContainer.classList.remove('boss-danger');
-            }
+        function updateBossPlayerHP(){
+            const maxHp=bossSoul.maxHp; const hp=Math.max(0,Math.min(maxHp,Math.round(bossSoul.hp)));
+            bossPlayerHPText.textContent=`${hp} / ${maxHp}`;
+            bossPlayerHP.querySelectorAll('.hp-segment').forEach((seg,i)=>seg.classList.toggle('full',i<hp));
+            const danger=hp===1; bossPlayerHP.classList.toggle('danger',danger); gameContainer.classList.toggle('boss-danger',danger);
+            dangerBanner.textContent=danger?'♡ 1 HP':`⚠ VIDA CRÍTICA · ${hp} HP ⚠`;
         }
 
         function updateBoss() {
@@ -1525,8 +2157,10 @@
                     boss.y = 150;
                     bossPhase = 1;
                     bossPhaseFlash = 0;
-                    bossAttackTimer = 0;
-                    bossPlayerShotTimer = DIFFICULTIES[selectedDifficultyId].shotInterval;
+                    bossAttackTimer = (customMode && customBossTest) ? 1 : 0;
+                    if(customMode && customBossTest) boss.attackCooldown = 1;
+                    bossPlayerShotTimer = getActiveDifficultyConfig().shotInterval;
+                    perfectDodgeTimer = getActiveDifficultyConfig().perfectInterval;
                     bossEntranceText = 0;
                     soundBoss();
                 }
@@ -1565,8 +2199,8 @@
             if (keys['w'] || keys['arrowup']) sy -= 1;
             if (keys['s'] || keys['arrowdown']) sy += 1;
             const sl = Math.hypot(sx, sy) || 1;
-            bossSoul.x = Math.max(BOSS_ARENA.left + bossSoul.r, Math.min(BOSS_ARENA.right - bossSoul.r, bossSoul.x + sx / sl * bossSoul.speed));
-            bossSoul.y = Math.max(BOSS_ARENA.top + bossSoul.r, Math.min(BOSS_ARENA.bottom - bossSoul.r, bossSoul.y + sy / sl * bossSoul.speed));
+            bossSoul.x = Math.max(BOSS_ARENA.left + bossSoul.r, Math.min(BOSS_ARENA.right - bossSoul.r, bossSoul.x + sx / sl * ((customMode&&customConfig)?customConfig.playerBossSpeed:bossSoul.speed)));
+            bossSoul.y = Math.max(BOSS_ARENA.top + bossSoul.r, Math.min(BOSS_ARENA.bottom - bossSoul.r, bossSoul.y + sy / sl * ((customMode&&customConfig)?customConfig.playerBossSpeed:bossSoul.speed)));
             updateBossLearning();
 
             // ---- Reflexo da bala perdida ----
@@ -1582,7 +2216,8 @@
                     bossReflectShot = null;
                     if (!godMode && bossSoul.invuln <= 0) {
                         bossSoul.hp = Math.max(0, bossSoul.hp - 1);
-                        bossSoul.invuln = 24;
+                        bossSoul.invuln = 10;
+                        resetPerfectDodgeTimerOnHit();
                         updateBossPlayerHP();
                         soundHit();
                         bossEntranceFlash = 7;
@@ -1613,56 +2248,127 @@
 
             // ---- FASES DO BOSS ----
             const hpRatio = boss.hp / Math.max(1, boss.maxHp);
-            const newPhase = hpRatio <= 0.33 ? 3 : hpRatio <= 0.66 ? 2 : 1;
+            const phase2At=(customMode&&customConfig)?customConfig.phase2At:.66; const phase3At=(customMode&&customConfig)?customConfig.phase3At:.33; const newPhase = hpRatio <= phase3At ? 3 : hpRatio <= phase2At ? 2 : 1;
             if (newPhase !== bossPhase) {
-                bossPhase = newPhase;
-                boss.phase = newPhase;
-                bossPhaseFlash = 35;
-                bossAttackProjectiles = [];
-                bossAttackTimer = Math.min(boss.attackCooldown, 16);
-                soundBoss();
+                bossPhase=newPhase;boss.phase=newPhase;bossPhaseFlash=50;bossAttackProjectiles=[];bossTelegraph=null;bossSuperAttackActive=false;bossSuperAttackGroup=null;bossSuperAttackTimer=0;bossSuperHazard=null;bossHazardGroup=null;bossHazardIsSuper=false;bossAttackTimer=Math.min(boss.attackCooldown,10);bossRage=newPhase===3?1:newPhase===2?.5:0;bossPhaseLabel.textContent=`PHASE ${newPhase}${newPhase===3?' · RAGE':''}`;gameContainer.classList.toggle('boss-phase-2',newPhase===2);gameContainer.classList.toggle('boss-phase-3',newPhase===3);bossAttackLabel.innerHTML=`<strong>${newPhase===3?'RAGE MODE':'TRANSIÇÃO DE FASE'}</strong> · novos ataques`;soundBoss();
             }
             if (bossPhaseFlash > 0) bossPhaseFlash--;
             if (perfectDodgeCooldown > 0) perfectDodgeCooldown--;
+            if (bossSoul.invuln > 0) bossSoul.invuln--;
+
+            // ---- PERFECT DODGE AUTOMÁTICO ----
+            // O timer usa segundos reais aproximados e compensa a velocidade da dificuldade.
+            // No ??? o perfect é completamente desativado.
+            const perfectInterval = getActiveDifficultyConfig().perfectInterval;
+            if (perfectInterval !== null && perfectDodgeTimer !== null) {
+                const bossSpeed=getBossBattleSpeed();
+                perfectDodgeTimer -= 1 / (60 * Math.max(0.01, bossSpeed));
+                if (perfectDodgeTimer <= 0 && boss.state === 'fighting') {
+                    perfectDodgeTimer += perfectInterval;
+                    perfectDodgeCooldown = 8;
+                    perfectDodgeCount++;
+                    score += 2;
+                    hudScore.textContent = score;
+
+                    const healed = bossSoul.hp < bossSoul.maxHp;
+                    if (healed) {
+                        bossSoul.hp = Math.min(bossSoul.maxHp, bossSoul.hp + 1);
+                        updateBossPlayerHP();
+                    }
+
+                    const el = document.createElement('div');
+                    el.className = 'perfect-dodge';
+                    el.textContent = 'PERFECT!';
+                    el.style.left = `${bossSoul.x}px`;
+                    el.style.top = `${bossSoul.y - 18}px`;
+                    gameContainer.appendChild(el);
+                    setTimeout(()=>el.remove(),520);
+
+                    if (healed) {
+                        const hpEl = document.createElement('div');
+                        hpEl.className = 'hp-float';
+                        hpEl.textContent = 'HP +1';
+                        hpEl.style.left = `${bossSoul.x}px`;
+                        hpEl.style.top = `${bossSoul.y + 2}px`;
+                        gameContainer.appendChild(hpEl);
+                        setTimeout(()=>hpEl.remove(),740);
+                    }
+                    playBeep(980,0.08,'sine',0.09);
+                }
+            }
 
             // ---- Ataques do boss ----
             bossAttackTimer++;
-            if (bossAttackWarning > 0) bossAttackWarning--;
-            if (bossAttackTimer >= boss.attackCooldown) {
-                bossAttackTimer = 0;
-                bossAttackSequence++;
-                bossAttackWarning = 8 + Math.floor(Math.random()*10);
-                // A cada rodada o boss escolhe uma combinação diferente.
-                // Em dificuldade alta, mistura padrões no mesmo ataque.
-                // Ataques ainda variados, mas com janelas reais de esquiva.
-                const phaseBonus = bossPhase === 3 ? 2 : bossPhase === 2 ? 1 : 0;
-                const count = Math.max(4, 5 + Math.min(3, Math.floor(difficulty * 0.35)) + phaseBonus);
-                let waves = 1;
-                if (bossPhase >= 2 && Math.random() < 0.22) waves = 2;
-                if (selectedDifficultyId === 'master' && Math.random() < (bossPhase === 3 ? .65 : .45)) waves = 2;
-                if (selectedDifficultyId === 'secret' && Math.random() < .72) waves = 2;
-                boss.attackCooldown = selectedDifficultyId === 'master' ? Math.max(48, 72 - Math.floor(Math.random()*14) - bossPhase*3) : Math.max(55, 84 - Math.floor(difficulty * 1.2) - Math.floor(Math.random()*10) - bossPhase*2);
-                for (let w=0; w<waves; w++) {
-                    let pattern = Math.floor(Math.random()*7);
-                    // O boss aprende hábitos: jogadores que ficam muito em uma borda
-                    // recebem padrões que pressionam essa região; movimentos repetitivos
-                    // também influenciam a escolha do próximo ataque.
-                    if (bossLearning.samples.length > 20 && Math.random() < (0.35 + bossPhase*.08)) {
-                        const edge = Math.max(bossLearning.left,bossLearning.right,bossLearning.top,bossLearning.bottom);
-                        if (edge === bossLearning.left || edge === bossLearning.right) pattern = Math.random()<.5 ? 1 : 4;
-                        else if (edge === bossLearning.top || edge === bossLearning.bottom) pattern = Math.random()<.5 ? 0 : 4;
-                        if (bossLearning.horizontal > bossLearning.vertical * 1.35) pattern = Math.random()<.5 ? 0 : 2;
-                        else if (bossLearning.vertical > bossLearning.horizontal * 1.35) pattern = Math.random()<.5 ? 1 : 2;
+            if(bossAttackWarning>0)bossAttackWarning--;
+            if(bossAttackLabelTimer>0)bossAttackLabelTimer--;
+            if(bossTelegraph&&--bossTelegraph.life<=0)bossTelegraph=null;
+            const customSelected=getCustomSelectedAttackDescriptors();
+
+            // =============================================================
+            // MODO PERSONALIZADO: UMA ÚNICA FONTE DE VERDADE.
+            // Somente os ataques marcados nas caixas podem nascer.
+            // O aprendizado do boss NÃO adiciona padrões extras aqui.
+            // =============================================================
+            if(customMode && customConfig){
+                const selected=getCustomSelectedAttackDescriptors();
+                if(selected.length>0 && !bossSuperAttackActive && !bossSuperHazard && bossAttackTimer>=boss.attackCooldown){
+                    bossAttackTimer=0; bossAttackSequence++; bossAttackWarning=10+Math.floor(Math.random()*10);
+                    const active=getActiveBossAttackGroups(); const maxAttacks=Math.max(1,Math.min(5,customConfig.maxAttacks)); let slots=Math.max(0,maxAttacks-active.size);
+                    while(slots>0){
+                        const pick=selected.length===1?selected[0]:chooseCustomAttack(selected); if(!pick)break;
+                        if(pick.kind==='super'){
+                            if(active.size===0&&!bossSuperAttackActive&&!bossSuperHazard)startBossSuperAttack(pick.id);
+                            break;
+                        }
+                        bossSpawnAttackGroup=++bossSpawnAttackGroup; boss.lastPattern=pick.id;
+                        const n=Math.max(4,Math.min(9,6+bossPhase)); for(let i=0;i<n;i++)spawnBossBullet(pick.id,i,n); slots--;
                     }
-                    if (DIFFICULTIES[selectedDifficultyId].noDiagonal && pattern === 6) pattern = Math.floor(Math.random()*6);
-                    const n = Math.max(4, count - w);
-                    for (let i=0; i<n; i++) spawnBossBullet(pattern, i, n);
+                    const lo=Math.min(customConfig.attackCooldownMin,customConfig.attackCooldownMax),hi=Math.max(customConfig.attackCooldownMin,customConfig.attackCooldownMax);
+                    boss.attackCooldown=Math.round(lo+Math.random()*(hi-lo)); if(customBossTest)boss.attackCooldown=Math.min(boss.attackCooldown,36);
                 }
-                // Um pequeno complemento ocasional, nunca uma enxurrada.
-                if (Math.random() < 0.22) {
-                    const extras = 1 + Math.floor(Math.random()*2);
-                    for (let i=0;i<extras;i++) spawnBossBullet(6, i, extras);
+            }else if(!bossSuperAttackActive && !bossSuperHazard && bossAttackTimer>=boss.attackCooldown){
+                // Dificuldades prontas compartilham a mesma velocidade global; a pressão do boss
+                // escala por cooldown, quantidade de projéteis, padrões e superataques.
+                bossAttackTimer=0;
+                bossAttackSequence++;
+                bossAttackWarning=10+Math.floor(Math.random()*10);
+                const d=DIFFICULTIES[selectedDifficultyId] || DIFFICULTIES.normal;
+                const maxAttacks=getBossMaxSimultaneousAttacks();
+                const activeGroups=getActiveBossAttackGroups();
+                const freeSlots=Math.max(0,maxAttacks-activeGroups.size);
+                let firedSuper=false;
+                if(freeSlots>0 && d.superChance>0 && bossPhase>=d.superStartPhase && bossSuperAttackCooldown<=0 && activeGroups.size===0 && Math.random()<d.superChance){
+                    const superPool=d.superPool || [0,1,2,4];
+                    if(superPool.length) firedSuper=startBossSuperAttack(superPool[Math.floor(Math.random()*superPool.length)]);
                 }
+                if(freeSlots>0 && !firedSuper){
+                    const waves=Math.min(freeSlots,bossPhase>=2&&Math.random()<(d.extraWaveChance??.25)?2:1);
+                    const pools={
+                        easy:[0,1,4,5,7],
+                        normal:[0,1,2,3,4,5,7,8],
+                        hard:[0,1,2,3,4,5,6,7,8,9,10,13,14],
+                        insane:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+                        master:[0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16],
+                        secret:[0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16]
+                    };
+                    let pool=(pools[selectedDifficultyId]||pools.normal).slice();
+                    if(bossLearning.samples.length>20&&Math.random()<.55){
+                        if(!d.noDiagonal && bossLearning.horizontal>bossLearning.vertical*1.3)pool.push(0,7,13,15);
+                        if(bossLearning.vertical>bossLearning.horizontal*1.3)pool.push(1,8,14,15);
+                    }
+                    for(let w=0;w<waves;w++){
+                        let pattern=pool[Math.floor(Math.random()*pool.length)];
+                        if(pattern===boss.lastPattern&&pool.length>3)pattern=pool[(pool.indexOf(pattern)+2+Math.floor(Math.random()*2))%pool.length];
+                        boss.lastPattern=pattern;
+                        bossSpawnAttackGroup=++bossSpawnAttackGroup;
+                        const baseN=d.projectilesBase ?? 6;
+                        const n=Math.max(3,baseN+bossPhase-1-w);
+                        for(let i=0;i<n;i++)spawnBossBullet(pattern,i,n);
+                    }
+                }
+                const min=d.attackCooldownMin ?? 64, max=d.attackCooldownMax ?? 96;
+                const baseCooldown=min+Math.random()*(max-min);
+                boss.attackCooldown=Math.max(Math.max(30,min-8),Math.round(baseCooldown-(bossPhase-1)*5));
             }
 
             // ---- Bala que o jogador precisa pegar para atacar ----
@@ -1676,7 +2382,7 @@
                     // Se já estiver no máximo, ele rebate o ataque de volta ao jogador.
                     bossPlayerShot = null;
                     bossPlayerShotGrace = 0;
-                    const bossConfig = DIFFICULTIES[selectedDifficultyId];
+                    const bossConfig = getActiveDifficultyConfig();
                     const damagePerShot = boss.maxHp / bossConfig.bossShots;
                     if (boss.hp < boss.maxHp - 0.0001) {
                         boss.hp = Math.min(boss.maxHp, boss.hp + damagePerShot * 2);
@@ -1700,8 +2406,8 @@
                 if (bossPlayerShot && Math.hypot(bossSoul.x - bossPlayerShot.x, bossSoul.y - bossPlayerShot.y) < bossSoul.r + bossPlayerShot.r + 5) {
                     bossPlayerShot = null;
                     bossPlayerShotGrace = 0;
-                    bossPlayerShotTimer = DIFFICULTIES[selectedDifficultyId].shotInterval;
-                    const bossConfig = DIFFICULTIES[selectedDifficultyId];
+                    bossPlayerShotTimer = getActiveDifficultyConfig().shotInterval;
+                    const bossConfig = getActiveDifficultyConfig();
                     const damage = boss.maxHp / bossConfig.bossShots;
                     boss.hp = Math.max(0, boss.hp - damage);
                     bossHitCount++;
@@ -1738,75 +2444,64 @@
             }
 
             // ---- Dano dos projéteis à alma ----
-            for (let i = bossAttackProjectiles.length - 1; i >= 0; i--) {
-                const b = bossAttackProjectiles[i];
-                if (b.type === 'spiral') {
-                    const ang = Math.atan2(b.vy,b.vx) + 0.055;
-                    const sp = Math.hypot(b.vx,b.vy);
-                    b.vx = Math.cos(ang)*sp; b.vy = Math.sin(ang)*sp;
+            for(let i=bossAttackProjectiles.length-1;i>=0;i--){
+                const b=bossAttackProjectiles[i];
+                if(b.type==='spiral'){
+                    const turn=(b.spiralTurn!==undefined?b.spiralTurn:.055);
+                    const aa=Math.atan2(b.vy,b.vx)+turn;
+                    let sp=Math.hypot(b.vx,b.vy);
+                    if(b.superStyle==='vortex') sp=Math.min(3.25,sp+0.006);
+                    b.vx=Math.cos(aa)*sp;b.vy=Math.sin(aa)*sp;b.x+=b.vx;b.y+=b.vy;
+                }else if(b.type==='sine'){
+                    b.x+=b.vx;b.y+=b.vy;b.x=b.baseX+Math.sin(frameCount*.09+b.w)*b.amp;
+                }else if(b.type==='homing'){
+                    const want=Math.atan2(bossSoul.y-b.y,bossSoul.x-b.x),cur=Math.atan2(b.vy,b.vx);
+                    const d=Math.atan2(Math.sin(want-cur),Math.cos(want-cur));
+                    const nx=cur+Math.max(-b.turn,Math.min(b.turn,d));
+                    const sp=Math.hypot(b.vx,b.vy);b.vx=Math.cos(nx)*sp;b.vy=Math.sin(nx)*sp;b.x+=b.vx;b.y+=b.vy;
+                }else if(b.type==='chaosRing'){
+                    b.ringAngle+=b.ringSpeed;const br=1+Math.sin(frameCount*.045+b.ringIndex*.31)*.055;b.x=b.ringCx+Math.cos(b.ringAngle)*b.ringRadius*br;b.y=b.ringCy+Math.sin(b.ringAngle)*b.ringRadius*br;
+                }else if(b.type==='prediction'){
+                    if(b.delay>0){b.delay--;b.r=Math.min(10,7.5+(18-b.delay)*.12);}else{const desired=Math.atan2(bossSoul.y-b.y,bossSoul.x-b.x),cur=Math.atan2(b.vy,b.vx),d=Math.atan2(Math.sin(desired-cur),Math.cos(desired-cur)),ang=cur+Math.max(-b.predTurn,Math.min(b.predTurn,d)),sp=Math.hypot(b.vx,b.vy);b.vx=Math.cos(ang)*sp;b.vy=Math.sin(ang)*sp;b.x+=b.vx;b.y+=b.vy;}
+                }else if(b.type==='orbit'){
+                    b.orbitAngle+=b.orbitSpeed;b.x=b.cx+Math.cos(b.orbitAngle)*b.orbitRadius;b.y=b.cy+Math.sin(b.orbitAngle)*b.orbitRadius;
+                }else if(b.type==='orbitSpread'){
+                    b.orbitAge++;if(b.orbitPhase===0){b.orbitAngle+=b.orbitSpeed;b.orbitRadius+=.045;b.x=b.cx+Math.cos(b.orbitAngle)*b.orbitRadius;b.y=b.cy+Math.sin(b.orbitAngle)*b.orbitRadius;if(b.orbitAge>=b.spreadAt){b.orbitPhase=1;const pts=[{x:BOSS_ARENA.left+16,y:BOSS_ARENA.top+16},{x:(BOSS_ARENA.left+BOSS_ARENA.right)/2,y:BOSS_ARENA.top+10},{x:BOSS_ARENA.right-16,y:BOSS_ARENA.top+16},{x:BOSS_ARENA.right-10,y:(BOSS_ARENA.top+BOSS_ARENA.bottom)/2},{x:BOSS_ARENA.right-16,y:BOSS_ARENA.bottom-16},{x:(BOSS_ARENA.left+BOSS_ARENA.right)/2,y:BOSS_ARENA.bottom-10},{x:BOSS_ARENA.left+16,y:BOSS_ARENA.bottom-16},{x:BOSS_ARENA.left+10,y:(BOSS_ARENA.top+BOSS_ARENA.bottom)/2}],p=pts[b.spreadSeed%pts.length],aa=Math.atan2(p.y-b.y,p.x-b.x),sp=2.35+(b.spreadSeed%4)*.18;b.vx=Math.cos(aa)*sp;b.vy=Math.sin(aa)*sp;}}else{b.vx*=1.006;b.vy*=1.006;b.x+=b.vx;b.y+=b.vy;}
+                }else if(b.type==='mine'){
+                    b.flash++;if(b.life<=b.arm)b.r=10+Math.sin(b.flash*.35)*2;
+                    if(b.life<=1){
+                        const n=bossPhase>=3?9:7;
+                        for(let k=0;k<n;k++){let aa=k/n*Math.PI*2;pushBossProjectile({x:b.x,y:b.y,vx:Math.cos(aa)*2.05,vy:Math.sin(aa)*2.05,r:5.8,life:82,type:'radial',hue:40,accent:true,attackGroup:b.attackGroup,isSuper:b.isSuper||false});}
+                        bossAttackProjectiles.splice(i,1);continue;
+                    }
+                }else if(b.type==='split'){
+                    b.x+=b.vx;b.y+=b.vy;b.age=(b.age||0)+1;if(!b.splitDone&&b.age>=(b.splitAtAge||58)){b.splitDone=true;const aa=Math.atan2(b.vy,b.vx),cc=b.splitCount||6;for(let k=0;k<cc;k++){const spread=((k-(cc-1)/2)/(Math.max(1,cc-1)))*1.55,a2=aa+spread;pushBossProjectile({x:b.x,y:b.y,vx:Math.cos(a2)*2.75,vy:Math.sin(a2)*2.75,r:7,life:180,type:'capsuleChild',turn:.045,hue:160,attackGroup:b.attackGroup,isSuper:b.isSuper||false});}b.life=0;}
+                }else if(b.type==='capsuleChild'){
+                    const want=Math.atan2(bossSoul.y-b.y,bossSoul.x-b.x),cur=Math.atan2(b.vy,b.vx),d=Math.atan2(Math.sin(want-cur),Math.cos(want-cur)),ang=cur+Math.max(-b.turn,Math.min(b.turn,d)),sp=Math.min(4.4,Math.hypot(b.vx,b.vy)*1.006);b.vx=Math.cos(ang)*sp;b.vy=Math.sin(ang)*sp;b.x+=b.vx;b.y+=b.vy;
+                }else if(b.type==='boomerang'){
+                    b.age=(b.age||0)+1;if(!b.turned&&b.age>=(b.turnAtAge||48)){const back=Math.atan2((BOSS_ARENA.top+22)-b.y,((BOSS_ARENA.left+BOSS_ARENA.right)/2)-b.x),sp=Math.max(3.0,Math.hypot(b.vx,b.vy));b.vx=Math.cos(back)*sp;b.vy=Math.sin(back)*sp;b.turned=true;}else if(b.turned){const want=Math.atan2(bossSoul.y-b.y,bossSoul.x-b.x),cur=Math.atan2(b.vy,b.vx),d=Math.atan2(Math.sin(want-cur),Math.cos(want-cur)),nx=cur+Math.max(-(b.returnTurn||.045),Math.min((b.returnTurn||.045),d)),sp=Math.min(5.0,Math.hypot(b.vx,b.vy)+.008);b.vx=Math.cos(nx)*sp;b.vy=Math.sin(nx)*sp;}b.x+=b.vx;b.y+=b.vy;
+                }else if(b.type==='sweep'){
+                    if(b.delay>0)b.delay--;else{b.x+=b.vx;b.y+=b.vy;}
+                }else if(b.type==='dash'){
+                    if(b.dashDelay>0){b.dashDelay--;b.x+=b.vx*.012;b.y+=b.vy*.012;}else{b.vx*=1.028;b.vy*=1.028;b.x+=b.vx;b.y+=b.vy;}
+                }else{
+                    b.x+=b.vx;b.y+=b.vy;
                 }
-                b.x += b.vx;
-                b.y += b.vy;
-                if (b.type === 'bounce') {
-                    if (b.x <= BOSS_ARENA.left || b.x >= BOSS_ARENA.right) { b.vx *= -1; b.bounces--; }
-                    if (b.y <= BOSS_ARENA.top || b.y >= BOSS_ARENA.bottom) { b.vy *= -1; b.bounces--; }
-                    if (b.bounces < 0) b.life = 0;
+                if(b.type==='bounce'){
+                    if(b.x<=BOSS_ARENA.left||b.x>=BOSS_ARENA.right){b.x=Math.max(BOSS_ARENA.left,Math.min(BOSS_ARENA.right,b.x));b.vx*=-1;b.bounces--;}
+                    if(b.y<=BOSS_ARENA.top||b.y>=BOSS_ARENA.bottom){b.y=Math.max(BOSS_ARENA.top,Math.min(BOSS_ARENA.bottom,b.y));b.vy*=-1;b.bounces--;}
+                    if(b.bounces<0)b.life=0;
                 }
                 b.life--;
-                if (bossSoul.invuln > 0) bossSoul.invuln--;
-                const dodgeDist = Math.hypot(bossSoul.x - b.x, bossSoul.y - b.y);
-                if (perfectDodgeCooldown <= 0 && bossSoul.invuln <= 0 && dodgeDist < bossSoul.r + b.r + 15 && dodgeDist >= bossSoul.r + b.r) {
-                    perfectDodgeCooldown = 8;
-                    perfectDodgeCount++;
-                    score += 2;
-                    hudScore.textContent = score;
-                    // Perfect Dodge cura exatamente 1 HP, independentemente da dificuldade.
-                    const healed = bossSoul.hp < bossSoul.maxHp;
-                    if (healed) {
-                        bossSoul.hp = Math.min(bossSoul.maxHp, bossSoul.hp + 1);
-                        updateBossPlayerHP();
-                    }
-                    const el = document.createElement('div');
-                    el.className = 'perfect-dodge';
-                    el.textContent = 'PERFECT!';
-                    el.style.left = `${bossSoul.x}px`; el.style.top = `${bossSoul.y - 18}px`;
-                    gameContainer.appendChild(el);
-                    setTimeout(()=>el.remove(),520);
-                    if (healed) {
-                        const hpEl = document.createElement('div');
-                        hpEl.className = 'hp-float';
-                        hpEl.textContent = 'HP +1';
-                        hpEl.style.left = `${bossSoul.x}px`;
-                        hpEl.style.top = `${bossSoul.y + 2}px`;
-                        gameContainer.appendChild(hpEl);
-                        setTimeout(()=>hpEl.remove(),740);
-                    }
-                    playBeep(980,0.08,'sine',0.09);
-                }
-                if (!godMode && bossSoul.invuln <= 0 && dodgeDist < bossSoul.r + b.r) {
-                    bossSoul.hp = Math.max(0, bossSoul.hp - 1);
-                    bossSoul.invuln = 24;
-                    updateBossPlayerHP();
-                    bossAttackProjectiles.splice(i, 1);
-                    soundHit();
-                    bossEntranceFlash = 5;
-                    if (bossSoul.hp <= 0) {
-                        bossActive = false;
-                        bossBullets = [];
-                        bossAttackProjectiles = [];
-                        bossHitEffects = [];
-                        bossPlayerShot = null;
-                        bossPlayerHP.style.display = 'none';
-                        gameContainer.classList.remove('boss-danger');
-                        endGame();
-                        return;
-                    }
+                const dist=Math.hypot(bossSoul.x-b.x,bossSoul.y-b.y);
+                if(!godMode&&bossSoul.invuln<=0&&dist<bossSoul.r+b.r){
+                    bossSoul.hp=Math.max(0,bossSoul.hp-1);bossSoul.invuln=10;resetPerfectDodgeTimerOnHit();updateBossPlayerHP();bossAttackProjectiles.splice(i,1);soundHit();bossEntranceFlash=7;
+                    if(bossSoul.hp<=0){bossActive=false;bossBullets=[];bossAttackProjectiles=[];bossHitEffects=[];bossPlayerShot=null;bossPlayerHP.style.display='none';gameContainer.classList.remove('boss-danger');bossSuperAttackActive=false;bossExecutionLunge=null;bossSuperHazard=null;bossHazardGroup=null;bossHazardIsSuper=false;endGame();return;}
                     continue;
                 }
-                if (b.life <= 0 || b.x < BOSS_ARENA.left - 30 || b.x > BOSS_ARENA.right + 30 || b.y < BOSS_ARENA.top - 30 || b.y > BOSS_ARENA.bottom + 30) {
-                    bossAttackProjectiles.splice(i, 1);
-                }
+                if(b.life<=0||b.x<BOSS_ARENA.left-80||b.x>BOSS_ARENA.right+80||b.y<BOSS_ARENA.top-80||b.y>BOSS_ARENA.bottom+80)bossAttackProjectiles.splice(i,1);
             }
+            updateBossSuperAttackState();
 
             if (boss.hp <= 0) {
                 boss.state = 'exiting';
@@ -1825,10 +2520,7 @@
                 bossEntranceFlash = 45;
                 return;
             }
-            const bossPct = Math.max(0, boss.hp / boss.maxHp);
-            bossBarFill.style.width = `${bossPct * 100}%`;
-            const bossHue = Math.max(0, bossPct * 120);
-            bossBarFill.style.background = `linear-gradient(90deg,hsl(${bossHue},85%,42%),hsl(${Math.max(0,bossHue-8)},95%,58%))`;
+            const bossPct=Math.max(0,boss.hp/boss.maxHp);bossBarFill.style.width=`${bossPct*100}%`;const bossHue=Math.max(0,bossPct*118);bossBarFill.style.background=bossPhase===3?`linear-gradient(90deg,hsl(${Math.max(0,bossHue-12)},90%,44%),#ff173f,#ff8c53)`: `linear-gradient(90deg,hsl(${bossHue},90%,48%),hsl(${Math.max(0,bossHue-10)},95%,62%))`;bossHpValue.textContent=`${Math.ceil(Math.max(0,boss.hp))} / ${boss.maxHp} HP`;bossPhaseLabel.textContent=`PHASE ${bossPhase}${bossPhase===3?' · RAGE':''}`;if(bossAttackLabelTimer<=0)bossAttackLabel.innerHTML=`ATAQUE ATUAL · <strong>${bossCurrentAttack}</strong>`;
         }
 
         function showBossVictory() {
@@ -1863,16 +2555,17 @@
             coins = [];
             bullets = [];
             enemies = [];
+            enemyLasers = [];
+            enemyAttackFX = [];
             particles = [];
             powerups = [];
             bossBullets = [];
             boss = null;
-            bossSoul.invuln = 0;
             bossActive = false;
             bossTriggered = false;
             bossSoul.x = W / 2;
             bossSoul.y = 415;
-            bossSoul.maxHp = DIFFICULTIES[selectedDifficultyId].playerHp;
+            bossSoul.maxHp = getActiveDifficultyConfig().playerHp;
             bossSoul.hp = bossSoul.maxHp;
             bossSoul.invuln = 0;
             bossPlayerHP.style.display = 'none';
@@ -1881,24 +2574,25 @@
             bossAttackPattern = 0;
             bossAttackTimer = 0;
             bossAttackSequence = 0;
-            bossAttackWarning = 0;
+            bossAttackWarning = 0; bossTelegraph=null; bossCurrentAttack='ANALISANDO'; bossAttackLabelTimer=0; bossRage=0; bossSuperAttackActive=false; bossSuperAttackGroup=null; bossSuperAttackTimer=0; bossSuperAttackCooldown=0; bossSuperAttackName=''; bossExecutionLunge=null; bossSuperHazard=null; bossHazardGroup=null; bossHazardIsSuper=false; gameContainer.classList.remove('boss-phase-2','boss-phase-3');
             bossEntranceFlash = 0;
             bossEntranceText = 0;
             bossAttackProjectiles = [];
             bossHitEffects = [];
             bossPlayerShot = null;
-            bossPlayerShotTimer = DIFFICULTIES[selectedDifficultyId].shotInterval;
+            bossPlayerShotTimer = getActiveDifficultyConfig().shotInterval;
             bossPlayerShotGrace = 0;
             bossVictoryPending = false;
             bossPhase = 1;
             bossPhaseFlash = 0;
             perfectDodgeCooldown = 0;
+            perfectDodgeTimer = getActiveDifficultyConfig().perfectInterval;
             bossHitCount = 0;
             perfectDodgeCount = 0;
             score = 0;
-            const mode = DIFFICULTIES[selectedDifficultyId];
+            const mode = getActiveDifficultyConfig();
             difficulty = mode.ai;
-            gameSpeed = mode.speed;
+            gameSpeed = customMode && customConfig ? customConfig.speed : 1;
             maxCombo = mode.combo;
             simulationAccumulator = 0;
             applyDifficultyArena();
@@ -1962,7 +2656,7 @@
         function updateSimulation() {
             if (!gameRunning || gamePaused) return;
             frameCount++;
-            difficulty = DIFFICULTIES[selectedDifficultyId].ai;
+            difficulty = getActiveDifficultyConfig().ai;
 
             // MODO BOSS ISOLADO: quando a luta começa, o loop normal do jogo
             // não roda mais. Isso evita colisões/arrays da fase normal
@@ -2093,7 +2787,8 @@
                     soundCoin();
                     const now = Date.now();
                     // Combo: intervalo de 5 segundos
-                    if (now - lastCoinTime < 5000) {
+                    const streakWindow = getActiveDifficultyConfig().comboWindow || 5000;
+                    if (now - lastCoinTime < streakWindow) {
                         comboCount = Math.min(maxCombo, comboCount + 1);
                         comboMultiplier = Math.min(maxCombo, comboCount);
                         comboFlash = 10;
@@ -2153,21 +2848,54 @@
                         }
                     }
                     e.shootTimer++;
-                    if (e.type === 'shooter') {
+                    e.attackCooldown--;
+                    if (e.laserTelegraph > 0) e.laserTelegraph--;
+                    if (e.laserActive > 0) e.laserActive--;
+
+                    if (e.type === 'normal') {
+                        // Ataque raro: 2% por oportunidade. O raio atravessa a tela inteira.
                         if (e.shootTimer >= e.shootInterval) {
                             e.shootTimer = 0;
-                            spawnEnemyBullet(e.x, e.y, player.x, player.y, '#ff8800');
-                            e.burstCount++;
-                            if (e.burstCount >= e.burstMax) {
-                                e.burstCount = 0;
-                                e.shootInterval = Math.max(40, 100 - difficulty * 5);
+                            if (Math.random() < .02) {
+                                spawnEnemyLaser(e);
+                            } else {
+                                spawnEnemyBullet(e.x, e.y, player.x, player.y, '#ff4466');
                             }
                         }
-                    } else {
-                        if (e.shootTimer >= e.shootInterval && e.type !== 'bomber' && e.type !== 'tank') {
+                    } else if (e.type === 'shooter') {
+                        if (e.shootTimer >= e.shootInterval) {
                             e.shootTimer = 0;
-                            spawnEnemyBullet(e.x, e.y, player.x, player.y);
+                            const aim = Math.atan2(player.y-e.y, player.x-e.x);
+                            for (let k=0;k<e.burstMax;k++) {
+                                const spread = (k-(e.burstMax-1)/2)*.11;
+                                spawnEnemyBullet(e.x,e.y,e.x+Math.cos(aim+spread)*100,e.y+Math.sin(aim+spread)*100,'#ff9a2e');
+                            }
+                            e.burstCount++;
+                            e.shootInterval = Math.max(45, 96 - difficulty*3) + Math.random()*18;
                         }
+                    } else if (e.type === 'tank') {
+                        // O roxo não atira como os vermelhos: ele pulsa uma onda circular.
+                        if (e.attackCooldown <= 0) {
+                            e.attackCooldown = 120 + Math.random()*55;
+                            enemyAttackFX.push({type:'pulse',x:e.x,y:e.y,r:e.r+5,maxR:150,life:28,maxLife:28,damage:1,hit:false});
+                            playBeep(210,.12,'triangle',.06);
+                        }
+                    } else if (e.type === 'sinusoidal') {
+                        // O ciano solta duas lâminas cruzadas em vez de balas comuns.
+                        if (e.shootTimer >= e.shootInterval*1.25) {
+                            e.shootTimer = 0;
+                            const a=Math.atan2(player.y-e.y,player.x-e.x)+Math.sin(frameCount*.04)*.35;
+                            spawnEnemyBullet(e.x,e.y,e.x+Math.cos(a)*100,e.y+Math.sin(a)*100,'#2ee6ff',1);
+                            spawnEnemyBullet(e.x,e.y,e.x+Math.cos(a+Math.PI/2)*100,e.y+Math.sin(a+Math.PI/2)*100,'#2ee6ff',1);
+                        }
+                    } else if (e.type === 'bomber') {
+                        if (e.dashTimer <= 0) {
+                            const a=Math.atan2(player.y-e.y,player.x-e.x);
+                            e.vx=Math.cos(a)*(2.7+difficulty*.12); e.vy=Math.sin(a)*(2.7+difficulty*.12);
+                            e.dashTimer=90+Math.random()*70;
+                            enemyAttackFX.push({type:'dash',x:e.x,y:e.y,life:18,maxLife:18});
+                        }
+                        e.dashTimer--;
                     }
                     if (e.type === 'bomber' && Math.hypot(player.x - e.x, player.y - e.y) < e.r + player.r + 20) {
                         spawnExplosion(e.x, e.y);
@@ -2179,24 +2907,78 @@
                         enemies = enemies.filter(o => o !== e);
                         continue;
                     }
-                    if (e.x < -80 || e.x > W + 80 || e.y < -80 || e.y > H + 80) {
+                    if (e.x < -120 || e.x > W + 120 || e.y < -120 || e.y > H + 120) {
                         enemies.splice(i, 1);
                     }
                 }
-                const maxEnemies = Math.min(8 + Math.floor(difficulty), 25);
-                if (enemies.length < maxEnemies && frameCount % Math.max(30, 80 - difficulty * 4) === 0) {
-                    const types = ['normal', 'normal'];
-                    if (difficulty > 2) types.push('sinusoidal');
-                    if (difficulty > 3) types.push('shooter');
-                    if (difficulty > 4) types.push('tank');
-                    if (difficulty > 5) types.push('bomber');
-                    const type = types[Math.floor(Math.random() * types.length)];
+
+                // Raios inimigos: telegraph + dano contínuo durante a janela ativa.
+                for (let i=enemyLasers.length-1;i>=0;i--) {
+                    const l=enemyLasers[i];
+                    l.life--;
+                    if (l.telegraph>0) l.telegraph--;
+                    if (l.active>0) l.active--;
+                    l.x = l.owner && enemies.includes(l.owner) ? l.owner.x : l.x;
+                    l.y = l.owner && enemies.includes(l.owner) ? l.owner.y : l.y;
+                    if (l.active>0 && !godMode && player.invincible<=0) {
+                        const x2=l.x+Math.cos(l.angle)*l.length, y2=l.y+Math.sin(l.angle)*l.length;
+                        if (segmentPointDistance(player.x,player.y,l.x,l.y,x2,y2) < l.width/2 + player.r*.52) {
+                            player.invincible=8;
+                            if (player.shield>0) player.shield=0; else endGame();
+                            if (!gameRunning) return;
+                        }
+                    }
+                    if (l.life<=0) enemyLasers.splice(i,1);
+                }
+
+                for (let i=enemyAttackFX.length-1;i>=0;i--) {
+                    const fx=enemyAttackFX[i];
+                    fx.life--;
+                    if (fx.type==='pulse') {
+                        const p=1-fx.life/fx.maxLife; fx.r=fx.r+(fx.maxR-fx.r)*.10;
+                        if (!fx.hit && Math.hypot(player.x-fx.x,player.y-fx.y) < fx.r+player.r && p>.32) {
+                            fx.hit=true;
+                            if (!godMode && player.invincible<=0) {
+                                if(player.shield>0) player.shield=0; else { endGame(); return; }
+                            }
+                        }
+                    }
+                    if (fx.life<=0) enemyAttackFX.splice(i,1);
+                }
+
+                const activeProfile = getActiveDifficultyConfig();
+                const usingPresetProfile = !customMode && !!activeProfile.enemyMix;
+                const maxEnemies = usingPresetProfile
+                    ? activeProfile.maxEnemies
+                    : Math.min(8 + Math.floor(difficulty), 25);
+                const spawnCadence = usingPresetProfile
+                    ? activeProfile.spawnCadence
+                    : Math.max(30, 80 - difficulty * 4);
+                if (enemies.length < maxEnemies && frameCount % spawnCadence === 0) {
+                    let type='normal';
+                    if(usingPresetProfile){
+                        const roll=Math.random(); let cumulative=0;
+                        for(const [kind,weight] of Object.entries(activeProfile.enemyMix)){
+                            cumulative+=weight;
+                            if(roll<cumulative){type=kind;break;}
+                        }
+                    }else{
+                        // A partida personalizada mantém a composição procedural anterior.
+                        const roll=Math.random();
+                        if (roll<0.42) type='normal';
+                        else if (roll<0.62) type='sinusoidal';
+                        else if (roll<0.78 && difficulty>=1.5) type='shooter';
+                        else if (roll<0.92 && difficulty>=2.5) type='tank';
+                        else if (difficulty>=3.5) type='bomber';
+                    }
                     spawnEnemy(type);
                 }
-                if (frameCount % 120 === 0 && enemies.length < maxEnemies - 2) {
-                    for (let i = 0; i < Math.min(1, Math.floor(difficulty / 3) + 1); i++) {
-                        spawnEnemy();
-                    }
+                const bonusInterval = usingPresetProfile
+                    ? activeProfile.bonusSpawnInterval
+                    : 120;
+                if (frameCount % bonusInterval === 0 && enemies.length < maxEnemies - 2) {
+                    const bonusSpawns = usingPresetProfile ? 1 : Math.min(1, Math.floor(difficulty / 3) + 1);
+                    for (let i = 0; i < bonusSpawns; i++) spawnEnemy(usingPresetProfile ? 'normal' : undefined);
                 }
             }
 
@@ -2319,39 +3101,62 @@
             }
             for (const e of enemies) {
                 ctx.save();
-                ctx.shadowColor = e.glow;
-                ctx.shadowBlur = 25;
-                ctx.fillStyle = e.color;
-                ctx.beginPath();
-                ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-                ctx.fillStyle = '#ff2244';
-                ctx.beginPath();
-                ctx.arc(e.x - 5, e.y - 5, 3, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.beginPath();
-                ctx.arc(e.x + 5, e.y - 5, 3, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#000';
-                ctx.beginPath();
-                ctx.arc(e.x - 6, e.y - 6, 1.2, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.beginPath();
-                ctx.arc(e.x + 4, e.y - 6, 1.2, 0, Math.PI * 2);
-                ctx.fill();
-                if (e.type === 'tank') {
-                    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
-                    ctx.lineWidth = 2;
+                ctx.translate(e.x,e.y);
+                ctx.shadowColor=e.glow; ctx.shadowBlur=22; ctx.fillStyle=e.color;
+                if(e.type==='tank'){
+                    ctx.rotate(frameCount*.006);
                     ctx.beginPath();
-                    ctx.arc(e.x, e.y, e.r + 4, 0, Math.PI * 2);
-                    ctx.stroke();
-                    ctx.fillStyle = 'rgba(0,0,0,0.5)';
-                    ctx.fillRect(e.x - 20, e.y - e.r - 8, 40, 6);
-                    ctx.fillStyle = '#44ff44';
-                    ctx.fillRect(e.x - 20, e.y - e.r - 8, 40 * (e.health / 3), 6);
+                    for(let k=0;k<6;k++){const a=k*Math.PI/3; const rr=k%2?e.r*.72:e.r; const px=Math.cos(a)*rr,py=Math.sin(a)*rr; if(k===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);}
+                    ctx.closePath();ctx.fill();
+                    ctx.shadowBlur=0;ctx.strokeStyle='rgba(220,190,255,.7)';ctx.lineWidth=2;ctx.stroke();
+                    ctx.strokeStyle='rgba(255,255,255,.35)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,e.r+6,0,Math.PI*2);ctx.stroke();
+                    ctx.fillStyle='#f0dcff';ctx.beginPath();ctx.arc(0,0,e.r*.23,0,Math.PI*2);ctx.fill();
+                    ctx.fillStyle='rgba(0,0,0,.55)';ctx.fillRect(-20,-e.r-10,40,5);ctx.fillStyle='#a95cff';ctx.fillRect(-20,-e.r-10,40*(e.health/3),5);
+                } else if(e.type==='sinusoidal'){
+                    ctx.rotate(frameCount*.025);
+                    ctx.beginPath();ctx.moveTo(0,-e.r);ctx.lineTo(e.r,0);ctx.lineTo(0,e.r);ctx.lineTo(-e.r,0);ctx.closePath();ctx.fill();
+                    ctx.shadowBlur=0;ctx.strokeStyle='#c9fbff';ctx.lineWidth=1.5;ctx.stroke();
+                    ctx.fillStyle='#052c36';ctx.beginPath();ctx.arc(-5,-2,3,0,Math.PI*2);ctx.arc(5,2,3,0,Math.PI*2);ctx.fill();
+                } else if(e.type==='shooter'){
+                    ctx.beginPath();ctx.arc(0,0,e.r,0,Math.PI*2);ctx.fill();
+                    ctx.shadowBlur=0;ctx.strokeStyle='#ffe4bf';ctx.lineWidth=2;ctx.stroke();
+                    ctx.fillStyle='#2b1605';ctx.beginPath();ctx.arc(0,0,e.r*.28,0,Math.PI*2);ctx.fill();
+                    for(let k=0;k<4;k++){const a=frameCount*.025+k*Math.PI/2;ctx.fillStyle='#ffd0a0';ctx.fillRect(Math.cos(a)*(e.r-4)-2,Math.sin(a)*(e.r-4)-2,4,4);}
+                } else if(e.type==='bomber'){
+                    ctx.rotate(Math.atan2(e.vy,e.vx));
+                    ctx.beginPath();ctx.moveTo(e.r,0);ctx.lineTo(-e.r*.8,-e.r*.75);ctx.lineTo(-e.r*.45,0);ctx.lineTo(-e.r*.8,e.r*.75);ctx.closePath();ctx.fill();
+                    ctx.shadowBlur=0;ctx.fillStyle='#3b2500';ctx.beginPath();ctx.arc(-2,0,3,0,Math.PI*2);ctx.fill();
+                    ctx.strokeStyle='#fff0a0';ctx.lineWidth=2;ctx.stroke();
+                } else {
+                    ctx.beginPath();ctx.arc(0,0,e.r,0,Math.PI*2);ctx.fill();
+                    ctx.shadowBlur=0;ctx.fillStyle='#ffbdc7';ctx.beginPath();ctx.arc(-5,-5,3,0,Math.PI*2);ctx.arc(5,-5,3,0,Math.PI*2);ctx.fill();
+                    ctx.fillStyle='#32030b';ctx.beginPath();ctx.arc(-5,-5,1.2,0,Math.PI*2);ctx.arc(5,-5,1.2,0,Math.PI*2);ctx.fill();
+                    ctx.strokeStyle='rgba(255,255,255,.25)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(0,0,e.r+3,0,Math.PI*2);ctx.stroke();
                 }
                 ctx.restore();
+            }
+
+            // FX dos inimigos — raios em primeiro plano, claramente legíveis.
+            for(const l of enemyLasers){
+                const x2=l.x+Math.cos(l.angle)*l.length, y2=l.y+Math.sin(l.angle)*l.length;
+                ctx.save();ctx.globalCompositeOperation='lighter';
+                if(l.telegraph>0){
+                    const pulse=.5+.5*Math.sin(frameCount*.42);
+                    ctx.globalAlpha=.18+.16*pulse;ctx.strokeStyle='#ff6a7d';ctx.lineWidth=1.7;ctx.setLineDash([10,9]);
+                    ctx.beginPath();ctx.moveTo(l.x,l.y);ctx.lineTo(x2,y2);ctx.stroke();ctx.setLineDash([]);
+                    // Pequeno marcador indica a lateral do jogador por onde o raio vai passar.
+                    const sx=player.x+Math.cos(l.angle+Math.PI/2)*l.safeRadius;
+                    const sy=player.y+Math.sin(l.angle+Math.PI/2)*l.safeRadius;
+                    ctx.globalAlpha=.16+.12*pulse;ctx.strokeStyle='#ff9aaa';ctx.lineWidth=1;
+                    ctx.beginPath();ctx.arc(sx,sy,4+2*pulse,0,Math.PI*2);ctx.stroke();
+                } else if(l.active>0){
+                    ctx.shadowColor='#ff173f';ctx.shadowBlur=24;ctx.globalAlpha=.22;ctx.strokeStyle='#ff173f';ctx.lineWidth=l.width*2.35;ctx.beginPath();ctx.moveTo(l.x,l.y);ctx.lineTo(x2,y2);ctx.stroke();
+                    ctx.globalAlpha=.88;ctx.shadowBlur=13;ctx.strokeStyle='#ff304d';ctx.lineWidth=l.width;ctx.beginPath();ctx.moveTo(l.x,l.y);ctx.lineTo(x2,y2);ctx.stroke();
+                    ctx.globalAlpha=1;ctx.strokeStyle='#fff5f6';ctx.lineWidth=Math.max(1.5,l.width*.22);ctx.beginPath();ctx.moveTo(l.x,l.y);ctx.lineTo(x2,y2);ctx.stroke();
+                }ctx.restore();
+            }
+            for(const fx of enemyAttackFX){
+                if(fx.type==='pulse'){const a=fx.life/fx.maxLife;ctx.save();ctx.globalAlpha=.18+a*.4;ctx.strokeStyle='#c77dff';ctx.shadowColor='#9d4dff';ctx.shadowBlur=18;ctx.lineWidth=8;ctx.beginPath();ctx.arc(fx.x,fx.y,fx.r,0,Math.PI*2);ctx.stroke();ctx.restore();}
             }
             for (const b of bullets) {
                 ctx.save();
@@ -2386,61 +3191,68 @@
                     ctx.restore();
                 }
 
-                // Boss com visual mais ameaçador, sem exagerar no brilho.
-                ctx.save();
-                ctx.fillStyle = '#7d1024';
-                ctx.beginPath();
-                ctx.arc(boss.x, boss.y, boss.r + 8, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#ff3b55';
-                ctx.beginPath();
-                ctx.arc(boss.x, boss.y, boss.r, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#111';
-                ctx.beginPath();
-                ctx.arc(boss.x - 15, boss.y - 9, 8, 0, Math.PI * 2);
-                ctx.arc(boss.x + 15, boss.y - 9, 8, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#fff';
-                ctx.beginPath();
-                ctx.arc(boss.x - 12, boss.y - 11, 3, 0, Math.PI * 2);
-                ctx.arc(boss.x + 18, boss.y - 11, 3, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#111';
-                ctx.fillRect(boss.x - 20, boss.y + 16, 40, 5);
-                ctx.restore();
 
-                if (bossEntranceFlash > 0 && boss.state === 'fighting') {
+                // Arena Undertale.
+                ctx.save();
+                ctx.fillStyle = '#000';
+                ctx.fillRect(a.left, a.top, a.right - a.left, a.bottom - a.top);
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(a.left, a.top, a.right - a.left, a.bottom - a.top);
+
+                if(bossTelegraph&&bossTelegraph.life>0){ctx.save();ctx.globalAlpha=.2+.6*(bossTelegraph.life/30);ctx.strokeStyle=bossTelegraph.color||'#fff';ctx.lineWidth=2;const ccx=(a.left+a.right)/2,ccy=(a.top+a.bottom)/2;if(bossTelegraph.type==='circle'){ctx.setLineDash([4,5]);ctx.beginPath();ctx.arc(bossTelegraph.x,bossTelegraph.y,bossTelegraph.r||26,0,Math.PI*2);ctx.stroke();ctx.setLineDash([])}else if(bossTelegraph.type==='cross'){for(let k=0;k<4;k++){let aa=bossTelegraph.rot+k*Math.PI/2;ctx.beginPath();ctx.moveTo(ccx,ccy);ctx.lineTo(ccx+Math.cos(aa)*220,ccy+Math.sin(aa)*220);ctx.stroke()}}else if(bossTelegraph.type==='aim'){ctx.setLineDash([8,6]);ctx.beginPath();ctx.moveTo(bossTelegraph.x,bossTelegraph.y);ctx.lineTo(bossTelegraph.x2,bossTelegraph.y2);ctx.stroke();ctx.setLineDash([])}else if(bossTelegraph.type==='columns'){const n=bossTelegraph.n||10;const col=(bossTelegraph.b-bossTelegraph.a)/n;ctx.setLineDash([5,6]);for(let k=0;k<n;k++){if(k===bossTelegraph.gap)continue;ctx.strokeRect(bossTelegraph.a+k*col+4,a.top+4,col-8,a.bottom-a.top-8)}ctx.setLineDash([])}else if(bossTelegraph.type==='wallGap'){const n=bossTelegraph.n||9;const gap=bossTelegraph.gap||3;const unit=(bossTelegraph.horizontal?(a.bottom-a.top):(a.right-a.left))/n;ctx.setLineDash([6,5]);for(let k=0;k<n;k++){if(k===gap||k===gap+1)continue;if(bossTelegraph.horizontal)ctx.strokeRect(a.left+4,a.top+k*unit+4,a.right-a.left-8,unit-8);else ctx.strokeRect(a.left+k*unit+4,a.top+4,unit-8,a.bottom-a.top-8)}ctx.setLineDash([])}else if(bossTelegraph.type==='ringGap'){ctx.setLineDash([4,5]);ctx.beginPath();ctx.arc(bossTelegraph.x,bossTelegraph.y,bossTelegraph.r||58,0,Math.PI*2);ctx.stroke();ctx.setLineDash([])}else if(bossTelegraph.type==='executionBeam'){const e=bossExecutionLunge;if(e){const mx=boss.x,my=boss.y+boss.r*.42,dx=Math.cos(e.angle),dy=Math.sin(e.angle),px=-dy,py=dx,depth=Math.hypot(a.right-a.left,a.bottom-a.top)*1.35,nw=e.beamNear||70,fw=e.beamFar||260;ctx.globalAlpha=.78;ctx.lineWidth=3;ctx.setLineDash([10,7]);ctx.strokeStyle='#ff6676';ctx.beginPath();ctx.moveTo(mx+px*nw*.5,my+py*nw*.5);ctx.lineTo(mx+dx*depth+px*fw*.5,my+dy*depth+py*fw*.5);ctx.moveTo(mx-px*nw*.5,my-py*nw*.5);ctx.lineTo(mx+dx*depth-px*fw*.5,my+dy*depth-py*fw*.5);ctx.stroke();ctx.setLineDash([])}}ctx.restore()}
+                // Visual do boss: núcleo, chifres, olhos e aura de rage.
+                ctx.save();const rp=bossRage*(.5+.5*Math.sin(frameCount*.12)),hov=Math.sin(frameCount*.055)*3,br=boss.r+rp*8;for(let k=3;k>=1;k--){ctx.globalAlpha=.08+rp*.03;ctx.strokeStyle=bossPhase===3?'#ff234b':k===1?'#ff556b':'#7f1f34';ctx.lineWidth=3+k;ctx.beginPath();ctx.arc(boss.x,boss.y+hov,br+k*(10+rp*5),0,Math.PI*2);ctx.stroke()}ctx.globalAlpha=1;ctx.shadowColor=bossPhase===3?'#ff173f':'#ff244d';ctx.shadowBlur=30+rp*28;const bg=ctx.createRadialGradient(boss.x-12,boss.y-12,5,boss.x,boss.y,br);bg.addColorStop(0,'#ff9ba7');bg.addColorStop(.35,bossPhase===3?'#ff304f':'#ff3b58');bg.addColorStop(1,'#6f0d20');ctx.fillStyle=bg;ctx.beginPath();ctx.arc(boss.x,boss.y+hov,br,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;ctx.fillStyle='#2b0710';ctx.beginPath();ctx.moveTo(boss.x-30,boss.y-30+hov);ctx.lineTo(boss.x-54,boss.y-58+hov);ctx.lineTo(boss.x-45,boss.y-20+hov);ctx.closePath();ctx.fill();ctx.beginPath();ctx.moveTo(boss.x+30,boss.y-30+hov);ctx.lineTo(boss.x+54,boss.y-58+hov);ctx.lineTo(boss.x+45,boss.y-20+hov);ctx.closePath();ctx.fill();const ey=boss.y-9+hov;ctx.fillStyle='#09060a';ctx.beginPath();ctx.ellipse(boss.x-19,ey,12,10,0,0,Math.PI*2);ctx.ellipse(boss.x+19,ey,12,10,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff0f4';ctx.shadowColor='#ff4664';ctx.shadowBlur=15;ctx.beginPath();ctx.arc(boss.x-17,ey,5,0,Math.PI*2);ctx.arc(boss.x+21,ey,5,0,Math.PI*2);ctx.fill();ctx.restore();
+                if(bossEntranceFlash>0&&boss.state==='fighting'){ctx.save();ctx.globalAlpha=Math.min(.75,bossEntranceFlash/18);ctx.strokeStyle=bossPhase===3?'#ff1744':'#ff4055';ctx.lineWidth=4+rp*4;ctx.beginPath();ctx.arc(boss.x,boss.y,boss.r+14,0,Math.PI*2);ctx.stroke();ctx.restore();}
+                // EXECUÇÃO SUPREMA — desenhada EM PRIMEIRO PLANO, depois do boss, para não ficar atrás.
+                if(bossExecutionLunge && bossExecutionLunge.kind==='mouthBeam'){
+                    const e=bossExecutionLunge;
+                    const mx=boss.x, my=boss.y+boss.r*.42;
+                    const dx=Math.cos(e.angle), dy=Math.sin(e.angle), px=-dy, py=dx;
+                    const depth=Math.hypot(a.right-a.left,a.bottom-a.top)*1.45;
+                    const fade=e.state==='fade' ? Math.max(0,e.fadeTimer/24) : 1;
+                    const pulse=.55+.45*Math.sin(frameCount*.28);
+                    const warning=e.state==='warning';
+                    const nearW=e.beamNear || (a.right-a.left)*.22;
+                    const farW=e.beamFar || (a.right-a.left)*.88;
+                    const p1x=mx+px*nearW*.5,p1y=my+py*nearW*.5,p2x=mx-px*nearW*.5,p2y=my-py*nearW*.5;
+                    const q1x=mx+dx*depth+px*farW*.5,q1y=my+dy*depth+py*farW*.5,q2x=mx+dx*depth-px*farW*.5,q2y=my+dy*depth-py*farW*.5;
+
                     ctx.save();
-                    ctx.globalAlpha = Math.min(0.7, bossEntranceFlash / 14);
-                    ctx.strokeStyle = '#ff4055';
-                    ctx.lineWidth = 5;
-                    ctx.beginPath();
-                    ctx.arc(boss.x, boss.y, boss.r + 12 + (10 - bossEntranceFlash) * 2, 0, Math.PI * 2);
-                    ctx.stroke();
+                    if(warning){
+                        const charge=1-e.warningTimer/68;
+                        ctx.globalAlpha=.035+.055*charge;
+                        ctx.fillStyle='#ff0a27';
+                        ctx.fillRect(a.left,a.top,a.right-a.left,a.bottom-a.top);
+                        ctx.globalAlpha=.82;
+                        ctx.strokeStyle='#ff4058'; ctx.lineWidth=3; ctx.setLineDash([10,7]);
+                        ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.lineTo(q1x,q1y);ctx.moveTo(p2x,p2y);ctx.lineTo(q2x,q2y);ctx.stroke();ctx.setLineDash([]);
+                        ctx.globalAlpha=.95;ctx.shadowColor='#ff1736';ctx.shadowBlur=28+30*charge;ctx.fillStyle='#ff2947';
+                        ctx.beginPath();ctx.arc(mx+dx*11,my+dy*11,8+charge*11,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+                    }else{
+                        // sombra/halo externo
+                        ctx.globalAlpha=.12*fade;ctx.fillStyle='#ff001f';ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.lineTo(q1x,q1y);ctx.lineTo(q2x,q2y);ctx.lineTo(p2x,p2y);ctx.closePath();ctx.fill();
+                        ctx.globalAlpha=.48*fade;ctx.shadowColor='#ff001f';ctx.shadowBlur=(48+24*pulse)*fade;ctx.fillStyle='#d60728';ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.lineTo(q1x,q1y);ctx.lineTo(q2x,q2y);ctx.lineTo(p2x,p2y);ctx.closePath();ctx.fill();ctx.shadowBlur=0;
+                        // anel externo brilhante
+                        ctx.globalAlpha=.75*fade;ctx.strokeStyle='#ff3852';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.lineTo(q1x,q1y);ctx.lineTo(q2x,q2y);ctx.lineTo(p2x,p2y);ctx.closePath();ctx.stroke();
+                        // núcleo branco: muito mais estreito, para o vermelho parecer energia concentrada
+                        const coreNear=nearW*.30,coreFar=farW*.28;
+                        const c1x=mx+px*coreNear*.5,c1y=my+py*coreNear*.5,c2x=mx-px*coreNear*.5,c2y=my-py*coreNear*.5;
+                        const cq1x=mx+dx*depth+px*coreFar*.5,cq1y=my+dy*depth+py*coreFar*.5,cq2x=mx+dx*depth-px*coreFar*.5,cq2y=my+dy*depth-py*coreFar*.5;
+                        ctx.globalAlpha=.92*fade;ctx.fillStyle='#ff6778';ctx.beginPath();ctx.moveTo(c1x,c1y);ctx.lineTo(cq1x,cq1y);ctx.lineTo(cq2x,cq2y);ctx.lineTo(c2x,c2y);ctx.closePath();ctx.fill();
+                        ctx.globalAlpha=.98*fade;ctx.fillStyle='#ffe9ed';ctx.beginPath();ctx.arc(mx+dx*19,my+dy*19,7+Math.sin(frameCount*.5)*2,0,Math.PI*2);ctx.fill();
+                        // faíscas laterais para dar sensação de energia instável
+                        for(let k=0;k<10;k++){
+                            const t=((frameCount*.035+k*.17)%1);
+                            const sideOff=(Math.sin(k*9.17+frameCount*.09))*(nearW*.45+(farW*.18)*t);
+                            const sx=mx+dx*(55+depth*t)+px*sideOff, sy=my+dy*(55+depth*t)+py*sideOff;
+                            ctx.globalAlpha=(.15+.12*Math.sin(frameCount*.2+k))*fade;ctx.fillStyle='#ff8b98';ctx.beginPath();ctx.arc(sx,sy,1.5+(k%3),0,Math.PI*2);ctx.fill();
+                        }
+                        // camada vermelha translúcida sobre a arena: deixa claro que o ataque está na frente
+                        ctx.globalAlpha=.055*fade;ctx.fillStyle='#ff172f';ctx.fillRect(a.left,a.top,a.right-a.left,a.bottom-a.top);
+                    }
                     ctx.restore();
                 }
-
-                // Barra de vida do boss diretamente acima dele.
-                ctx.save();
-                const bw = 150, bh = 13;
-                const bx = boss.x - bw/2, by = boss.y - boss.r - 28;
-                ctx.fillStyle = 'rgba(0,0,0,.88)';
-                ctx.fillRect(bx-3, by-3, bw+6, bh+6);
-                ctx.fillStyle = '#270810';
-                ctx.fillRect(bx, by, bw, bh);
-                const bossPct = Math.max(0, Math.min(1, boss.hp / boss.maxHp));
-                const bossHue = Math.max(0, bossPct*118);
-                ctx.fillStyle = `hsl(${bossHue},90%,52%)`;
-                ctx.fillRect(bx, by, bw*bossPct, bh);
-                ctx.strokeStyle = '#fff';
-                ctx.lineWidth = 2;
-                ctx.strokeRect(bx, by, bw, bh);
-                ctx.fillStyle = '#fff';
-                ctx.font = '900 11px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText(`BOSS  ${Math.ceil(Math.max(0,boss.hp))}/${boss.maxHp}  ·  PHASE ${bossPhase}`, boss.x, by-8);
-                ctx.restore();
 
                 // Efeito de impacto no boss: pequenos jatos/partículas vermelhas.
                 for (const fx of bossHitEffects) {
@@ -2467,25 +3279,79 @@
                     ctx.restore();
                 }
 
-                // Arena Undertale.
-                ctx.save();
-                ctx.fillStyle = '#000';
-                ctx.fillRect(a.left, a.top, a.right - a.left, a.bottom - a.top);
-                ctx.strokeStyle = '#fff';
-                ctx.lineWidth = 3;
-                ctx.strokeRect(a.left, a.top, a.right - a.left, a.bottom - a.top);
+                if(bossSuperHazard){
+                    const h=bossSuperHazard;
+                    ctx.save();
+                    ctx.translate(h.cx,h.cy);
 
-                // Projéteis do boss.
-                for (const b of bossAttackProjectiles) {
-                    ctx.fillStyle = '#fff';
-                    ctx.beginPath();
-                    ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#ff6b7a';
-                    ctx.beginPath();
-                    ctx.arc(b.x, b.y, 3, 0, Math.PI * 2);
-                    ctx.fill();
+                    if(h.state==='warning'){
+                        // Quadrado fantasma + ! piscando amarelo/vermelho.
+                        const pulse=.5+.5*Math.sin(frameCount*.48);
+                        const warnAlpha=.38+.42*pulse;
+
+                        ctx.globalAlpha=.12+.10*pulse;
+                        ctx.fillStyle='#ff293d';
+                        ctx.fillRect(-h.w/2,-h.h/2,h.w,h.h);
+
+                        ctx.globalAlpha=warnAlpha;
+                        ctx.strokeStyle=(Math.floor(frameCount/5)%2===0)?'#ffd83d':'#ff3047';
+                        ctx.lineWidth=4+3*pulse;
+                        ctx.setLineDash([10,7]);
+                        ctx.strokeRect(-h.w/2-2,-h.h/2-2,h.w+4,h.h+4);
+                        ctx.setLineDash([]);
+
+                        ctx.globalAlpha=.35+.25*pulse;
+                        ctx.shadowColor='#ff283b';
+                        ctx.shadowBlur=20+20*pulse;
+                        ctx.strokeStyle='#ff2f42';
+                        ctx.lineWidth=2;
+                        ctx.strokeRect(-h.w/2-8,-h.h/2-8,h.w+16,h.h+16);
+
+                        ctx.shadowBlur=0;
+                        ctx.globalAlpha=.9;
+                        ctx.font='900 42px sans-serif';
+                        ctx.textAlign='center';
+                        ctx.textBaseline='middle';
+                        ctx.fillStyle=(Math.floor(frameCount/5)%2===0)?'#ffe35b':'#ff4352';
+                        ctx.strokeStyle='#50030a';
+                        ctx.lineWidth=6;
+                        ctx.strokeText('!',0,0);
+                        ctx.fillText('!',0,0);
+
+                    }else{
+                        // Ataque ativo: bloco vermelho sólido, brilhante e claramente perigoso.
+                        const beat=.5+.5*Math.sin(frameCount*.22);
+                        ctx.globalAlpha=.22+.08*beat;
+                        ctx.fillStyle='#ff1933';
+                        ctx.fillRect(-h.w/2-10,-h.h/2-10,h.w+20,h.h+20);
+
+                        ctx.globalAlpha=.95;
+                        ctx.shadowColor='#ff1730';
+                        ctx.shadowBlur=30+22*beat;
+                        ctx.fillStyle='#ee1428';
+                        ctx.fillRect(-h.w/2,-h.h/2,h.w,h.h);
+
+                        ctx.shadowBlur=0;
+                        const grad=ctx.createLinearGradient(-h.w/2,-h.h/2,h.w/2,h.h/2);
+                        grad.addColorStop(0,'rgba(255,110,125,.42)');
+                        grad.addColorStop(.5,'rgba(255,35,55,.10)');
+                        grad.addColorStop(1,'rgba(120,0,12,.20)');
+                        ctx.fillStyle=grad;
+                        ctx.fillRect(-h.w/2,-h.h/2,h.w,h.h);
+
+                        ctx.globalAlpha=.98;
+                        ctx.strokeStyle='#ff6170';
+                        ctx.lineWidth=3;
+                        ctx.strokeRect(-h.w/2,-h.h/2,h.w,h.h);
+
+                        ctx.globalAlpha=.65;
+                        ctx.strokeStyle='#8b0612';
+                        ctx.lineWidth=1;
+                        ctx.strokeRect(-h.w/2+7,-h.h/2+7,h.w-14,h.h-14);
+                    }
+                    ctx.restore();
                 }
+                for(const b of bossAttackProjectiles){ctx.save();const hue=b.hue||0;ctx.translate(b.x,b.y);if(b.type==='chaosRing'){ctx.strokeStyle='#ffd34f';ctx.shadowColor='#ffd34f';ctx.shadowBlur=18;ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,0,b.r+3,0,Math.PI*2);ctx.stroke()}else if(b.type==='prediction'){ctx.rotate(Math.atan2(b.vy,b.vx));ctx.fillStyle='#c77dff';ctx.shadowColor='#c77dff';ctx.shadowBlur=18;ctx.fillRect(-8,-2,16,4)}else if(b.type==='orbit'){ctx.rotate(frameCount*.03);ctx.strokeStyle=`hsl(${hue},100%,72%)`;ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,b.r+3,0,Math.PI*2);ctx.stroke()}else if(b.type==='orbitSpread'){ctx.rotate(Math.atan2(b.vy||1,b.vx||1));ctx.fillStyle='#f5d4ff';ctx.shadowColor='#c36cff';ctx.shadowBlur=22;ctx.beginPath();ctx.arc(0,0,b.r+1,0,Math.PI*2);ctx.fill()}else if(b.type==='capsuleChild'){ctx.rotate(Math.atan2(b.vy,b.vx));ctx.fillStyle='#6affd6';ctx.shadowColor='#39ffd0';ctx.shadowBlur=18;ctx.beginPath();ctx.moveTo(9,0);ctx.lineTo(-7,-4);ctx.lineTo(-7,4);ctx.closePath();ctx.fill()}else if(b.type==='mine'){ctx.shadowColor='#ffd34f';ctx.shadowBlur=18;ctx.strokeStyle='#ffd34f';ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,b.r+4+Math.sin(b.flash*.3)*2,0,Math.PI*2);ctx.stroke()}else if(b.type==='homing'){ctx.rotate(Math.atan2(b.vy,b.vx));ctx.fillStyle='#ff5c9b';ctx.shadowColor='#ff4c93';ctx.shadowBlur=18;ctx.beginPath();ctx.moveTo(10,0);ctx.lineTo(-8,-5);ctx.lineTo(-5,0);ctx.lineTo(-8,5);ctx.closePath();ctx.fill()}else if(b.type==='sweep'){ctx.fillStyle='#ffd34f';ctx.shadowColor='#ffd34f';ctx.shadowBlur=14;ctx.fillRect(-7,-2,14,4)}else if(b.type==='split'){ctx.strokeStyle='#52ffcc';ctx.shadowColor='#52ffcc';ctx.shadowBlur=14;ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,0,b.r+2,0,Math.PI*2);ctx.stroke()}else if(b.type==='boomerang'){ctx.strokeStyle='#9cff66';ctx.shadowColor='#8dff59';ctx.shadowBlur=18;ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,0,b.r+2,-.9,.9);ctx.stroke();ctx.beginPath();ctx.moveTo(-6,0);ctx.lineTo(6,0);ctx.stroke()}else if(b.type==='dash'){ctx.rotate(Math.atan2(b.vy,b.vx));const pulse=.75+.25*Math.sin(frameCount*.45+(b.executionPulse||0)*.9);ctx.fillStyle='#ff304d';ctx.shadowColor='#ff304d';ctx.shadowBlur=22+12*pulse;ctx.beginPath();ctx.moveTo(11,0);ctx.lineTo(-8,-6);ctx.lineTo(-3,0);ctx.lineTo(-8,6);ctx.closePath();ctx.fill()}else if(b.isSuper){ctx.strokeStyle=`hsl(${hue},100%,78%)`;ctx.shadowColor=`hsl(${hue},100%,70%)`;ctx.shadowBlur=24;ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(0,0,b.r+4+Math.sin(frameCount*.18)*2,0,Math.PI*2);ctx.stroke();ctx.fillStyle=`hsl(${hue},95%,66%)`;ctx.beginPath();ctx.arc(0,0,b.r,0,Math.PI*2);ctx.fill()}else{ctx.fillStyle=`hsl(${hue},95%,64%)`;ctx.shadowColor=`hsl(${hue},100%,64%)`;ctx.shadowBlur=b.accent?24:14;ctx.beginPath();ctx.arc(0,0,b.r,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;ctx.fillStyle='rgba(255,255,255,.8)';ctx.beginPath();ctx.arc(-b.r*.3,-b.r*.3,Math.max(2,b.r*.3),0,Math.PI*2);ctx.fill()}ctx.restore()}
 
                 // Bala refletida pelo boss: pequena animação de contra-ataque.
                 if (bossReflectShot) {
@@ -2530,26 +3396,7 @@
                 ctx.lineTo(bossSoul.x - 7, bossSoul.y);
                 ctx.closePath();
                 ctx.fill();
-
-                // HP da alma.
-                ctx.textAlign = 'center';
-                if (bossSoul.hp === 1) {
-                    const dangerPulse = 0.5 + 0.5*Math.sin(frameCount*0.65);
-                    ctx.save();
-                    ctx.globalAlpha = 0.10 + dangerPulse*0.10;
-                    ctx.fillStyle = '#ff1025';
-                    ctx.fillRect(0,0,W,H);
-                    ctx.globalAlpha = 0.35 + dangerPulse*0.25;
-                    ctx.strokeStyle = '#ff1b35';
-                    ctx.lineWidth = 5 + dangerPulse*5;
-                    ctx.strokeRect(5+dangerPulse*3,5+dangerPulse*3,W-10-dangerPulse*6,H-10-dangerPulse*6);
-                    ctx.globalAlpha = 1;
-                    ctx.fillStyle = '#ff3045';
-                    ctx.font = '900 20px sans-serif';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('DANGER', W/2, a.bottom+45);
-                    ctx.restore();
-                }
+                if(bossSoul.hp===1){ctx.save();const dp=.5+.5*Math.sin(frameCount*.7);ctx.globalAlpha=.14+.08*dp;ctx.fillStyle="#ff1025";ctx.fillRect(0,0,W,H);ctx.globalAlpha=.5+.25*dp;ctx.strokeStyle="#ff2343";ctx.lineWidth=2+dp*4;ctx.setLineDash([10,7]);ctx.strokeRect(7,7,W-14,H-14);ctx.setLineDash([]);ctx.fillStyle="#fff";ctx.font="1000 10px sans-serif";ctx.textAlign="center";ctx.fillText("⚠ 1 HP",W/2,a.top-10);ctx.restore()}
                 ctx.textAlign = 'center';
                 if (bossAttackWarning > 0) {
                     ctx.fillStyle = '#ff6b6b';
@@ -2653,10 +3500,16 @@
         }
 
         // ---- LOOP ----
-        // Controla a velocidade global da simulação sem alterar a física individual.
+        function getBossBattleSpeed(){
+            if(!bossActive) return gameSpeed;
+            if(customMode && customConfig) return Math.max(.25,Math.min(2.5,customConfig.bossSpeed));
+            return 1.0;
+        }
+        // Dificuldades prontas usam velocidade global fixa de 100% em todo o jogo.
+        // Somente a partida personalizada pode alterar as velocidades da corrida e do boss.
         function update() {
             if (!gameRunning || gamePaused) return;
-            simulationAccumulator += gameSpeed;
+            simulationAccumulator += getBossBattleSpeed();
             let safety = 0;
             while (simulationAccumulator >= 1 && gameRunning && safety < 3) {
                 updateSimulation();
@@ -2672,15 +3525,21 @@
         }
 
         // ---- CONTROLES ----
+        function openGodModePopup(){
+            clearTimeout(godMKeyTimer);
+            godMKeyClicks = 0;
+            godModePopup.classList.add('active');
+            refreshGodToggle();
+        }
+
         secretM.addEventListener('click', (e) => {
             e.stopPropagation();
             secretMClicks++;
             clearTimeout(secretMTimer);
             secretMTimer = setTimeout(() => { secretMClicks = 0; }, 1800);
-            if (secretMClicks >= 5) {
+            if (secretMClicks >= 3) {
                 secretMClicks = 0;
-                godModePopup.classList.add('active');
-                refreshGodToggle();
+                openGodModePopup();
             }
         });
         function refreshGodToggle() {
@@ -2705,6 +3564,7 @@
         }
 
         function startGame() {
+            customMode=false; customBossTest=false;
             initAudio();
             resetGame();
             selectScreen.classList.remove('active');
@@ -2722,6 +3582,9 @@
             bossBarContainer.style.display = 'none';
             selectScreen.classList.add('active');
             difficultyScreen.classList.remove('active');
+            customScreen.classList.remove('active');
+            customMode = false;
+            customBossTest = false;
             gameOverScreen.classList.remove('active');
             pauseScreen.classList.remove('active');
             renderCharGrid();
@@ -2789,11 +3652,24 @@
         // ---- EVENTOS ----
         document.addEventListener('keydown', (e) => {
             const key = e.key.toLowerCase();
+
+            // GOD MODE durante a partida: pressione M 3 vezes consecutivas.
+            if(key === 'm' && !e.repeat){
+                godMKeyClicks++;
+                clearTimeout(godMKeyTimer);
+                godMKeyTimer = setTimeout(() => { godMKeyClicks = 0; }, 1200);
+                if(godMKeyClicks >= 3){
+                    openGodModePopup();
+                }
+            }
+
             keys[key] = true;
             if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key)) e.preventDefault();
             if (key === 'enter' && selectScreen.classList.contains('active')) openDifficultyMenu();
             if (key === 'enter' && difficultyScreen.classList.contains('active')) startGame();
-            if (key === 'enter' && gameOverScreen.classList.contains('active') && !gameRunning) startGame();
+            if (key === 'enter' && customScreen.classList.contains('active')) startCustomGame(false);
+            if (key === 'escape' && customScreen.classList.contains('active')) closeCustomScreen();
+            if (key === 'enter' && gameOverScreen.classList.contains('active') && !gameRunning) restartCurrentGame();
             if ((key === 'escape' || key === 'p') && gameRunning && !gameOver) togglePause();
         });
         document.addEventListener('keyup', (e) => {
@@ -2849,6 +3725,19 @@
         }
 
         btnStart.addEventListener('click', openDifficultyMenu);
+        btnCustom.addEventListener('click', openCustomScreen);
+        btnCustomStart.addEventListener('click', () => startCustomGame(false));
+        btnCustomBossTest.addEventListener('click', () => startCustomGame(true));
+        btnCustomBack.addEventListener('click', closeCustomScreen);
+        document.getElementById('customPresetBalanced').addEventListener('click',()=>applyCustomPreset('balanced'));
+        document.getElementById('customPresetBoss').addEventListener('click',()=>applyCustomPreset('bosstest'));
+        document.getElementById('customPresetChaos').addEventListener('click',()=>applyCustomPreset('chaos'));
+        document.getElementById('customSave').addEventListener('click',saveCustomConfig);
+        document.getElementById('customLoad').addEventListener('click',loadCustomConfig);
+        document.getElementById('attackAll').addEventListener('click',()=>{document.querySelectorAll('#customAttackList input').forEach(e=>e.checked=true);readCustomControls();});
+        document.getElementById('attackNone').addEventListener('click',()=>{document.querySelectorAll('#customAttackList input').forEach(e=>e.checked=false);readCustomControls();});
+        ['customSpeed','customCombo','customArena','customAI','customBossSpeed','customPlayerBossSpeed','customPhase2','customPhase3','customMaxAttacks','customSuperChance'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{updateCustomOutputs();readCustomControls();}));
+        ['customPlayerHp','customBossHp','customBossShots','customAttackMin','customAttackMax','customShotInterval','customBulletWindow','customPerfect','customPerfectOnlyBoss','customLearning','customNoDiagonal','customPhaseEscalation'].forEach(id=>document.getElementById(id).addEventListener(['customPerfectOnlyBoss'].includes(id)?'change':'input',()=>readCustomControls()));
         btnDifficultyStart.addEventListener('click', startGame);
         btnDifficultyBack.addEventListener('click', goToSelect);
         difficultyList.querySelectorAll('.difficulty-option').forEach(opt => {
@@ -2859,7 +3748,7 @@
                 playBeep(500, 0.08, 'sine', 0.05);
             });
         });
-        btnRetry.addEventListener('click', startGame);
+        btnRetry.addEventListener('click', restartCurrentGame);
         btnVictoryContinue.addEventListener('click', () => {
             document.getElementById('bossVictoryScreen').classList.remove('active');
             hud.style.display = 'flex';
@@ -2875,7 +3764,7 @@
             bossPlayerShot = null;
             bossReflectShot = null;
             bossPlayerShotGrace = 0;
-            bossPlayerShotTimer = DIFFICULTIES[selectedDifficultyId].shotInterval;
+            bossPlayerShotTimer = getActiveDifficultyConfig().shotInterval;
             bossBarContainer.style.display = 'none';
             bossPlayerHP.style.display = 'none';
             gameContainer.classList.remove('boss-danger');
@@ -2895,6 +3784,9 @@
         balanceAmount.textContent = totalCoins;
         selectScreen.classList.add('active');
         difficultyScreen.classList.remove('active');
+        customScreen.classList.remove('active');
+        buildCustomAttackLists();
+        writeCustomControls(customConfig);
         gameOverScreen.classList.remove('active');
         pauseScreen.classList.remove('active');
         hud.style.display = 'none';
